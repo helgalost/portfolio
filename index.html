@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио Ольги Чуманевой</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- 1. Цветовые переменные --- */
+        :root {
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --text-muted: #b0b0b0;
+            --accent-color: #f72585;
+            --accent-secondary: #4361ee;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --header-bg: rgba(15, 15, 15, 0.8);
+            --blob-opacity: 0.5;
+            --stat-color: #4cc9f0;
+            --highlight-title: #a0c4ff;
+            --tooltip-bg: #f72585;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f0f2f5;
+            --text-color: #1a1a1a;
+            --text-muted: #444;
+            --accent-color: #d0006f;
+            --accent-secondary: #2b45b0;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --header-bg: rgba(255, 255, 255, 0.9);
+            --blob-opacity: 0.2;
+            --stat-color: #005f73;
+            --highlight-title: #023e8a;
+            --tooltip-bg: #2b45b0;
+        }
+
+        /* --- 2. База --- */
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            cursor: none;
+            transition: background-color 0.5s, color 0.5s;
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
+
+        /* --- Фон --- */
+        .background-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; overflow: hidden;
+        }
+        .blob {
+            position: absolute; border-radius: 50%; filter: blur(90px);
+            opacity: var(--blob-opacity); animation: move 20s infinite alternate;
+            transition: opacity 0.5s;
+        }
+        .blob-1 { width: 500px; height: 500px; background: #4361ee; bottom: -10%; left: -10%; animation-duration: 25s; }
+        .blob-2 { width: 450px; height: 450px; background: #f72585; top: -10%; right: -10%; animation-duration: 18s; }
+        .blob-3 { width: 400px; height: 400px; background: #7209b7; top: 40%; left: 40%; transform: translate(-50%, -50%); animation: move-center 30s infinite alternate; }
+        
+        @keyframes move { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, -50px) scale(1.1); } }
+        @keyframes move-center { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-30%, -60%) rotate(120deg); } }
+
+        /* --- Курсор --- */
+        .cursor {
+            width: 20px; height: 20px;
+            border: 2px solid var(--text-color);
+            border-radius: 50%;
+            position: fixed; pointer-events: none; z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s; 
+            mix-blend-mode: difference;
+        }
+        .cursor.hovered {
+            width: 60px; height: 60px;
+            background-color: rgba(128, 128, 128, 0.2);
+            backdrop-filter: blur(2px);
+            border-color: transparent;
+        }
+
+        /* --- Шапка --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            height: 70px; padding: 0 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            background: var(--header-bg); backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--card-border); box-sizing: border-box;
+            transition: background 0.5s;
+        }
+        .header-left { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
+        .header-center { 
+            font-size: 1.1rem; font-weight: 500; position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap;
+        }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+
+        /* Тумблер темы с иконками */
+        .theme-switch-wrapper {
+            display: flex; align-items: center; gap: 8px;
+        }
+        .theme-icon { color: var(--text-muted); font-size: 0.9rem; transition: color 0.3s; }
+        .theme-icon.active { color: var(--accent-color); }
+
+        .theme-switch {
+            position: relative; display: inline-block; width: 44px; height: 24px;
+        }
+        .theme-switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: none; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(255,255,255,0.1); border-radius: 34px; transition: .4s;
+            border: 1px solid var(--card-border);
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px;
+            background-color: white; border-radius: 50%; transition: .4s;
+        }
+        input:checked + .slider { background-color: var(--accent-secondary); }
+        input:checked + .slider:before { transform: translateX(20px); }
+        
+        .social-link {
+            color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px;
+            font-size: 0.95rem; transition: all 0.3s ease; cursor: none;
+        }
+        .social-link:hover { color: var(--text-color); transform: translateY(-2px); }
+
+        /* --- Контейнер --- */
+        .container {
+            max-width: 1000px; margin: 120px auto 50px; padding: 0 20px;
+            position: relative; z-index: 1; flex: 1;
+        }
+
+        /* --- Обо мне --- */
+        .hero {
+            display: grid; grid-template-columns: 280px 1fr; gap: 40px;
+            align-items: start; margin-bottom: 70px;
+        }
+        .profile-img {
+            width: 100%; aspect-ratio: 1/1.3; object-fit: cover;
+            border-radius: 20px; border: 1px solid var(--card-border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .hero-text h1 {
+            font-size: 2.5rem; margin: 0 0 10px; line-height: 1.2;
+            background: linear-gradient(90deg, var(--text-color), var(--highlight-title)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .tag-line { font-size: 1.1rem; color: var(--highlight-title); margin-bottom: 20px; font-weight: 600; }
+        
+        .bio-block p { font-size: 1rem; line-height: 1.7; color: var(--text-muted); margin: 0 0 15px; }
+        
+        .hobbies {
+            display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px;
+            padding-top: 20px; border-top: 1px solid var(--card-border);
+        }
+        .hobby-badge {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--card-bg); padding: 8px 16px; border-radius: 50px;
+            font-size: 0.85rem; color: var(--text-color); border: 1px solid var(--card-border);
+            transition: background 0.3s;
+        }
+        .hobby-badge i { color: var(--accent-color); }
+
+        /* --- Проекты --- */
+        .section-title {
+            font-size: 2rem; margin: 60px 0 30px; text-align: center; color: var(--text-color);
+        }
+        .project-card {
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border); border-radius: 24px;
+            padding: 35px; margin-bottom: 30px;
+            transition: transform 0.4s; cursor: none;
+            overflow: hidden;
+        }
+        .project-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.3); }
+        
+        .project-header {
+            display: flex; justify-content: space-between; align-items: baseline;
+            flex-wrap: wrap; margin-bottom: 25px; border-bottom: 1px solid var(--card-border); padding-bottom: 15px;
+        }
+        .project-title { font-size: 1.5rem; color: var(--text-color); margin: 0; }
+        .project-role { font-size: 0.9rem; color: var(--accent-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+        .project-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .col h4 { color: var(--highlight-title); margin-bottom: 10px; font-size: 1.1rem; }
+        .col p, .col ul { color: var(--text-muted); line-height: 1.6; margin-bottom: 15px; }
+        .col ul { padding-left: 20px; }
+
+        /* Статистика */
+        .project-stats {
+            margin-top: 15px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 15px;
+            border: 1px solid var(--card-border);
+        }
+        [data-theme="light"] .project-stats { background: rgba(0,0,0,0.05); }
+
+        .stat-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-muted); }
+        .stat-val { font-weight: bold; color: var(--stat-color); }
+
+        /* Картинки */
+        .project-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .project-img-container {
+            width: 100%; border-radius: 15px; overflow: hidden; margin-top: 20px;
+            border: 1px solid var(--card-border);
+        }
+        .project-img-container img, .project-gallery img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block; border: 1px solid var(--card-border); }
+
+        /* --- Кнопка "Подробнее" --- */
+        .details-btn {
+            display: block; width: 100%; margin-top: 25px; padding: 14px;
+            background: linear-gradient(45deg, var(--accent-secondary), var(--accent-color));
+            border: none; border-radius: 12px;
+            color: white; font-weight: bold; font-size: 1rem;
+            cursor: none; transition: opacity 0.3s;
+            text-align: center; letter-spacing: 0.5px;
+        }
+        .details-btn:hover { opacity: 0.95; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+        /* --- Скрытый блок --- */
+        .technical-details {
+            max-height: 0; overflow: hidden; opacity: 0;
+            transition: max-height 0.5s ease-out, opacity 0.3s ease-in;
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 0; border-radius: 12px;
+        }
+        [data-theme="light"] .technical-details { background: rgba(255, 255, 255, 0.4); }
+
+        .technical-details.open {
+            max-height: 2000px; opacity: 1; margin-top: 25px; padding: 30px;
+        }
+
+        .tech-stack-title {
+            font-size: 1.1rem; color: var(--accent-color); text-transform: uppercase; 
+            margin-bottom: 15px; border-bottom: 1px solid var(--card-border); padding-bottom: 5px; letter-spacing: 1px;
+        }
+        .tech-description { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
+        .tech-description strong { color: var(--text-color); }
+
+        .tech-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .tech-chip { 
+            background: rgba(128,128,128,0.15); padding: 6px 14px; border-radius: 8px; font-size: 0.9rem; color: var(--text-color); border: 1px solid var(--card-border);
+        }
+
+        /* --- Раздел "Прочее" (Аккордеон) --- */
+        .extra-section { margin-top: 80px; margin-bottom: 50px; }
+        .accordion-item {
+            border: 1px solid var(--card-border);
+            border-radius: 15px; margin-bottom: 15px; overflow: hidden;
+            background: var(--card-bg); backdrop-filter: blur(10px);
+        }
+        .accordion-header {
+            width: 100%; padding: 25px; text-align: left; background: transparent; border: none;
+            color: var(--text-color); font-size: 1.1rem; font-weight: bold;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: none; transition: background 0.3s;
+        }
+        .accordion-header:hover { background: rgba(255,255,255,0.05); }
+        .accordion-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+            background: rgba(0,0,0,0.15);
+        }
+        [data-theme="light"] .accordion-content { background: rgba(255,255,255,0.3); }
+        .accordion-body { padding: 30px; color: var(--text-muted); line-height: 1.8; font-size: 1rem; }
+        
+        .accordion-item.active .accordion-content { max-height: 3000px; }
+        .accordion-item.active .accordion-header i { transform: rotate(180deg); }
+
+        /* Timeline style for experience */
+        .timeline-item { margin-bottom: 30px; padding-left: 20px; border-left: 2px solid var(--accent-secondary); position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px;
+            background: var(--accent-secondary); border-radius: 50%;
+        }
+        .timeline-date { font-size: 0.9rem; color: var(--accent-color); font-weight: bold; margin-bottom: 5px; }
+        .timeline-title { font-size: 1.1rem; color: var(--text-color); font-weight: bold; }
+        .timeline-company { font-size: 1rem; color: var(--highlight-title); margin-bottom: 10px; font-style: italic; }
+
+        /* --- Футер --- */
+        .main-footer {
+            background: rgba(0,0,0,0.4); border-top: 1px solid var(--card-border);
+            padding: 40px 20px; text-align: center; margin-top: auto;
+        }
+        [data-theme="light"] .main-footer { background: rgba(255,255,255,0.5); }
+        
+        .footer-socials { display: flex; justify-content: center; gap: 25px; margin-bottom: 30px; flex-wrap: wrap; }
+        .footer-social-link {
+            font-size: 1.5rem; color: var(--text-muted); transition: color 0.3s, transform 0.3s; cursor: none;
+        }
+        .footer-social-link:hover { color: var(--accent-color); transform: scale(1.1); }
+        
+        .footer-email {
+            display: block; margin-bottom: 30px; font-size: 1.1rem; color: var(--text-color); text-decoration: none; font-weight: bold; cursor: none;
+        }
+        .footer-email:hover { color: var(--accent-secondary); text-decoration: underline; }
+
+        .footer-links { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        
+        /* Work In Progress (WIP) Links */
+        .wip-link {
+            position: relative; color: var(--highlight-title); font-weight: 500; cursor: none;
+            padding-bottom: 2px; border-bottom: 1px dashed var(--text-muted); opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .wip-link:hover { opacity: 1; border-bottom-style: solid; }
+        
+        .wip-link::after {
+            content: "Work in progress 🚧";
+            position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
+            background: var(--tooltip-bg); color: white; padding: 6px 12px;
+            border-radius: 8px; font-size: 0.8rem; white-space: nowrap;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s, bottom 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-weight: bold;
+        }
+        .wip-link:hover::after { opacity: 1; bottom: 150%; }
+
+        /* Адаптив */
+        @media (max-width: 800px) {
+            header { padding: 10px 20px; flex-wrap: wrap; height: auto; }
+            .header-center { position: static; transform: none; width: 100%; text-align: center; order: 3; margin-top: 15px; }
+            .header-right { gap: 15px; }
+            .hero { grid-template-columns: 1fr; }
+            .profile-img { width: 220px; margin: 0 auto 20px; display: block; }
+            .project-preview { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor" id="cursor"></div>
+
+    <div class="background-container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <div class="header-left">helgalost</div>
+        <div class="header-center">Студентка | IT-специалист + Реклама</div>
+        <div class="header-right">
+            <div class="theme-switch-wrapper">
+                <i class="fas fa-sun theme-icon"></i>
+                <label class="theme-switch hover-target" title="Сменить тему">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <i class="fas fa-moon theme-icon"></i>
+            </div>
+            
+            <a href="https://t.me/helgalost" class="social-link hover-target" target="_blank">
+                <span>Личный TG</span> <i class="fab fa-telegram"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="hero">
+            <img src="me.png" alt="Ольга Чуманева" class="profile-img hover-target">
+            
+            <div class="hero-text">
+                <h1>Привет, я Ольга!</h1>
+                <div class="tag-line">Аналитика + Креатив = Результат</div>
+                
+                <div class="bio-block">
+                    <p>
+                        <strong>Мой опыт работы 10+ лет.</strong> Родилась в «технической» семье, поэтому с детства на «ты» с компьютерами и сложными системами.
+                    </p>
+                    <p>
+                        Сейчас я объединяю этот технический бэкграунд с креативом в рекламе. Это дает мне огромное преимущество: я не просто "делаю красиво", я строю стратегии, основанные на данных, автоматизации и глубоком понимании продукта.
+                    </p>
+                    <p>
+                        В 2018 году прошла профессиональную квалификацию по фотографии 📸. Это позволяет мне самостоятельно создавать визуальный контент высокого уровня, не тратя время на поиск подрядчиков для базовых задач.
+                    </p>
+                </div>
+
+                <div class="hobbies">
+                    <span class="hobby-badge hover-target"><i class="fas fa-camera"></i> Фотография</span>
+                    <span class="hobby-badge hover-target"><i class="fas fa-microchip"></i> IT & Tech</span>
+                    <span class="hobby-badge hover-target"><i class="fas fa-microphone"></i> Радио</span>
+                    <span class="hobby-badge hover-target"><i class="fas fa-theater-masks"></i> Театр</span>
+                    <span class="hobby-badge hover-target"><i class="fas fa-gamepad"></i> Игры</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Опыт и Кейсы</h2>
+
+        <div class="project-card hover-target">
+            <div class="project-header">
+                <h3 class="project-title">Медиа & SMM (Инжинириум)</h3>
+                <span class="project-role">SMM-менеджер</span>
+            </div>
+            
+            <div class="project-preview">
+                <div class="col">
+                    <h4>🎯 Задача</h4>
+                    <p>Необходимо было выстроить коммуникацию для сложного образовательного продукта при МГТУ им. Баумана. Аудитория — школьники и их родители, но контент должен был проходить строгую цензуру ректората.</p>
+                    
+                    <h4>🛠 Что сделала</h4>
+                    <ul>
+                         <li>Разработала стиль общения: академический, но современный.</li>
+                         <li>Выстроила отношения с редакциями СМИ.</li>
+                         <li>Создала медиаплан, который утвердили без правок.</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>📊 Результаты</h4>
+                     <div class="project-stats">
+                        <div class="stat-item"><span>Рост подписчиков:</span> <span class="stat-val">+20% (organic)</span></div>
+                        <div class="stat-item"><span>Охваты постов:</span> <span class="stat-val">+30%</span></div>
+                        <div class="stat-item"><span>PR (СМИ):</span> <span class="stat-val">5+ статей (Mos.ru и др.)</span></div>
+                    </div>
+                    <div class="project-gallery">
+                        <img src="proj1_1.jpg" alt="Медиаплан">
+                        <img src="proj1_2.jpg" alt="Пример публикации">
+                    </div>
+                </div>
+            </div>
+
+            <button class="details-btn hover-target">Подробнее о реализации и инструментах</button>
+
+            <div class="technical-details">
+                <div class="tech-stack-title">Глубокое погружение</div>
+                <div class="tech-description">
+                    <p>Вся работа с контентом строилась на базе <strong>Google Workspace</strong>. Тексты согласовывались в Google Docs в режиме правок, медиапланы велись в Google Sheets, что ускорило процесс утверждения с 3 дней до 4 часов.</p>
+                    <p>Для создания визуала я использовала <strong>Adobe Photoshop</strong> (для сложной ретуши и коллажей) и <strong>Canva</strong> (для быстрой сборки шаблонов сторис). Взаимодействие со СМИ включало подготовку пресс-релизов в инфостиле.</p>
+                </div>
+
+                <div class="tech-stack-title">Используемый стек</div>
+                <div class="tech-chips">
+                    <div class="tech-chip">Google Docs / Sheets</div>
+                    <div class="tech-chip">Adobe Photoshop</div>
+                    <div class="tech-chip">Canva</div>
+                    <div class="tech-chip">Копирайтинг (Инфостиль)</div>
+                    <div class="tech-chip">Media Relations</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card hover-target">
+            <div class="project-header">
+                <h3 class="project-title">Тетрика: Контент-стратегия</h3>
+                <span class="project-role">SMM Audit & Strategy</span>
+            </div>
+            
+            <div class="project-preview">
+                <div class="col">
+                    <h4>🎯 Задача</h4>
+                    <p>Аккаунты школы велись несистемно, вовлеченность падала. Требовалось провести полный аудит, найти "точки роста" и предложить стратегию реанимации соцсетей.</p>
+                    
+                    <h4>🛠 Что сделала</h4>
+                    <ul>
+                        <li>Глубокий аудит контента и выявление проблем.</li>
+                        <li>Внедрение новых форматов: Reels, Stories-сериалы.</li>
+                        <li>Разработка стратегии, основанной на цифрах.</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>📊 Результаты</h4>
+                    <div class="project-stats">
+                        <div class="stat-item"><span>VK (План/Факт):</span> <span class="stat-val">Перевыполнение</span></div>
+                        <div class="stat-item"><span>Telegram KPI:</span> <span class="stat-val">134% выполнение</span></div>
+                        <div class="stat-item"><span>Охваты:</span> <span class="stat-val">Значительный рост</span></div>
+                    </div>
+                    <div class="project-img-container">
+                        <img src="proj2.jpg" alt="Статистика">
+                    </div>
+                </div>
+            </div>
+
+            <button class="details-btn hover-target">Подробнее о методологии</button>
+
+            <div class="technical-details">
+                <div class="tech-stack-title">Стратегический подход</div>
+                <div class="tech-description">
+                    <p>Я провела анализ конкурентов (топ-5 игроков EdTech) и составила матрицу контента.
+
+                    </p>
+                    <p>Был сделан упор на видео-контент (Reels) и интерактивные механики в Telegram. Вся отчетность и планирование велись в сводных таблицах Excel/Google Sheets для прозрачности KPI.</p>
+                </div>
+                
+                <div class="tech-stack-title">Ключевые компетенции</div>
+                <div class="tech-chips">
+                    <div class="tech-chip">Конкурентный анализ</div>
+                    <div class="tech-chip">Контент-матрица</div>
+                    <div class="tech-chip">Google Sheets (Analytics)</div>
+                    <div class="tech-chip">Reels / Video Content</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card hover-target">
+            <div class="project-header">
+                <h3 class="project-title">Руководство IT-инфраструктурой</h3>
+                <span class="project-role">Head of Business Support</span>
+            </div>
+            
+            <div class="project-preview">
+                <div class="col">
+                    <h4>🎯 Задача</h4>
+                    <p>Отдел поддержки не справлялся с нагрузкой. Сотрудники тратили время на ручные действия (копирование данных, ручная смена статусов), что замедляло ответы клиентам.</p>
+
+                    <h4>🛠 Что сделала</h4>
+                    <ul>
+                        <li>Проанализировала путь заявки и нашла "узкие места".</li>
+                        <li>Автоматизировала рутинные действия в CRM.</li>
+                        <li>Вдрила шаблоны ответов и регламенты работы.</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>📊 Результаты</h4>
+                    <div class="project-stats">
+                        <div class="stat-item"><span>Скорость ответа:</span> <span class="stat-val">Улучшена на 70%</span></div>
+                        <div class="stat-item"><span>Активные тикеты:</span> <span class="stat-val">Снижение на 58%</span></div>
+                        <div class="stat-item"><span>Удовл. клиентов:</span> <span class="stat-val">Рост +30%</span></div>
+                    </div>
+                    <div class="project-img-container">
+                        <img src="proj3.jpg" alt="Оптимизация">
+                    </div>
+                </div>
+            </div>
+
+            <button class="details-btn hover-target">Подробнее о Tech Stack & Automation</button>
+
+            <div class="technical-details">
+                <div class="tech-stack-title">Технические детали реализации</div>
+                <div class="tech-description">
+                    <p>В качестве основы использовалась связка <strong>AmoCRM + Yandex Tracker + Omnideck</strong>. Я настроила триггеры и автоматические действия (смена этапов воронки, авто-ответы), чтобы заявки распределялись без участия человека.</p>
+                    <p>Для команды была создана База Знаний (регламенты в Google Docs), что сократило время обучения новичков. Для удаленного доступа и настройки оборудования использовались <strong>AnyDesk</strong> и <strong>Getscreen</strong>. Все баги фиксировались и отслеживались через трекер задач.</p>
+                </div>
+
+                <div class="tech-stack-title">Full Tech Stack</div>
+                <div class="tech-chips">
+                    <div class="tech-chip">AmoCRM (Настройка воронки)</div>
+                    <div class="tech-chip">Yandex Tracker</div>
+                    <div class="tech-chip">Omnideck</div>
+                    <div class="tech-chip">HelpDesk Systems</div>
+                    <div class="tech-chip">AnyDesk / Getscreen</div>
+                    <div class="tech-chip">Google Docs (Documentation)</div>
+                    <div class="tech-chip">Багрепортинг</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="extra-section container">
+            <h2 class="section-title">Прочее</h2>
+
+            <div class="accordion-item hover-target">
+                <button class="accordion-header">
+                    <span>Мой профессиональный опыт</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Апрель 2025 — Настоящее время</div>
+                            <div class="timeline-title">Специалист технической поддержки</div>
+                            <div class="timeline-company">NDA</div>
+                            <p>Ответы клиентам, помощь в решении технических проблем, настройка подключений. Написание багрепортов, ведение HelpDesk системы и блога компании.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Май 2024 — Июль 2025 (1 год 3 мес)</div>
+                            <div class="timeline-title">Руководитель поддержки бизнес-инфраструктуры</div>
+                            <div class="timeline-company">Онлайн-школа Тетрика</div>
+                            <p>Полная ответственность за работоспособность внутренних систем. Управление командой, организация поддержки CRM/ServiceDesk, анализ потребностей бизнеса, внедрение автоматизаций.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Ноябрь 2022 — Май 2024 (1 год 7 мес)</div>
+                            <div class="timeline-title">Менеджер поддержки проектов</div>
+                            <div class="timeline-company">Онлайн-школа Тетрика</div>
+                            <p>QA (написание багрепортов, тестирование релизов), поддержка сервиса, администрирование прав доступа, техническая помощь сотрудникам офиса.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Ноябрь 2020 — Ноябрь 2022 (2 года 1 мес)</div>
+                            <div class="timeline-title">Специалист технической поддержки</div>
+                            <div class="timeline-company">Онлайн-школа Тетрика</div>
+                            <p>Менторство и обучение новых специалистов. Настройка сетевого оборудования и удаленных рабочих столов (AnyDesk). Глубокая работа в CRM.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Февраль 2021 — Август 2021 (7 мес)</div>
+                            <div class="timeline-title">SMM-менеджер</div>
+                            <div class="timeline-company">Инжинириум МГТУ им. Баумана</div>
+                            <p>Создание контент-стратегии с нуля. Взаимодействие с государственными порталами. Написание пресс-релизов и статей.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Май 2018 — Май 2019 (1 год 1 мес)</div>
+                            <div class="timeline-title">SMM-менеджер</div>
+                            <div class="timeline-company">24ttl (проект Radrussia)</div>
+                            <p>Работа в агентстве. Создание вовлекающего контента, мониторинг эффективности кампаний, адаптация материалов под разные площадки.</p>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">2014 — 2018</div>
+                            <div class="timeline-title">Фриланс</div>
+                            <div class="timeline-company">Различные проекты</div>
+                            <p>Работа с блогерами, модерирование контента (группы ВКонтакте), ведение аккаунтов, прямая коммуникация с заказчиками.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Август 2016 — Май 2018 (1 год 10 мес)</div>
+                            <div class="timeline-title">SMM-менеджер</div>
+                            <div class="timeline-company">Эльфарма</div>
+                            <p>Ведение соцсетей фармацевтического бренда. Подготовка ежемесячной аналитической отчетности для руководства.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item hover-target">
+                <button class="accordion-header">
+                    <span>Мои навыки (Skills)</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <div class="tech-stack-title">IT & Technical Support</div>
+                        <div class="tech-chips">
+                            <div class="tech-chip">ServiceDesk</div>
+                            <div class="tech-chip">AmoCRM (Настройка)</div>
+                            <div class="tech-chip">Yandex Tracker</div>
+                            <div class="tech-chip">Omnideck</div>
+                            <div class="tech-chip">AnyDesk / Getscreen</div>
+                            <div class="tech-chip">Google Docs / Sheets</div>
+                            <div class="tech-chip">Багрепортинг</div>
+                            <div class="tech-chip">Администрирование доступов</div>
+                        </div>
+                        <br>
+                        <div class="tech-stack-title">Design & Media</div>
+                        <div class="tech-chips">
+                            <div class="tech-chip">Adobe Photoshop</div>
+                            <div class="tech-chip">Adobe Illustrator</div>
+                            <div class="tech-chip">Canva</div>
+                            <div class="tech-chip">Figma (База)</div>
+                            <div class="tech-chip">Профессиональная фотография</div>
+                            <div class="tech-chip">Копирайтинг</div>
+                        </div>
+                        <br>
+                        <div class="tech-stack-title">Management & Soft Skills</div>
+                        <div class="tech-chips">
+                            <div class="tech-chip">Управление командой</div>
+                            <div class="tech-chip">Обучение сотрудников</div>
+                            <div class="tech-chip">Многозадачность</div>
+                            <div class="tech-chip">Разрешение конфликтов</div>
+                            <div class="tech-chip">Коммуникабельность</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item hover-target">
+                <button class="accordion-header">
+                    <span>Мои увлечения и интересы</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-body">
+                        <p>
+                            Я активно участвую на <strong>учебном радио</strong>: веду эфиры, пишу сценарии и работаю с голосом. Это помогает развивать навыки публичных выступлений и быстрой реакции.
+                        </p>
+                        <p>
+                            Для души я занимаюсь <strong>театром</strong> — это отличная школа эмпатии. А когда нужно отдохнуть, я играю в <strong>компьютерные игры</strong> (например песочницы, где можно строить), это тренирует креативность.
+                        </p>
+                        <p>
+                            И, конечно, <strong>путешествия</strong>. Ничто так не расширяет кругозор, как новые города и природа.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-socials">
+            <a href="https://t.me/helgalost" class="footer-social-link hover-target" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://www.pinterest.com/helgalost/" class="footer-social-link hover-target" target="_blank" title="Pinterest"><i class="fab fa-pinterest"></i></a>
+            <a href="https://www.youtube.com/@losthelga" class="footer-social-link hover-target" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@helgalost" class="footer-social-link hover-target" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://helgalost.tumblr.com/" class="footer-social-link hover-target" target="_blank" title="Tumblr"><i class="fab fa-tumblr"></i></a>
+            <a href="https://instagram.com/helgalost/" class="footer-social-link hover-target" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.threads.com/@helgalost" class="footer-social-link hover-target" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
+        </div>
+        
+        <a href="mailto:olga.chumaneva@ya.ru" class="footer-email hover-target">olga.chumaneva@ya.ru</a>
+        
+        <div class="footer-links">
+            <span class="wip-link hover-target">Портфолио: Фотография</span>
+            <span class="wip-link hover-target">Портфолио: Технические кейсы</span>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. Быстрый курсор ---
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        function updateHoverTargets() {
+            const targets = document.querySelectorAll('.hover-target, a, button, .project-card, .tech-chip, .accordion-header, label, input, .wip-link, .footer-email, .footer-social-link');
+            targets.forEach(target => {
+                target.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+                target.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+            });
+        }
+        updateHoverTargets();
+
+        // --- 2. Переключение Темы (Тумблер) ---
+        const themeCheckbox = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Обновление иконок при переключении
+        function updateThemeIcons() {
+             const icons = document.querySelectorAll('.theme-icon');
+             if (themeCheckbox.checked) {
+                 icons[0].classList.remove('active'); // Sun
+                 icons[1].classList.add('active');    // Moon
+             } else {
+                 icons[0].classList.add('active');    // Sun
+                 icons[1].classList.remove('active'); // Moon
+             }
+        }
+
+        // Проверка при загрузке
+        if (themeCheckbox.checked) {
+            html.setAttribute('data-theme', 'light');
+        }
+        updateThemeIcons();
+
+        themeCheckbox.addEventListener('change', () => {
+            if (themeCheckbox.checked) {
+                html.setAttribute('data-theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+            }
+            updateThemeIcons();
+        });
+
+        // --- 3. Раскрытие "Подробнее" (Проекты) ---
+        const detailBtns = document.querySelectorAll('.details-btn');
+        detailBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const detailsBlock = btn.nextElementSibling;
+                const isOpen = detailsBlock.classList.contains('open');
+                if (isOpen) {
+                    detailsBlock.classList.remove('open');
+                    btn.textContent = btn.textContent.replace('Скрыть', 'Подробнее');
+                } else {
+                    detailsBlock.classList.add('open');
+                    const currentText = btn.textContent;
+                    if(currentText.includes('Подробнее')) {
+                         btn.textContent = currentText.replace('Подробнее', 'Скрыть');
+                    }
+                }
+            });
+        });
+
+        // --- 4. Аккордеон (Раздел "Прочее") ---
+        const accordions = document.querySelectorAll('.accordion-header');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', () => {
+                const item = acc.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
