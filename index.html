@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио Ольги Чуманевой</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #050505;
@@ -36,7 +40,8 @@
         }
         body {
             margin: 0; padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Golos Text', -apple-system, 'Segoe UI', sans-serif;
+            h1, h2, h3, .section-title, .project-title { font-family: 'Onest', 'Georgia', sans-serif; }
             background-color: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
@@ -59,20 +64,20 @@
         @keyframes move { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(50px, -50px) scale(1.1); } }
         @keyframes move-center { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-30%, -60%) rotate(120deg); } }
         .cursor {
-            width: 20px; height: 20px;
-            border: 2px solid var(--text-color);
-            border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s; 
-            mix-blend-mode: difference;
-        }
-        .cursor.hovered {
-            width: 60px; height: 60px;
-            background-color: rgba(128, 128, 128, 0.2);
-            backdrop-filter: blur(2px);
-            border-color: transparent;
-        }
+    width: 20px; height: 20px;
+    border: 2px solid var(--text-color);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    will-change: transform;
+}
+.cursor.hovered {
+    width: 60px; height: 60px;
+    background-color: rgba(128, 128, 128, 0.12);
+    border-color: rgba(128, 128, 128, 0.5);
+}
         header {
             position: fixed; top: 0; left: 0; width: 100%;
             height: 70px; padding: 0 40px;
@@ -81,6 +86,7 @@
             background: var(--header-bg); backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--card-border); box-sizing: border-box;
             transition: background 0.5s;
+            
         }
         .header-left { font-weight: 700; font-size: 1.2rem; letter-spacing: 1px; }
         .header-center { font-size: 1.1rem; font-weight: 500; position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap; }
@@ -106,7 +112,7 @@
             font-size: 0.95rem; transition: all 0.3s ease; cursor: none;
         }
         .social-link:hover { color: var(--text-color); transform: translateY(-2px); }
-        .container { max-width: 1000px; margin: 120px auto 50px; padding: 0 20px; position: relative; z-index: 1; flex: 1; }
+        .container { max-width: 1000px; margin: 90px auto 40px; padding: 0 20px; position: relative; z-index: 1; flex: 1; }
         .hero { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; margin-bottom: 70px; }
         .profile-img {
             width: 100%; aspect-ratio: 1/1.3; object-fit: cover;
@@ -127,11 +133,11 @@
             transition: background 0.3s;
         }
         .hobby-badge i { color: var(--accent-color); }
-        .section-title { font-size: 2rem; margin: 60px 0 30px; text-align: center; color: var(--text-color); }
+        .section-title { font-size: 1.75rem; margin: 40px 0 30px; text-align: center; color: var(--text-color); }
         .project-card {
             background: var(--card-bg); backdrop-filter: blur(20px);
             border: 1px solid var(--card-border); border-radius: 24px;
-            padding: 35px; margin-bottom: 30px;
+            padding: 30px; margin-bottom: 30px;
             transition: transform 0.4s; cursor: none; overflow: hidden;
         }
         .project-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.3); }
@@ -142,17 +148,15 @@
         .project-title { font-size: 1.5rem; color: var(--text-color); margin: 0; }
         .project-role { font-size: 0.9rem; color: var(--accent-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         .project-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .col h4 { color: var(--highlight-title); margin-bottom: 10px; font-size: 1.1rem; }
-        .col p, .col ul { color: var(--text-muted); line-height: 1.6; margin-bottom: 15px; }
+        .col h4 { color: var(--highlight-title); margin: 0 0 8px; font-size: 1.1rem; }
+        .col p, .col ul { color: var(--text-muted); line-height: 1.55; margin-bottom: 15px; }
         .col ul { padding-left: 20px; }
         .project-stats { margin-top: 15px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 15px; border: 1px solid var(--card-border); }
         [data-theme="light"] .project-stats { background: rgba(0,0,0,0.05); }
         .stat-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-muted); }
         .stat-val { font-weight: bold; color: var(--stat-color); }
-        /* ИСПРАВЛЕНО: Галерея теперь в столбик */
         .project-gallery { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
         .project-img-container { width: 100%; border-radius: 15px; overflow: hidden; margin-top: 20px; border: 1px solid var(--card-border); }
-        /* ИСПРАВЛЕНО: Картинки кликабельные */
         .project-img-container img, .project-gallery img { 
             width: 100%; height: auto; object-fit: cover; border-radius: 12px; 
             display: block; border: 1px solid var(--card-border);
@@ -162,7 +166,6 @@
             transform: scale(1.02); box-shadow: 0 8px 30px rgba(247, 37, 133, 0.3);
         }
         .image-hint { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 8px; opacity: 0.7; }
-        /* НОВОЕ: Модальное окно */
         .image-modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.95); z-index: 10000;
@@ -203,9 +206,10 @@
         }
         .tech-description { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
         .tech-description strong { color: var(--text-color); }
+        .tech-chips:last-child { margin-bottom: 0; }
         .tech-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
         .tech-chip { background: rgba(128,128,128,0.15); padding: 6px 14px; border-radius: 8px; font-size: 0.9rem; color: var(--text-color); border: 1px solid var(--card-border); }
-        .extra-section { margin-top: 80px; margin-bottom: 50px; }
+        .extra-section { margin-top: 30px; margin-bottom: 30px; }
         .accordion-item {
             border: 1px solid var(--card-border); border-radius: 15px; margin-bottom: 15px; overflow: hidden;
             background: var(--card-bg); backdrop-filter: blur(10px);
@@ -259,6 +263,16 @@
             .footer-links { flex-direction: column; gap: 15px; }
             .modal-close { top: 15px; right: 15px; font-size: 2rem; }
         }
+        .project-card { transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+        .project-card:hover { transform: translateY(-3px); border-color: rgba(247,37,133,0.4); box-shadow: 0 12px 40px rgba(247,37,133,0.15); }
+        .details-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(67,97,238,0.35); }
+        .details-btn:active { transform: translateY(0); }
+        .accordion-header:hover { background: rgba(255,255,255,0.06); }.
+        .hobby-badge:hover { border-color: rgba(247,37,133,0.5); background: rgba(247,37,133,0.12); }
+.project-card:hover { border-color: rgba(247,37,133,0.4); box-shadow: 0 12px 40px rgba(247,37,133,0.15); }
+.details-btn:hover { opacity: 1; box-shadow: 0 8px 24px rgba(67,97,238,0.35); }
+
+a:hover, button:hover { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -276,16 +290,16 @@
     </div>
     <header>
         <div class="header-left">helgalost</div>
-        <div class="header-center">Студентка | IT-специалист + Реклама</div>
+        <div class="header-center">Бренд-стратег</div>
         <div class="header-right">
             <div class="theme-switch-wrapper">
-                <i class="fas fa-sun theme-icon"></i>
-                <label class="theme-switch hover-target" title="Сменить тему">
-                    <input type="checkbox" id="theme-toggle">
-                    <span class="slider"></span>
-                </label>
-                <i class="fas fa-moon theme-icon"></i>
-            </div>
+         <i class="fas fa-moon theme-icon"></i>
+         <label class="theme-switch hover-target" title="Сменить тему">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider"></span>
+        </label>
+        <i class="fas fa-sun theme-icon"></i>
+       </div>
             <a href="https://t.me/helgalost" class="social-link hover-target" target="_blank">
                 <span>Личный TG</span> <i class="fab fa-telegram"></i>
             </a>
@@ -295,22 +309,38 @@
         <div class="hero">
             <img src="me.jpg" alt="Ольга Чуманева" class="profile-img hover-target">
             <div class="hero-text">
-                <h1>Привет, я Ольга!</h1>
+                <h1>Ольга Чуманева</h1>
                 <div class="tag-line">Аналитика + Креатив = Результат</div>
                 <div class="bio-block">
-                    <p><strong>Мой опыт работы 10+ лет.</strong> Родилась в «технической» семье, поэтому с детства на «ты» с компьютерами и сложными системами.</p>
-                    <p>Сейчас я объединяю этот технический бэкграунд с креативом в рекламе. Это дает мне огромное преимущество: я не просто "делаю красиво", я строю стратегии, основанные на данных, автоматизации и глубоком понимании продукта.</p>
-                    <p>В 2018 году прошла профессиональную квалификацию по фотографии 📸. Это позволяет мне самостоятельно создавать визуальный контент высокого уровня, не тратя время на поиск подрядчиков для базовых задач.</p>
-                </div>
-                <div class="hobbies">
-                    <span class="hobby-badge hover-target"><i class="fas fa-camera"></i> Фотография</span>
-                    <span class="hobby-badge hover-target"><i class="fas fa-microchip"></i> IT & Tech</span>
-                    <span class="hobby-badge hover-target"><i class="fas fa-microphone"></i> Радио</span>
-                    <span class="hobby-badge hover-target"><i class="fas fa-theater-masks"></i> Театр</span>
-                    <span class="hobby-badge hover-target"><i class="fas fa-gamepad"></i> Игры</span>
+                    <p>Стратег и аналитик с техническим бэкграундом.</p>
+                    <p>Соединяю компетенции: поддержку и оптимизацию инфраструктуры, управление командами и маркетинг. Работаю с процессами, автоматизацией и коммуникацией — от построения контент-стратегии до внедрения CRM, ServiceDesk и работу с клиентским сервисом.</p>
+<div class="hobbies" style="display: flex; flex-direction: column; gap: 22px; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--card-border);">
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); opacity: 0.7;">Профессионально</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(247,37,133,0.06); border-color: rgba(247,37,133,0.25);"><i class="fas fa-chart-line"></i> Управление процессами</span>
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(247,37,133,0.06); border-color: rgba(247,37,133,0.25);"><i class="fas fa-diagram-project"></i> Стратегия</span>
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(247,37,133,0.06); border-color: rgba(247,37,133,0.25);"><i class="fas fa-gears"></i> Автоматизации</span>
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(247,37,133,0.06); border-color: rgba(247,37,133,0.25);"><i class="fas fa-users-gear"></i> Работа с командой</span>
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(247,37,133,0.06); border-color: rgba(247,37,133,0.25);"><i class="fas fa-chart-pie"></i> Аналитика</span>
+<span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(247,37,133,0.06); border-color: rgba(247,37,133,0.25);"><i class="fas fa-database"></i> Настройка CRM и ServiceDesk</span>
+        </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); opacity: 0.7;">Вне работы</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(67,97,238,0.08); border-color: rgba(67,97,238,0.35);"><i class="fas fa-camera" style="color: var(--accent-secondary);"></i> Фотография</span>
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(67,97,238,0.08); border-color: rgba(67,97,238,0.35);"><i class="fas fa-microphone" style="color: var(--accent-secondary);"></i> Радио</span>
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(67,97,238,0.08); border-color: rgba(67,97,238,0.35);"><i class="fas fa-theater-masks" style="color: var(--accent-secondary);"></i> Театр</span>
+            <span class="hobby-badge hover-target" style="flex: 0 0 auto; background: rgba(67,97,238,0.08); border-color: rgba(67,97,238,0.35);"><i class="fas fa-gamepad" style="color: var(--accent-secondary);"></i> Игры</span>
+        </div>
+    </div>
                 </div>
             </div>
         </div>
+        </div> 
         <h2 class="section-title">Опыт и Кейсы</h2>
         
         <!-- Проект 1 -->
@@ -322,22 +352,21 @@
             <div class="project-preview">
                 <div class="col">
                     <h4>🎯 Задача</h4>
-                    <p>Необходимо было выстроить коммуникацию для сложного образовательного продукта при МГТУ им. Баумана. Аудитория — школьники и их родители, но контент должен был проходить строгую цензуру ректората.</p>
+                    <p>Необходимо выстроить коммуникацию для сложного образовательного продукта при МГТУ им. Баумана. Аудитория — школьники и их родители. Контент должен получить одобрение ректората.</p>
                     <h4>🛠 Что сделала</h4>
                     <ul>
-                         <li>Разработала стиль общения: академический, но современный.</li>
+                         <li>Разработала стиль общения: академический, современный, дружелюбный.</li>
                          <li>Выстроила отношения с редакциями СМИ.</li>
-                         <li>Создала медиаплан, который утвердили без правок.</li>
+                         <li>Реализовала медиаплан, который утвердили без правок.</li>
                     </ul>
                 </div>
                 <div class="col">
                     <h4>📊 Результаты</h4>
                      <div class="project-stats">
-                        <div class="stat-item"><span>Рост подписчиков:</span> <span class="stat-val">+20% (organic)</span></div>
+                        <div class="stat-item"><span>Рост подписчиков:</span> <span class="stat-val">+20%</span></div>
                         <div class="stat-item"><span>Охваты постов:</span> <span class="stat-val">+30%</span></div>
                         <div class="stat-item"><span>PR (СМИ):</span> <span class="stat-val">5+ статей (Mos.ru и др.)</span></div>
                     </div>
-                    <!-- ИСПРАВЛЕНО: картинки в столбик и кликабельные -->
                     <div class="project-gallery">
                         <img src="proj1_1.jpg" alt="Медиаплан" class="clickable-image hover-target">
                         <img src="proj1_2.jpg" alt="Пример публикации" class="clickable-image hover-target">
@@ -347,18 +376,19 @@
             </div>
             <button class="details-btn hover-target">Подробнее о реализации и инструментах</button>
             <div class="technical-details">
-                <div class="tech-stack-title">Глубокое погружение</div>
+                <div class="tech-stack-title">Работа с контентом</div>
                 <div class="tech-description">
-                    <p>Вся работа с контентом строилась на базе <strong>Google Workspace</strong>. Тексты согласовывались в Google Docs в режиме правок, медиапланы велись в Google Sheets, что ускорило процесс утверждения с 3 дней до 4 часов.</p>
-                    <p>Для создания визуала я использовала <strong>Adobe Photoshop</strong> (для сложной ретуши и коллажей) и <strong>Canva</strong> (для быстрой сборки шаблонов сторис). Взаимодействие со СМИ включало подготовку пресс-релизов в инфостиле.</p>
+                    <p>Работа с контентом строилась на основе фирменного стиля (визуал) и собранного TOV для общения с аудиторией.</p>
+                    <p>Для создания визуала я использовала <strong>Adobe Photoshop</strong> (для сложной ретуши и коллажей), <strong>Adobe Illustrator</strong> для работы с графикой, <strong>Canva</strong> (для быстрой сборки шаблонов сторис). Взаимодействие со СМИ включало подготовку пресс-релизов в инфостиле.</p>
                 </div>
                 <div class="tech-stack-title">Используемый стек</div>
                 <div class="tech-chips">
                     <div class="tech-chip">Google Docs / Sheets</div>
                     <div class="tech-chip">Adobe Photoshop</div>
+                    <div class="tech-chip">Adobe Illustrator</div>
                     <div class="tech-chip">Canva</div>
                     <div class="tech-chip">Копирайтинг (Инфостиль)</div>
-                    <div class="tech-chip">Media Relations</div>
+                    <div class="tech-chip">Медиа-коммуникации</div>
                 </div>
             </div>
         </div>
@@ -367,16 +397,17 @@
         <div class="project-card hover-target">
             <div class="project-header">
                 <h3 class="project-title">Тетрика: Контент-стратегия</h3>
-                <span class="project-role">SMM Audit & Strategy</span>
+                <span class="project-role">SMM Аудит и стратегия</span>
             </div>
             <div class="project-preview">
                 <div class="col">
                     <h4>🎯 Задача</h4>
-                    <p>Аккаунты школы велись несистемно, вовлеченность падала. Требовалось провести полный аудит, найти "точки роста" и предложить стратегию реанимации соцсетей.</p>
+                    <p>Аккаунты школы велись несистемно, вовлеченность падала. Требовалось провести полный аудит, найти "точки роста" и предложить стратегию развития соцсетей.</p>
                     <h4>🛠 Что сделала</h4>
                     <ul>
-                        <li>Глубокий аудит контента и выявление проблем.</li>
-                        <li>Внедрение новых форматов: Reels, Stories-сериалы.</li>
+                        <li>Аудит контента и выявление проблем.</li>
+                        <li>Анализ ЦА, рынка, конкурентов и выявление проблем.</li>
+                        <li>Внедрение новых форматов: Reels, Stories-сериалы, добавление мемов для родителей школьников.</li>
                         <li>Разработка стратегии, основанной на цифрах.</li>
                     </ul>
                 </div>
@@ -393,12 +424,12 @@
                     <div class="image-hint">👆 Нажмите на картинку, чтобы увеличить</div>
                 </div>
             </div>
-            <button class="details-btn hover-target">Подробнее о методологии</button>
+            <button class="details-btn hover-target">Подробнее о реализации и инструментах</button>
             <div class="technical-details">
                 <div class="tech-stack-title">Стратегический подход</div>
                 <div class="tech-description">
                     <p>Я провела анализ конкурентов (топ-5 игроков EdTech) и составила матрицу контента.</p>
-                    <p>Был сделан упор на видео-контент (Reels) и интерактивные механики в Telegram. Вся отчетность и планирование велись в сводных таблицах Excel/Google Sheets для прозрачности KPI.</p>
+                    <p>Сделан упор на видео-контент (Reels) и интерактивные механики в Telegram и VK. Вся отчетность и планирование велись в сводных таблицах Excel/Google Sheets для прозрачности KPI.</p>
                 </div>
                 <div class="tech-stack-title">Ключевые компетенции</div>
                 <div class="tech-chips">
@@ -414,7 +445,7 @@
         <div class="project-card hover-target">
             <div class="project-header">
                 <h3 class="project-title">Руководство IT-инфраструктурой</h3>
-                <span class="project-role">Head of Business Support</span>
+                <span class="project-role">Оптимиация работы с обращениями</span>
             </div>
             <div class="project-preview">
                 <div class="col">
@@ -423,8 +454,9 @@
                     <h4>🛠 Что сделала</h4>
                     <ul>
                         <li>Проанализировала путь заявки и нашла "узкие места".</li>
+                        <li>Составила CJM для понимания действий и ошибок клиентов.</li>
                         <li>Автоматизировала рутинные действия в CRM.</li>
-                        <li>Вдрила шаблоны ответов и регламенты работы.</li>
+                        <li>Вдрила шаблоны ответов и регламенты работы для различных отделов.</li>
                     </ul>
                 </div>
                 <div class="col">
@@ -432,7 +464,7 @@
                     <div class="project-stats">
                         <div class="stat-item"><span>Скорость ответа:</span> <span class="stat-val">Улучшена на 70%</span></div>
                         <div class="stat-item"><span>Активные тикеты:</span> <span class="stat-val">Снижение на 58%</span></div>
-                        <div class="stat-item"><span>Удовл. клиентов:</span> <span class="stat-val">Рост +30%</span></div>
+                        <div class="stat-item"><span>Удовлетворенность клиентов:</span> <span class="stat-val">Рост +30%</span></div>
                     </div>
                     <div class="project-img-container">
                         <img src="proj3.jpg" alt="Оптимизация" class="clickable-image hover-target">
@@ -440,12 +472,12 @@
                     <div class="image-hint">👆 Нажмите на картинку, чтобы увеличить</div>
                 </div>
             </div>
-            <button class="details-btn hover-target">Подробнее о Tech Stack & Automation</button>
+            <button class="details-btn hover-target">Подробнее о реализации и инструментах</button>
             <div class="technical-details">
                 <div class="tech-stack-title">Технические детали реализации</div>
                 <div class="tech-description">
                     <p>В качестве основы использовалась связка <strong>AmoCRM + Yandex Tracker + Omnideck</strong>. Я настроила триггеры и автоматические действия (смена этапов воронки, авто-ответы), чтобы заявки распределялись без участия человека.</p>
-                    <p>Для команды была создана База Знаний (регламенты в Google Docs), что сократило время обучения новичков. Для удаленного доступа и настройки оборудования использовались <strong>AnyDesk</strong> и <strong>Getscreen</strong>. Все баги фиксировались и отслеживались через трекер задач.</p>
+                    <p>Создана База Знаний (Notion, Teamly), что сократило время обучения новичков. Для удаленного доступа и настройки оборудования использовались <strong>AnyDesk</strong> и <strong>Getscreen</strong>. Все баги фиксировались и отслеживались через трекер задач.</p>
                 </div>
                 <div class="tech-stack-title">Full Tech Stack</div>
                 <div class="tech-chips">
@@ -529,9 +561,9 @@
                 </button>
                 <div class="accordion-content">
                     <div class="accordion-body">
-                        <div class="tech-stack-title">IT & Technical Support</div>
+                        <div class="tech-stack-title">Технический стек</div>
                         <div class="tech-chips">
-                            <div class="tech-chip">ServiceDesk</div>
+                            <div class="tech-chip">ServiceDesk/helpdesk</div>
                             <div class="tech-chip">AmoCRM (Настройка)</div>
                             <div class="tech-chip">Yandex Tracker</div>
                             <div class="tech-chip">Omnideck</div>
@@ -541,7 +573,7 @@
                             <div class="tech-chip">Администрирование доступов</div>
                         </div>
                         <br>
-                        <div class="tech-stack-title">Design & Media</div>
+                        <div class="tech-stack-title">Дизайн и работа с медиа</div>
                         <div class="tech-chips">
                             <div class="tech-chip">Adobe Photoshop</div>
                             <div class="tech-chip">Adobe Illustrator</div>
@@ -551,7 +583,7 @@
                             <div class="tech-chip">Копирайтинг</div>
                         </div>
                         <br>
-                        <div class="tech-stack-title">Management & Soft Skills</div>
+                        <div class="tech-stack-title">Менеджмент и софт-скилы</div>
                         <div class="tech-chips">
                             <div class="tech-chip">Управление командой</div>
                             <div class="tech-chip">Обучение сотрудников</div>
@@ -572,7 +604,7 @@
                     <div class="accordion-body">
                         <p>Я активно участвую на <strong>учебном радио</strong>: веду эфиры, пишу сценарии и работаю с голосом. Это помогает развивать навыки публичных выступлений и быстрой реакции.</p>
                         <p>Для души я занимаюсь <strong>театром</strong> — это отличная школа эмпатии. А когда нужно отдохнуть, я играю в <strong>компьютерные игры</strong> (например песочницы, где можно строить), это тренирует креативность.</p>
-                        <p>И, конечно, <strong>путешествия</strong>. Ничто так не расширяет кругозор, как новые города и природа.</p>
+                        <p>И, конечно, <strong>путешествия</strong>. Ничто так не расширяет кругозор, как новые города и природа!</p>
                     </div>
                 </div>
             </div>
@@ -581,37 +613,52 @@
 
     <footer class="main-footer">
         <div class="footer-socials">
-            <a href="https://t.me/helgalost" class="footer-social-link hover-target" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.pinterest.com/helgalost/" class="footer-social-link hover-target" target="_blank" title="Pinterest"><i class="fab fa-pinterest"></i></a>
-            <a href="https://www.youtube.com/@losthelga" class="footer-social-link hover-target" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@helgalost" class="footer-social-link hover-target" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://helgalost.tumblr.com/" class="footer-social-link hover-target" target="_blank" title="Tumblr"><i class="fab fa-tumblr"></i></a>
-            <a href="https://instagram.com/helgalost/" class="footer-social-link hover-target" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.threads.com/@helgalost" class="footer-social-link hover-target" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
+            <a href="https://t.me/helgalost" class="footer-social-link hover-target" target="_blank" title="Telegram">
+                <i class="fab fa-telegram"></i></a>
+           <a href="https://vk.ru/helgalost" class="footer-social-link hover-target" target="_blank" rel="noopener" title="VK">
+               <i class="fab fa-vk"></i></a>
+            <a href="https://www.pinterest.com/helgalost/" class="footer-social-link hover-target" target="_blank" title="Pinterest">
+                <i class="fab fa-pinterest"></i></a>
+            <a href="https://www.youtube.com/@losthelga" class="footer-social-link hover-target" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@helgalost" class="footer-social-link hover-target" target="_blank" title="TikTok">
+                <i class="fab fa-tiktok"></i></a>
+            <a href="https://helgalost.tumblr.com/" class="footer-social-link hover-target" target="_blank" title="Tumblr">
+                <i class="fab fa-tumblr"></i></a>
+            <a href="https://instagram.com/helgalost/" class="footer-social-link hover-target" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i></a>
+            <a href="https://www.threads.com/@helgalost" class="footer-social-link hover-target" target="_blank" title="Threads">
+                <i class="fa-brands fa-threads"></i></a>
+
         </div>
+        
         <a href="mailto:olga.chumaneva@ya.ru" class="footer-email hover-target">olga.chumaneva@ya.ru</a>
-        <div class="footer-links">
-            <span class="wip-link hover-target">Портфолио: Фотография</span>
-            <span class="wip-link hover-target">Портфолио: Технические кейсы</span>
-        </div>
     </footer>
 
     <script>
         // Курсор
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+const cursor = document.getElementById('cursor');
+const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
-        function updateHoverTargets() {
-            const targets = document.querySelectorAll('.hover-target, a, button, .project-card, .tech-chip, .accordion-header, label, input, .wip-link, .footer-email, .footer-social-link, .clickable-image');
-            targets.forEach(target => {
-                target.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-                target.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-            });
-        }
-        updateHoverTargets();
+if (!isTouchDevice && cursor) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    }, { passive: true });
+
+    const hoverSelector = 'a, button, label, input, .hover-target, .tech-chip, .clickable-image';
+
+    document.addEventListener('mouseover', (e) => {
+        const target = e.target.closest(hoverSelector);
+        const related = e.relatedTarget ? e.relatedTarget.closest(hoverSelector) : null;
+        if (target && target !== related) cursor.classList.add('hovered');
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const target = e.target.closest(hoverSelector);
+        const related = e.relatedTarget ? e.relatedTarget.closest(hoverSelector) : null;
+        if (target && target !== related) cursor.classList.remove('hovered');
+    });
+}
 
         // Переключение темы
         const themeCheckbox = document.getElementById('theme-toggle');
