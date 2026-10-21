@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Ольга Чуманева — реклама, стратегия, визуал</title>
+  <title>Ольга Чуманева — Бренд-стратег</title>
   <meta name="description" content="Портфолио Ольги Чуманевой: рекламная стратегия, аналитика, фотография, предметная съёмка, графический и веб-дизайн.">
-  <meta name="theme-color" content="#F4F5F7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#17142A" media="(prefers-color-scheme: dark)">
-  <meta property="og:title" content="Ольга Чуманева — реклама, стратегия, визуал">
-  <meta property="og:description" content="Аналитика + креатив = результат. Кейсы, фото, реклама и веб-дизайн.">
+  <meta name="theme-color" content="#0d0808">
+  <meta property="og:title" content="Ольга Чуманева — Бренд-стратег">
+  <meta property="og:description" content="Аналитика + Креатив = Результат. Кейсы, фото, реклама и веб-дизайн.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="img/works/work-25.jpg">
   <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="preload" href="assets/fonts/dela-gothic-one-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/golos-text-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <script>
-    /* Тема до отрисовки — без «мигания» */
     (function () {
       var t = null;
       try { t = localStorage.getItem('theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (t !== 'light' && t !== 'dark') t = 'dark';
       document.documentElement.dataset.theme = t;
     })();
   </script>
@@ -30,11 +27,13 @@
 <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></symbol>
 <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></symbol>
 <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /></symbol>
+<symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /> <path d="M14 2v5a1 1 0 0 0 1 1h5" /> <path d="M12 18v-6" /> <path d="m9 15 3 3 3-3" /></symbol>
 <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /> <path d="M7 17 17 7" /></symbol>
 <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" /></symbol>
 <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol>
 <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /></symbol>
 <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol>
+<symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7" /> <path d="M12 19V5" /></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /></symbol>
 <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.997 4a2 2 0 0 1 1.76 1.05l.486.9A2 2 0 0 0 18.003 7H20a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1.997a2 2 0 0 0 1.759-1.048l.489-.904A2 2 0 0 1 10.004 4z" /> <circle cx="12" cy="13" r="3" /></symbol>
 <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19v3" /> <path d="M19 10v2a7 7 0 0 1-14 0v-2" /> <rect x="9" y="2" width="6" height="13" rx="3" /></symbol>
@@ -43,6 +42,19 @@
 <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /> <path d="M12 18h.01" /></symbol>
 <symbol id="i-vr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="15" r="4" /> <circle cx="18" cy="15" r="4" /> <path d="M14 15a2 2 0 0 0-2-2 2 2 0 0 0-2 2" /> <path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2" /> <path d="M21.5 13 19 7c-.7-1.3-1.5-2-3-2" /></symbol>
 <symbol id="i-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" /></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" /> <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /> <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /> <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /> <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /></symbol>
+<symbol id="i-film" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.296 3.464 3.02 3.956" /> <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z" /> <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /> <path d="m6.18 5.276 3.1 3.899" /></symbol>
+<symbol id="i-sheet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /> <line x1="3" x2="21" y1="9" y2="9" /> <line x1="3" x2="21" y1="15" y2="15" /> <line x1="9" x2="9" y1="9" y2="21" /> <line x1="15" x2="15" y1="9" y2="21" /></symbol>
+<symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z" /> <path d="M20.054 15.987H3.946" /></symbol>
+<symbol id="i-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" /> <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14" /> <path d="M8 6v8" /></symbol>
+<symbol id="i-tasks" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h8" /> <path d="M13 12h8" /> <path d="M13 19h8" /> <path d="m3 17 2 2 4-4" /> <path d="m3 7 2 2 4-4" /></symbol>
+<symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h6v6" /> <path d="m22 7-8.5 8.5-5-5L2 17" /></symbol>
+<symbol id="i-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1" /> <rect x="2" y="16" width="6" height="6" rx="1" /> <rect x="9" y="2" width="6" height="6" rx="1" /> <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /> <path d="M12 12V8" /></symbol>
+<symbol id="i-gears" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /> <circle cx="12" cy="12" r="3" /></symbol>
+<symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /> <path d="M16 3.128a4 4 0 0 1 0 7.744" /> <path d="M22 21v-2a4 4 0 0 0-3-3.87" /> <circle cx="9" cy="7" r="4" /></symbol>
+<symbol id="i-pie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" /> <path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></symbol>
+<symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1" /> <rect width="7" height="7" x="14" y="3" rx="1" /> <rect width="7" height="7" x="14" y="14" rx="1" /> <rect width="7" height="7" x="3" y="14" rx="1" /></symbol>
 <symbol id="i-telegram" viewBox="0 0 24 24"><path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
 <symbol id="i-vk" viewBox="0 0 24 24"><path fill="currentColor" d="m9.489.004.729-.003h3.564l.73.003.914.01.433.007.418.011.403.014.388.016.374.021.36.025.345.03.333.033c1.74.196 2.933.616 3.833 1.516.9.9 1.32 2.092 1.516 3.833l.034.333.029.346.025.36.02.373.025.588.012.41.013.644.009.915.004.98-.001 3.313-.003.73-.01.914-.007.433-.011.418-.014.403-.016.388-.021.374-.025.36-.03.345-.033.333c-.196 1.74-.616 2.933-1.516 3.833-.9.9-2.092 1.32-3.833 1.516l-.333.034-.346.029-.36.025-.373.02-.588.025-.41.012-.644.013-.915.009-.98.004-3.313-.001-.73-.003-.914-.01-.433-.007-.418-.011-.403-.014-.388-.016-.374-.021-.36-.025-.345-.03-.333-.033c-1.74-.196-2.933-.616-3.833-1.516-.9-.9-1.32-2.092-1.516-3.833l-.034-.333-.029-.346-.025-.36-.02-.373-.025-.588-.012-.41-.013-.644-.009-.915-.004-.98.001-3.313.003-.73.01-.914.007-.433.011-.418.014-.403.016-.388.021-.374.025-.36.03-.345.033-.333c.196-1.74.616-2.933 1.516-3.833.9-.9 2.092-1.32 3.833-1.516l.333-.034.346-.029.36-.025.373-.02.588-.025.41-.012.644-.013.915-.009ZM6.79 7.3H4.05c.13 6.24 3.25 9.99 8.72 9.99h.31v-3.57c2.01.2 3.53 1.67 4.14 3.57h2.84c-.78-2.84-2.83-4.41-4.11-5.01 1.28-.74 3.08-2.54 3.51-4.98h-2.58c-.56 1.98-2.22 3.78-3.8 3.95V7.3H10.5v6.92c-1.6-.4-3.62-2.34-3.71-6.92Z"/></symbol>
 <symbol id="i-pinterest" viewBox="0 0 24 24"><path fill="currentColor" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></symbol>
@@ -50,10 +62,17 @@
 <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
 <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
 </svg>
+<div class="bg-layer" aria-hidden="true"></div>
+<canvas id="paint" aria-hidden="true"></canvas>
+<div class="noise" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="tooltip" id="tooltip" role="tooltip"></div>
 
 <header class="site-header" id="top">
   <div class="wrap header-row">
-    <a class="logo" href="#top" aria-label="helgalost — наверх"><span class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></span>helgalost</a>
+    <a class="logo" href="#top">helgalost</a>
     <nav class="nav" aria-label="Разделы">
       <a href="#works">Работы</a>
       <a href="#cases">Кейсы</a>
@@ -62,355 +81,359 @@
       <a href="#contact">Контакты</a>
     </nav>
     <div class="header-actions">
-      <button class="icon-btn theme-btn" type="button" id="themeBtn" aria-label="Переключить тему">
-        <svg class="icon i-sun"><use href="#i-sun"/></svg>
-        <svg class="icon i-moon"><use href="#i-moon"/></svg>
-      </button>
-      <a class="icon-btn" href="https://t.me/helgalost" target="_blank" rel="noopener" aria-label="Написать в Telegram">
-        <svg class="icon"><use href="#i-telegram"/></svg>
-      </a>
+      <label class="theme-switch" title="Светлая / тёмная тема">
+        <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <input type="checkbox" id="themeToggle" role="switch" aria-label="Светлая тема">
+        <span class="track" aria-hidden="true"></span>
+        <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </label>
+      <a class="icon-btn glass magnetic" href="https://t.me/helgalost" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg class="icon"><use href="#i-telegram"/></svg></a>
     </div>
   </div>
 </header>
 
 <main>
   <!-- ПЕРВЫЙ ЭКРАН -->
-  <section class="hero wrap" aria-labelledby="name">
-    <div class="hero-grid">
-      <figure class="hero-media">
-        <div class="hero-frame print">
-          <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/me-poster.jpg" width="640" height="800" aria-label="Ольга Чуманева">
-            <source src="img/me.webm" type="video/webm">
-            <source src="img/me.mp4" type="video/mp4">
-          </video>
+  <section class="wrap hero" aria-labelledby="name">
+    <div class="hero-text">
+      <h1 class="hero-name" id="name"><span class="word"><span>Ольга</span></span><span class="word"><span>Чуманева</span></span></h1>
+      <p class="tag-line grad-text fade">Аналитика + Креатив = Результат</p>
+      <div class="bio fade">
+        <p>Специалист по рекламе и стратег в маркетинге с техническим бэкграундом. Соединяю креатив, аналитику и автоматизацию: от разработки контент-стратегии до запуска Яндекс Директа и работы с Метрикой.</p>
+        <p>Работаю с процессами, инструментами и коммуникацией — от проектирования рекламных кампаний до внедрения CRM, ServiceDesk и работы с клиентским сервисом.</p>
+      </div>
+      <div class="btn-row fade">
+        <a class="btn btn-primary glass magnetic" href="cv.pdf" download="Ольга_Чуманева_CV.pdf"><svg class="icon"><use href="#i-file"/></svg>Скачать CV</a>
+        <a class="btn glass magnetic" href="resume.pdf" download><svg class="icon"><use href="#i-download"/></svg>Резюме PDF</a>
+        <a class="btn glass magnetic" href="resume.txt" download><svg class="icon"><use href="#i-download"/></svg>Резюме TXT</a>
+      </div>
+      <div class="tags fade">
+        <div>
+          <p class="tags-title">Профессионально</p>
+          <div class="badges">
+            <button type="button" class="badge glass" data-tip="Adobe Photoshop: сложная ретушь, коллажи, цветокоррекция, подготовка макетов для веба и полиграфии. Adobe Illustrator: векторная графика, иконки, логотипы. Adobe InDesign: многостраничные макеты, буклеты, журналы. Supa: онлайн-графический редактор для быстрых макетов."><svg class="icon"><use href="#i-palette"/></svg>Графический дизайн</button>
+            <button type="button" class="badge glass" data-tip="Adobe Premiere Pro: монтаж видео, цветокоррекция, звук, экспорт под разные платформы (Reels, Shorts, YouTube)."><svg class="icon"><use href="#i-film"/></svg>Видеомонтаж</button>
+            <button type="button" class="badge glass" data-tip="Microsoft Office (Word, Excel, PowerPoint) и Google Workspace (Docs, Sheets, Slides) на продвинутом уровне: сводные таблицы, формулы, макросы, совместное редактирование, дашборды, корпоративные презентации и отчёты."><svg class="icon"><use href="#i-sheet"/></svg>Офисные пакеты</button>
+            <button type="button" class="badge glass" data-tip="Figma: прототипы и макеты сайтов. Tilda: сборка лендингов и многостраничных сайтов без кода. HTML/CSS/JS: базовая вёрстка и кастомизация. Canva: быстрая сборка шаблонов для соцсетей."><svg class="icon"><use href="#i-laptop"/></svg>Веб и лендинги</button>
+            <button type="button" class="badge glass" data-tip="Яндекс Директ: настройка и ведение контекстных кампаний, работа со ставками, аудиториями, ретаргетингом. Яндекс Метрика: счётчики, цели, аналитика воронок, тепловые карты и отчёты для клиентов."><svg class="icon"><use href="#i-megaphone"/></svg>Реклама и аналитика</button>
+            <button type="button" class="badge glass" data-tip="Планирование задач в канбан-системах: Kaiten, Битрикс24, Яндекс Трекер. Распределение задач, спринты, контроль сроков."><svg class="icon"><use href="#i-tasks"/></svg>Таск-менеджмент</button>
+            <button type="button" class="badge glass" data-tip="Руководила бизнес-проектами с настройкой стратегических систем сервисов — CRM, телефония. Выстраивала CJM, оптимизировала воронки, снижала нагрузку на поддержку на 58%."><svg class="icon"><use href="#i-trend"/></svg>Управление процессами</button>
+            <button type="button" class="badge glass" data-tip="Разработка контент-стратегий, позиционирования и медиапланов. Анализ конкурентов и ЦА, определение KPI и точек роста для брендов — от EdTech до госсектора."><svg class="icon"><use href="#i-network"/></svg>Стратегия</button>
+            <button type="button" class="badge glass" data-tip="Настройка триггеров, автоответов и сценариев в CRM. Интеграция сервисов (AmoCRM + Трекер + Omnidesk) для минимизации ручного труда и ускорения ответов клиентам."><svg class="icon"><use href="#i-gears"/></svg>Автоматизации</button>
+            <button type="button" class="badge glass" data-tip="Онбординг, менторство, распределение задач в HelpDesk. Обучение стандартам работы и написание регламентов для поддержки. Управление распределённой командой."><svg class="icon"><use href="#i-users"/></svg>Работа с командой</button>
+            <button type="button" class="badge glass" data-tip="Сбор и визуализация данных в Google Sheets и Excel. Подготовка отчётов для руководства, расчёт ROI и анализ эффективности контентных кампаний."><svg class="icon"><use href="#i-pie"/></svg>Аналитика</button>
+            <button type="button" class="badge glass" data-tip="AmoCRM: создание воронок, настройка прав доступа, кастомных полей, автоматизация сделок и интеграция с телефонией и HelpDesk."><svg class="icon"><use href="#i-db"/></svg>Настройка CRM</button>
+          </div>
         </div>
-        <figcaption class="hero-caption">Открыта к работе и интересным проектам</figcaption>
-      </figure>
-
-      <div class="hero-text">
-        <h1 class="hero-name" id="name"><span>Ольга</span><span>Чуманева</span></h1>
-        <p class="formula" aria-label="Аналитика плюс креатив равно результат">
-          <span class="plate plate-c">Аналитика</span>
-          <span class="formula-op" aria-hidden="true">+</span>
-          <span class="plate plate-m">Креатив</span>
-          <span class="formula-op" aria-hidden="true">=</span>
-          <span class="plate plate-y">Результат</span>
-        </p>
-        <div class="hero-bio">
-          <p>Специалист по рекламе и стратег в маркетинге с техническим бэкграундом. Соединяю креатив, аналитику и автоматизацию: от контент-стратегии до запуска Яндекс Директа и работы с Метрикой.</p>
-          <p>Работаю с процессами, инструментами и коммуникацией — от проектирования рекламных кампаний до внедрения CRM, ServiceDesk и клиентского сервиса.</p>
-        </div>
-        <div class="btn-row">
-          <a class="btn btn-solid" href="resume.pdf" download><svg class="icon"><use href="#i-download"/></svg>Резюме, PDF</a>
-          <a class="btn btn-ghost" href="resume.txt" download><svg class="icon"><use href="#i-download"/></svg>Резюме, TXT</a>
+        <div>
+          <p class="tags-title">Увлечения</p>
+          <div class="badges hobbies">
+            <button type="button" class="badge glass" data-tip="Профессиональные портреты, предметная съёмка. Работа со светом, композицией и цветом. Ретушь и подготовка к печати и вебу."><svg class="icon"><use href="#i-camera"/></svg>Фотография</button>
+            <button type="button" class="badge glass" data-tip="Ведущая эфиров на учебном радио. Написание сценариев, работа с голосом, импровизация и умение удерживать внимание аудитории."><svg class="icon"><use href="#i-mic"/></svg>Радио</button>
+            <button type="button" class="badge glass" data-tip="Сценическая речь, актёрское мастерство, эмпатия. Умение перевоплощаться и работать в команде, быстро реагировать на изменения."><svg class="icon"><use href="#i-drama"/></svg>Театр</button>
+            <button type="button" class="badge glass" data-tip="Песочницы и стратегии для прокачки креатива и планирования: The Sims, Cities: Skylines, Minecraft, Stardew Valley, Genshin Impact, It Takes Two."><svg class="icon"><use href="#i-game"/></svg>Игры</button>
+            <button type="button" class="badge glass" data-tip="Слежу за новинками техники: смартфоны, процессоры, гаджеты и устройства. Люблю разбираться в характеристиках и тестировать новинки — от флагманских телефонов до необычных девайсов."><svg class="icon"><use href="#i-phone"/></svg>Техника и гаджеты</button>
+            <button type="button" class="badge glass" data-tip="Консоль и VR-гарнитура. Обожаю Beat Saber — ритм и движение в VR заряжают как тренировка. Также играю в другие VR-проекты и консольные эксклюзивы."><svg class="icon"><use href="#i-vr"/></svg>Консоль и VR</button>
+          </div>
         </div>
       </div>
     </div>
+    <div class="hero-media">
+      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="img/me-poster.jpg" width="640" height="800" aria-label="Ольга Чуманева">
+        <source src="img/me.webm" type="video/webm">
+        <source src="img/me.mp4" type="video/mp4">
+      </video>
+    </div>
   </section>
 
-  <!-- РАБОТЫ -->
-  <section class="section wrap" id="works" aria-labelledby="works-title">
-    <div class="section-head">
-      <h2 class="section-title" id="works-title">Работы</h2>
-      <p class="section-note">Фотография, предметная съёмка, реклама и веб-дизайн. Нажмите на работу, чтобы открыть её с описанием.</p>
+  <!-- БЕГУЩАЯ СТРОКА (на телефонах скрыта) -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker">
+      <span class="filled">Стратегия</span><span>·</span><span>Аналитика</span><span>·</span><span class="filled">Креатив</span><span>·</span><span>Автоматизация</span><span>·</span><span class="filled">Коммуникация</span><span>·</span><span>Фотография</span><span>·</span>
+      <span class="filled">Стратегия</span><span>·</span><span>Аналитика</span><span>·</span><span class="filled">Креатив</span><span>·</span><span>Автоматизация</span><span>·</span><span class="filled">Коммуникация</span><span>·</span><span>Фотография</span><span>·</span>
     </div>
-    <div class="featured" id="featured"></div>
-    <div class="more-bar">
-      <button class="btn btn-ghost more-btn" type="button" id="moreBtn" aria-expanded="false" aria-controls="more">
-        <span id="moreLabel">Показать все работы</span><svg class="icon"><use href="#i-chev"/></svg>
+  </div>
+
+  <div class="wrap sections">
+
+    <!-- РАБОТЫ -->
+    <section class="acc" id="works">
+      <button class="acc-head reveal" type="button" aria-expanded="true" aria-controls="works-body">
+        <h2>Работы<span class="count" id="worksCount"></span></h2><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span>
       </button>
-    </div>
-    <div class="more" id="more">
-      <div class="filters" id="filters" role="group" aria-label="Фильтр работ"></div>
-      <div class="masonry" id="masonry"></div>
-    </div>
-  </section>
-
-  <!-- КЕЙСЫ -->
-  <section class="section wrap" id="cases" aria-labelledby="cases-title">
-    <div class="section-head">
-      <h2 class="section-title" id="cases-title">Кейсы</h2>
-      <p class="section-note">Задачи с измеримым результатом — от авторского курса до миграции IT-инфраструктуры.</p>
-    </div>
-
-    <div class="cases">
-      <article class="case">
-        <div class="case-media">
-          <div class="print"><button type="button" class="js-zoom" data-group="case1" data-title="Авторский курс по рекламе"><img src="img/cases/proj5.jpg" alt="Сайт авторского курса по рекламе" width="1280" height="682" loading="lazy"></button></div>
+      <div class="collapse is-open" id="works-body"><div class="collapse-in"><div class="acc-body">
+        <p class="acc-note">Лучшие работы — фотография, предметная съёмка, реклама и веб-дизайн. Нажмите на работу, чтобы открыть её с описанием.</p>
+        <div class="justified" id="featured"></div>
+        <div class="more-bar" id="moreBar">
+          <button class="btn glass magnetic more-btn" type="button" id="moreBtn" aria-expanded="false" aria-controls="more"><span id="moreLabel">Показать ещё</span><svg class="icon"><use href="#i-chev"/></svg></button>
         </div>
-        <div class="case-body">
-          <p class="case-role">Преподавание и методика</p>
-          <h3 class="case-title">Авторский курс по рекламе</h3>
-          <div class="stats">
-            <div class="stat"><span class="stat-val is-text">Курс с нуля</span><span class="stat-label">полная методическая программа</span></div>
-            <div class="stat"><span class="stat-val is-text">Сайт курса</span><span class="stat-label">интерактивный, для учеников начальных классов</span></div>
+        <div class="more" id="more">
+          <div id="rails"></div>
+          <div class="more-bar">
+            <button class="btn glass magnetic grid-btn" type="button" id="gridBtn" aria-expanded="false" aria-controls="gridAll"><svg class="icon"><use href="#i-grid"/></svg><span id="gridLabel">Открыть все сеткой</span></button>
           </div>
-          <p class="case-lead">Для детей начальных классов не было базы, по которой можно учить основам рекламы. Нужно было создать программу с нуля и подготовить учеников к соревнованиям.</p>
-          <div class="case-actions">
-            <button class="btn btn-ghost case-toggle" type="button" aria-expanded="false" aria-controls="case1">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
-            <a class="btn btn-ghost" href="https://helgalost.github.io/study/" target="_blank" rel="noopener">Сайт курса<svg class="icon"><use href="#i-ext"/></svg></a>
-          </div>
-          <div class="collapse" id="case1"><div><div class="case-more">
-            <div><h4>Что сделала</h4><ul class="dash-list">
-              <li>Разработала структуру курса и методические материалы.</li>
-              <li>Провела цикл занятий: теория и практика.</li>
-              <li>Подготовила учеников к защите проектов на чемпионате.</li>
-            </ul></div>
-            <div><h4>Методология</h4>
-              <p>Курс построен на игровых механиках и реальных кейсах из мира рекламы. Дети изучают, что такое бренд, как придумывать слоганы, кто такая целевая аудитория и как защищать свои идеи.</p>
-              <p>Для наглядности сделан интерактивный сайт курса, где собраны все материалы и задания.</p></div>
-            <div><h4>Инструменты</h4><div class="tools"><span class="tool">Методика</span><span class="tool">Преподавание</span><span class="tool">HTML / CSS / JS</span><span class="tool">Наставничество</span></div></div>
+          <div class="grid-all" id="gridAll"><div class="masonry" id="masonry"></div></div>
+        </div>
+      </div></div></div>
+    </section>
+
+    <!-- КЕЙСЫ -->
+    <section class="acc" id="cases">
+      <button class="acc-head reveal" type="button" aria-expanded="true" aria-controls="cases-body">
+        <h2>Кейсы</h2><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span>
+      </button>
+      <div class="collapse is-open" id="cases-body"><div class="collapse-in"><div class="acc-body" style="padding-top:8px">
+
+        <article class="case reveal">
+          <button class="case-head" type="button" aria-expanded="true" aria-controls="c1"><span><h3>Авторский курс по рекламе</h3><span class="role">Преподавание / методист</span></span><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse is-open" id="c1"><div class="collapse-in"><div class="case-body">
+            <div class="case-media">
+              <button type="button" class="js-zoom" data-group="c1" data-title="Сайт курса по рекламе"><img src="img/cases/proj5.jpg" alt="Сайт курса по рекламе" width="1280" height="682" loading="lazy"></button>
+              <a class="btn glass magnetic case-link" href="https://helgalost.github.io/study/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-ext"/></svg>Посмотреть сайт курса</a>
+            </div>
+            <div>
+              <div class="result glass"><span class="result-label"><svg class="icon"><use href="#i-trend"/></svg>Результат</span>
+                <div class="stats"><div><span class="stat-val is-text">Курс с нуля</span><span class="stat-label">полная методическая программа</span></div><div><span class="stat-val is-text">Сайт курса</span><span class="stat-label">интерактивный, для учеников начальных классов</span></div></div>
+              </div>
+              <div class="case-block"><h4>Контекст и задача</h4><p>Отсутствовала база для обучения детей начальных классов основам рекламы. Нужно было создать программу с нуля и подготовить учеников к соревнованиям.</p></div>
+              <div class="case-block"><h4>Что сделала</h4><ul class="dash-list"><li>Разработала полную структуру курса и методические материалы.</li><li>Провела цикл занятий с детьми: теория и практика.</li><li>Подготовила учеников к защите проектов на чемпионате.</li></ul></div>
+              <button class="btn glass details-btn" type="button" aria-expanded="false" aria-controls="t1">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
+              <div class="collapse" id="t1"><div class="collapse-in"><div class="tech">
+                <div><h4>Методология</h4><p>Курс построен на игровых механиках и реальных кейсах из мира рекламы. Дети изучают, что такое бренд, как придумывать слоганы, целевую аудиторию и как защищать свои идеи.</p><p>Для наглядности был создан интерактивный сайт курса, где собраны все материалы и задания.</p></div>
+                <div><h4>Инструменты</h4><div class="chips"><span class="chip glass" tabindex="0" data-tip="Создание программы, планов занятий и презентаций.">Методист</span><span class="chip glass" tabindex="0" data-tip="Проведение офлайн и онлайн занятий, фасилитация.">Преподавание</span><span class="chip glass" tabindex="0" data-tip="Разработка интерактивного сайта для учеников.">HTML / CSS / JS</span><span class="chip glass" tabindex="0" data-tip="Подготовка к соревнованиям, работа с проектами.">Наставничество</span></div></div>
+              </div></div></div>
+            </div>
           </div></div></div>
-        </div>
-      </article>
+        </article>
 
-      <article class="case">
-        <div class="case-media">
-          <div class="print"><button type="button" class="js-zoom" data-group="case2" data-title="Медиаплан"><img src="img/cases/proj1_1.jpg" alt="Медиаплан" loading="lazy"></button></div>
-          <div class="thumbs"><button type="button" class="js-zoom" data-group="case2" data-title="Пример публикации"><img src="img/cases/proj1_2.jpg" alt="Пример публикации" loading="lazy"></button></div>
-        </div>
-        <div class="case-body">
-          <p class="case-role">Инжинириум МГТУ им. Баумана</p>
-          <h3 class="case-title">Медиа и SMM</h3>
-          <div class="stats">
-            <div class="stat"><span class="stat-val">+20%</span><span class="stat-label">подписчиков</span></div>
-            <div class="stat"><span class="stat-val">+30%</span><span class="stat-label">охватов</span></div>
-            <div class="stat"><span class="stat-val">5+</span><span class="stat-label">публикаций в СМИ, включая Mos.ru</span></div>
-          </div>
-          <p class="case-lead">Сложный образовательный продукт при МГТУ им. Баумана для школьников и их родителей. Главное ограничение: любой контент проходит жёсткое согласование ректората.</p>
-          <div class="case-actions">
-            <button class="btn btn-ghost case-toggle" type="button" aria-expanded="false" aria-controls="case2">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
-          </div>
-          <div class="collapse" id="case2"><div><div class="case-more">
-            <div><h4>Что сделала</h4><ul class="dash-list">
-              <li>Разработала стиль общения: академический, современный, дружелюбный.</li>
-              <li>Выстроила отношения с редакциями СМИ.</li>
-              <li>Реализовала медиаплан, который утвердили без правок.</li>
-            </ul></div>
-            <div><h4>Работа с контентом</h4>
-              <p>Контент строился на фирменном стиле и собранном tone of voice. Визуал — в Photoshop (ретушь и коллажи), Illustrator (графика) и Canva (быстрые шаблоны сторис). Для СМИ готовила пресс-релизы в инфостиле.</p></div>
-            <div><h4>Инструменты</h4><div class="tools"><span class="tool">Google Docs / Sheets</span><span class="tool">Photoshop</span><span class="tool">Illustrator</span><span class="tool">Canva</span><span class="tool">Копирайтинг</span><span class="tool">Медиакоммуникации</span></div></div>
+        <article class="case reveal">
+          <button class="case-head" type="button" aria-expanded="false" aria-controls="c2"><span><h3>Медиа &amp; SMM</h3><span class="role">Инжинириум МГТУ им. Баумана</span></span><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse" id="c2"><div class="collapse-in"><div class="case-body">
+            <div class="case-media two">
+              <button type="button" class="js-zoom" data-group="c2" data-title="Медиаплан"><img src="img/cases/proj1_1.jpg" alt="Медиаплан" width="635" height="457" loading="lazy"></button>
+              <button type="button" class="js-zoom" data-group="c2" data-title="Пример публикации"><img src="img/cases/proj1_2.jpg" alt="Пример публикации" width="640" height="734" loading="lazy"></button>
+            </div>
+            <div>
+              <div class="result glass"><span class="result-label"><svg class="icon"><use href="#i-trend"/></svg>Результат</span>
+                <div class="stats"><div><span class="stat-val">+20%</span><span class="stat-label">подписчиков</span></div><div><span class="stat-val">+30%</span><span class="stat-label">охватов</span></div><div><span class="stat-val">5+</span><span class="stat-label">публикаций в СМИ, включая Mos.ru</span></div></div>
+              </div>
+              <div class="case-block"><h4>Контекст и задача</h4><p>Сложный образовательный продукт при МГТУ им. Баумана. Аудитория — школьники и их родители. Главное ограничение: любой контент должен пройти жёсткое одобрение ректората.</p></div>
+              <div class="case-block"><h4>Что сделала</h4><ul class="dash-list"><li>Разработала стиль общения: академический, современный, дружелюбный.</li><li>Выстроила отношения с редакциями СМИ.</li><li>Реализовала медиаплан, который утвердили без правок.</li></ul></div>
+              <button class="btn glass details-btn" type="button" aria-expanded="false" aria-controls="t2">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
+              <div class="collapse" id="t2"><div class="collapse-in"><div class="tech">
+                <div><h4>Работа с контентом</h4><p>Работа с контентом строилась на основе фирменного стиля и собранного tone of voice для общения с аудиторией.</p><p>Для визуала — Adobe Photoshop (сложная ретушь и коллажи), Adobe Illustrator (графика) и Canva (быстрая сборка шаблонов сторис). Взаимодействие со СМИ включало подготовку пресс-релизов в инфостиле.</p></div>
+                <div><h4>Используемый стек</h4><div class="chips"><span class="chip glass" tabindex="0" data-tip="Работа с документами, заполнение медиапланов, создание презентаций. Продвинутые формулы, сводные таблицы.">Google Docs / Sheets</span><span class="chip glass" tabindex="0" data-tip="Сложная ретушь, коллажи, цветокоррекция. Подготовка макетов для веба и полиграфии.">Adobe Photoshop</span><span class="chip glass" tabindex="0" data-tip="Векторная графика, создание иконок, логотипов, адаптация фирменного стиля.">Adobe Illustrator</span><span class="chip glass" tabindex="0" data-tip="Быстрая сборка шаблонов для сторис и постов, адаптация визуала под брендбук.">Canva</span><span class="chip glass" tabindex="0" data-tip="Написание пресс-релизов в инфостиле, создание текстов для соцсетей и лендингов.">Копирайтинг</span><span class="chip glass" tabindex="0" data-tip="Выстраивание отношений с редакциями СМИ, работа с государственными порталами (Mos.ru).">Медиа-коммуникации</span></div></div>
+              </div></div></div>
+            </div>
           </div></div></div>
-        </div>
-      </article>
+        </article>
 
-      <article class="case">
-        <div class="case-media">
-          <div class="print"><button type="button" class="js-zoom" data-group="case3" data-title="Статистика сообщества"><img src="img/cases/proj2.jpg" alt="Статистика сообщества" loading="lazy"></button></div>
-        </div>
-        <div class="case-body">
-          <p class="case-role">Консалтинг для онлайн-школы</p>
-          <h3 class="case-title">Контент-стратегия</h3>
-          <div class="stats">
-            <div class="stat"><span class="stat-val">134%</span><span class="stat-label">выполнение KPI во ВКонтакте</span></div>
-            <div class="stat"><span class="stat-val is-text">Рост охватов</span><span class="stat-label">после смены форматов</span></div>
-          </div>
-          <p class="case-lead">Аккаунты школы велись несистемно, вовлечённость падала. Нужно было провести аудит, найти точки роста и предложить стратегию, которая вернёт метрики.</p>
-          <div class="case-actions">
-            <button class="btn btn-ghost case-toggle" type="button" aria-expanded="false" aria-controls="case3">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
-          </div>
-          <div class="collapse" id="case3"><div><div class="case-more">
-            <div><h4>Что сделала</h4><ul class="dash-list">
-              <li>Аудит контента и выявление проблем.</li>
-              <li>Анализ целевой аудитории, рынка и конкурентов.</li>
-              <li>Новые форматы: Reels, сериалы в сторис, мемы для родителей школьников.</li>
-              <li>Стратегию, основанную на цифрах.</li>
-            </ul></div>
-            <div><h4>Подход</h4>
-              <p>Проанализировала топ-5 игроков EdTech и составила контент-матрицу. Упор — на видео и интерактивные механики в Telegram и ВКонтакте. Отчётность и планирование — в сводных таблицах, чтобы KPI были прозрачны.</p></div>
-            <div><h4>Инструменты</h4><div class="tools"><span class="tool">Конкурентный анализ</span><span class="tool">Контент-матрица</span><span class="tool">Google Sheets</span><span class="tool">Reels</span></div></div>
+        <article class="case reveal">
+          <button class="case-head" type="button" aria-expanded="false" aria-controls="c3"><span><h3>Контент-стратегия</h3><span class="role">Консалтинг</span></span><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse" id="c3"><div class="collapse-in"><div class="case-body">
+            <div class="case-media">
+              <button type="button" class="js-zoom" data-group="c3" data-title="Статистика"><img src="img/cases/proj2.jpg" alt="Статистика" width="862" height="465" loading="lazy"></button>
+            </div>
+            <div>
+              <div class="result glass"><span class="result-label"><svg class="icon"><use href="#i-trend"/></svg>Результат</span>
+                <div class="stats"><div><span class="stat-val">134%</span><span class="stat-label">выполнение KPI</span></div><div><span class="stat-val is-text">Рост охватов</span><span class="stat-label">после смены форматов</span></div></div>
+              </div>
+              <div class="case-block"><h4>Контекст и задача</h4><p>Аккаунты школы велись несистемно, вовлечённость падала. Требовалось провести полный аудит, найти точки роста и предложить стратегию развития соцсетей для восстановления метрик.</p></div>
+              <div class="case-block"><h4>Что сделала</h4><ul class="dash-list"><li>Аудит контента и выявление проблем.</li><li>Анализ ЦА, рынка, конкурентов.</li><li>Внедрение новых форматов: Reels, сериалы в сторис, мемы для родителей школьников.</li><li>Разработка стратегии, основанной на цифрах.</li></ul></div>
+              <button class="btn glass details-btn" type="button" aria-expanded="false" aria-controls="t3">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
+              <div class="collapse" id="t3"><div class="collapse-in"><div class="tech">
+                <div><h4>Стратегический подход</h4><p>Я провела анализ конкурентов (топ-5 игроков EdTech) и составила матрицу контента.</p><p>Сделан упор на видео-контент (Reels) и интерактивные механики в Telegram и VK. Вся отчётность и планирование велись в сводных таблицах Excel и Google Sheets для прозрачности KPI.</p></div>
+                <div><h4>Ключевые компетенции</h4><div class="chips"><span class="chip glass" tabindex="0" data-tip="Анализ топ-5 игроков EdTech. Выявление их сильных и слабых сторон, поиск свободных ниш.">Конкурентный анализ</span><span class="chip glass" tabindex="0" data-tip="Создание структуры контента по рубрикам, форматам и этапам воронки продаж.">Контент-матрица</span><span class="chip glass" tabindex="0" data-tip="Ведение отчётности, планирование контента, расчёт KPI и визуализация данных.">Google Sheets</span><span class="chip glass" tabindex="0" data-tip="Разработка сценариев и концепций для коротких вертикальных видео.">Reels / Video</span></div></div>
+              </div></div></div>
+            </div>
           </div></div></div>
-        </div>
-      </article>
+        </article>
 
-      <article class="case">
-        <div class="case-media">
-          <div class="print"><button type="button" class="js-zoom" data-group="case4" data-title="Оптимизация работы с обращениями"><img src="img/cases/proj3.jpg" alt="Оптимизация работы с обращениями" loading="lazy"></button></div>
-        </div>
-        <div class="case-body">
-          <p class="case-role">Оптимизация работы с обращениями</p>
-          <h3 class="case-title">IT-инфраструктура поддержки</h3>
-          <div class="stats">
-            <div class="stat"><span class="stat-val">+70%</span><span class="stat-label">скорость ответа</span></div>
-            <div class="stat"><span class="stat-val">−58%</span><span class="stat-label">активных тикетов</span></div>
-            <div class="stat"><span class="stat-val">+30%</span><span class="stat-label">удовлетворённость клиентов</span></div>
-          </div>
-          <p class="case-lead">Отдел поддержки не справлялся с нагрузкой: сотрудники тратили время на ручные действия — копирование данных, смену статусов, — и ответы клиентам критически замедлялись.</p>
-          <div class="case-actions">
-            <button class="btn btn-ghost case-toggle" type="button" aria-expanded="false" aria-controls="case4">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
-          </div>
-          <div class="collapse" id="case4"><div><div class="case-more">
-            <div><h4>Что сделала</h4><ul class="dash-list">
-              <li>Проанализировала путь заявки и нашла узкие места.</li>
-              <li>Составила CJM, чтобы понять действия и ошибки клиентов.</li>
-              <li>Автоматизировала рутинные действия в CRM.</li>
-              <li>Внедрила шаблоны ответов и регламенты.</li>
-            </ul></div>
-            <div><h4>Технические детали</h4>
-              <p>Основа — связка AmoCRM, Яндекс Трекера и Omnidesk. Настроила триггеры и автоматические действия: смену этапов воронки и автоответы, чтобы заявки распределялись без участия человека.</p>
-              <p>Создала базу знаний в Notion и Teamly — это сократило время обучения новичков. Для удалённого доступа — AnyDesk и Getscreen.</p></div>
-            <div><h4>Инструменты</h4><div class="tools"><span class="tool">AmoCRM</span><span class="tool">Яндекс Трекер</span><span class="tool">Omnidesk</span><span class="tool">HelpDesk</span><span class="tool">AnyDesk</span><span class="tool">Getscreen</span></div></div>
+        <article class="case reveal">
+          <button class="case-head" type="button" aria-expanded="false" aria-controls="c4"><span><h3>IT-инфраструктура</h3><span class="role">Оптимизация работы с обращениями</span></span><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse" id="c4"><div class="collapse-in"><div class="case-body">
+            <div class="case-media">
+              <button type="button" class="js-zoom" data-group="c4" data-title="Оптимизация"><img src="img/cases/proj3.jpg" alt="Оптимизация" width="1280" height="540" loading="lazy"></button>
+            </div>
+            <div>
+              <div class="result glass"><span class="result-label"><svg class="icon"><use href="#i-trend"/></svg>Результат</span>
+                <div class="stats"><div><span class="stat-val">+70%</span><span class="stat-label">скорость ответа</span></div><div><span class="stat-val">−58%</span><span class="stat-label">активных тикетов</span></div><div><span class="stat-val">+30%</span><span class="stat-label">удовлетворённость клиентов</span></div></div>
+              </div>
+              <div class="case-block"><h4>Контекст и задача</h4><p>Отдел поддержки не справлялся с нагрузкой. Сотрудники тратили время на ручные действия (копирование данных, смена статусов), что критически замедляло ответы клиентам.</p></div>
+              <div class="case-block"><h4>Что сделала</h4><ul class="dash-list"><li>Проанализировала путь заявки и нашла узкие места.</li><li>Составила CJM для понимания действий и ошибок клиентов.</li><li>Автоматизировала рутинные действия в CRM.</li><li>Внедрила шаблоны ответов и регламенты работы.</li></ul></div>
+              <button class="btn glass details-btn" type="button" aria-expanded="false" aria-controls="t4">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
+              <div class="collapse" id="t4"><div class="collapse-in"><div class="tech">
+                <div><h4>Технические детали</h4><p>В качестве основы использовалась связка AmoCRM + Яндекс Трекер + Omnidesk. Я настроила триггеры и автоматические действия (смена этапов воронки, автоответы), чтобы заявки распределялись без участия человека.</p><p>Создана база знаний (Notion, Teamly), что сократило время обучения новичков. Для удалённого доступа использовались AnyDesk и Getscreen.</p></div>
+                <div><h4>Стек</h4><div class="chips"><span class="chip glass" tabindex="0" data-tip="Настройка воронок, интеграций, триггеров. Автоматизация распределения заявок.">AmoCRM</span><span class="chip glass" tabindex="0" data-tip="Ведение задач, багрепортинг, Agile-доски для команды поддержки.">Яндекс Трекер</span><span class="chip glass" tabindex="0" data-tip="Подключение и настройка виджетов поддержки, маршрутизация обращений.">Omnidesk</span><span class="chip glass" tabindex="0" data-tip="Организация техподдержки. Настройка SLA, распределение тикетов.">HelpDesk</span><span class="chip glass" tabindex="0" data-tip="Удалённый доступ и настройка оборудования. Решение технических проблем клиентов.">AnyDesk</span><span class="chip glass" tabindex="0" data-tip="Удалённая демонстрация экрана и помощь пользователям.">Getscreen</span></div></div>
+              </div></div></div>
+            </div>
           </div></div></div>
-        </div>
-      </article>
+        </article>
 
-      <article class="case">
-        <div class="case-media">
-          <div class="print"><button type="button" class="js-zoom" data-group="case5" data-title="Миграция инфраструктуры"><img src="img/cases/proj4.jpg" alt="Миграция инфраструктуры" width="1536" height="1024" loading="lazy"></button></div>
-        </div>
-        <div class="case-body">
-          <p class="case-role">Миграция ключевых сервисов</p>
-          <h3 class="case-title">Перенос инфраструктуры</h3>
-          <div class="stats">
-            <div class="stat"><span class="stat-val">0</span><span class="stat-label">часов простоя при переезде</span></div>
-            <div class="stat"><span class="stat-val">15+</span><span class="stat-label">интеграций и автоматизаций перенесено</span></div>
-          </div>
-          <p class="case-lead">Полная миграция: с AmoCRM и Omnidesk на Битрикс24, со Slack на Mattermost, новые телефонии Naumen и Mango. Процессы всех отделов нужно было перестроить, не останавливая работу.</p>
-          <div class="case-actions">
-            <button class="btn btn-ghost case-toggle" type="button" aria-expanded="false" aria-controls="case5">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
-          </div>
-          <div class="collapse" id="case5"><div><div class="case-more">
-            <div><h4>Что сделала</h4><ul class="dash-list">
-              <li>Собрала информацию от каждого отдела.</li>
-              <li>Создала карты действий для всех департаментов.</li>
-              <li>Перенесла интеграции и автоматизации.</li>
-              <li>Перевела команду с Notion на Teamly и с Miro на «Холст».</li>
-            </ul></div>
-            <div><h4>Процесс миграции</h4>
-              <p>Проект потребовал погружения в работу каждого департамента: аудит процессов, интервью с руководителями, карты действий для внутренних процессов.</p>
-              <p>Отдельная задача — API и JavaScript-маппинг для переноса данных и связей между новыми сервисами. Провела аудит REST API, настроила автоматизации в n8n.</p></div>
-            <div><h4>Инструменты</h4><div class="tools"><span class="tool">Битрикс24</span><span class="tool">Naumen</span><span class="tool">Mango</span><span class="tool">Mattermost</span><span class="tool">Teamly</span><span class="tool">Холст</span><span class="tool">n8n</span><span class="tool">REST API</span></div></div>
+        <article class="case reveal">
+          <button class="case-head" type="button" aria-expanded="false" aria-controls="c5"><span><h3>Перенос инфраструктуры</h3><span class="role">Миграция ключевых сервисов</span></span><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse" id="c5"><div class="collapse-in"><div class="case-body">
+            <div class="case-media">
+              <button type="button" class="js-zoom" data-group="c5" data-title="Миграция инфраструктуры"><img src="img/cases/proj4.jpg" alt="Миграция инфраструктуры" width="1536" height="1024" loading="lazy"></button>
+            </div>
+            <div>
+              <div class="result glass"><span class="result-label"><svg class="icon"><use href="#i-trend"/></svg>Результат</span>
+                <div class="stats"><div><span class="stat-val is-text">Миграция без простоя</span><span class="stat-label">работа отделов не останавливалась</span></div><div><span class="stat-val">15+</span><span class="stat-label">интеграций и автоматизаций перенесено</span></div></div>
+              </div>
+              <div class="case-block"><h4>Контекст и задача</h4><p>Компания столкнулась с необходимостью полной миграции IT-инфраструктуры: уход с AmoCRM и Omnidesk на Битрикс24, со Slack на Mattermost, внедрение новых телефоний Naumen и Mango. Требовалась перестройка процессов всех отделов без остановки работы.</p></div>
+              <div class="case-block"><h4>Что сделала</h4><ul class="dash-list"><li>Провела полный сбор информации от каждого отдела.</li><li>Создала карты действий для всех департаментов.</li><li>Осуществила перенос интеграций и автоматизаций.</li><li>Перевела команду с Notion на Teamly и с Miro на российский сервис «Холст».</li></ul></div>
+              <button class="btn glass details-btn" type="button" aria-expanded="false" aria-controls="t5">Подробнее<svg class="icon"><use href="#i-chev"/></svg></button>
+              <div class="collapse" id="t5"><div class="collapse-in"><div class="tech">
+                <div><h4>Процесс миграции</h4><p>Проект требовал глубокого погружения в работу каждого департамента. Я проводила аудит текущих процессов, интервьюировала руководителей, составляла карты действий (CJM для внутренних процессов).</p><p>Отдельный вызов — API и JavaScript-маппинг для переноса данных и настройки связей между новыми сервисами. Провела аудит REST API, настроила автоматизации через n8n.</p></div>
+                <div><h4>Новый стек</h4><div class="chips"><span class="chip glass" tabindex="0" data-tip="Настройка Битрикс24 с нуля: воронки, задачи, CRM, бизнес-процессы.">Битрикс24</span><span class="chip glass" tabindex="0" data-tip="Настройка телефонии Naumen и Mango для интеграции с CRM.">Naumen / Mango</span><span class="chip glass" tabindex="0" data-tip="Корпоративный мессенджер для замены Slack.">Mattermost</span><span class="chip glass" tabindex="0" data-tip="База знаний и управление проектами (замена Notion).">Teamly</span><span class="chip glass" tabindex="0" data-tip="Российский аналог Miro для совместной работы.">Холст</span><span class="chip glass" tabindex="0" data-tip="Настройка сценариев автоматизации и связок API без кода.">n8n</span><span class="chip glass" tabindex="0" data-tip="Аудит и документация эндпоинтов, работа с JSON.">REST API</span></div></div>
+              </div></div></div>
+            </div>
           </div></div></div>
+        </article>
+      </div></div></div>
+    </section>
+
+    <!-- ЧТО Я МОГУ ДАТЬ КОМАНДЕ -->
+    <section class="acc" id="value">
+      <button class="acc-head reveal" type="button" aria-expanded="true" aria-controls="value-body">
+        <h2>Что я могу дать команде</h2><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span>
+      </button>
+      <div class="collapse is-open" id="value-body"><div class="collapse-in"><div class="acc-body">
+        <div class="spec reveal">
+          <p class="spec-kicker">Специализация</p>
+          <h3 class="spec-title">Стратегия в рекламе и маркетинге</h3>
+          <p class="spec-desc">Превращаю цели бизнеса в измеримые рекламные кампании, точки роста бренда и продуманный медиаплан — от креатива до отчёта с цифрами.</p>
         </div>
-      </article>
-    </div>
-  </section>
+        <ul class="offers offers-main">
+          <li class="offer glass reveal"><h3>Стратегия рекламной кампании</h3><p>От идеи и позиционирования до запуска с измеримыми KPI.</p></li>
+          <li class="offer glass reveal" style="--d:80ms"><h3>Точки роста бренда</h3><p>Нахожу их и превращаю в медиаплан с цифрами и горизонтами масштабирования.</p></li>
+          <li class="offer glass reveal" style="--d:160ms"><h3>Креатив и аналитика вместе</h3><p>Концепция, запуск и отчёт с ROI и понятными выводами.</p></li>
+        </ul>
+        <ul class="offers offers-rest">
+          <li class="offer reveal"><p>Разобраться в запутанном процессе и найти узкие места в воронке.</p></li>
+          <li class="offer reveal" style="--d:60ms"><p>Сократить ручные операции с помощью автоматизации и CRM-интеграций.</p></li>
+          <li class="offer reveal"><p>Наладить взаимодействие между креативной командой, аналитикой и бизнесом.</p></li>
+          <li class="offer reveal" style="--d:60ms"><p>Превратить данные и наблюдения в конкретный план действий.</p></li>
+        </ul>
+      </div></div></div>
+    </section>
 
-  <!-- СПЕЦИАЛИЗАЦИЯ -->
-  <section class="section wrap" id="value" aria-labelledby="spec-title">
-    <div class="spec">
-      <span class="spec-bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <p class="spec-kicker" style="margin:0">Специализация</p>
-      <h2 class="spec-title" id="spec-title">Стратегия в рекламе и маркетинге</h2>
-      <p class="spec-desc">Превращаю цели бизнеса в измеримые рекламные кампании, точки роста бренда и продуманный медиаплан — от креатива до отчёта с цифрами.</p>
-    </div>
-    <h3 class="sr-only">Чем буду полезна команде</h3>
-    <ul class="offers offers-main">
-      <li class="offer is-main"><div><h3>Стратегия кампании</h3><p>От идеи и позиционирования до запуска с измеримыми KPI.</p></div></li>
-      <li class="offer is-main"><div><h3>Точки роста бренда</h3><p>Нахожу их и превращаю в медиаплан с цифрами и горизонтами масштабирования.</p></div></li>
-      <li class="offer is-main"><div><h3>Креатив и аналитика вместе</h3><p>Концепция, запуск, отчёт с ROI и понятными выводами.</p></div></li>
-    </ul>
-    <ul class="offers offers-rest">
-      <li class="offer"><p>Разберусь в запутанном процессе и найду узкие места в воронке.</p></li>
-      <li class="offer"><p>Сокращу ручные операции с помощью автоматизации и CRM-интеграций.</p></li>
-      <li class="offer"><p>Налажу взаимодействие между креативной командой, аналитикой и бизнесом.</p></li>
-      <li class="offer"><p>Превращу данные и наблюдения в конкретный план действий.</p></li>
-    </ul>
-  </section>
+    <!-- НАВЫКИ -->
+    <section class="acc" id="skills">
+      <button class="acc-head reveal" type="button" aria-expanded="false" aria-controls="skills-body">
+        <h2>Навыки</h2><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span>
+      </button>
+      <div class="collapse" id="skills-body"><div class="collapse-in"><div class="acc-body">
+        <div class="tabs glass" role="tablist" aria-label="Направления">
+          <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">Стратегия и маркетинг</button>
+          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1">Реклама и аналитика</button>
+          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1">Визуал и креатив</button>
+          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1">Процессы и автоматизация</button>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+          <div class="skill"><h3>Позиционирование и ЦА</h3><p>Формулирую ценности бренда, сегменты и портреты аудитории, tone of voice.</p><span class="tools">Пирамида бренда, Tone of Voice, сегментация, JTBD</span></div>
+          <div class="skill"><h3>Исследования и конкуренты</h3><p>Глубинные интервью, анализ рынка и конкурентов, поиск свободных ниш и точек роста.</p><span class="tools">CJM, глубинные интервью, бенчмаркинг</span></div>
+          <div class="skill"><h3>Контент и SMM</h3><p>Контент-стратегии, рубрикаторы и медиапланы под цели бренда и этапы воронки.</p><span class="tools">Контент-матрица, медиаплан, Reels, KPI</span></div>
+          <div class="skill"><h3>PR и работа со СМИ</h3><p>Пресс-релизы в инфостиле, работа с редакциями и государственными порталами.</p><span class="tools">Пресс-релизы, медиакоммуникации, Mos.ru</span></div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+          <div class="skill"><h3>Контекстная реклама</h3><p>Настройка и ведение кампаний: ставки, аудитории, ретаргетинг.</p><span class="tools">Яндекс Директ</span></div>
+          <div class="skill"><h3>Веб-аналитика</h3><p>Счётчики, цели, анализ воронок, тепловые карты и отчёты для клиентов.</p><span class="tools">Яндекс Метрика</span></div>
+          <div class="skill"><h3>Отчёты и KPI</h3><p>Сбор и визуализация данных, расчёт ROI, LTV и SLA, отчёты для руководства.</p><span class="tools">Google Sheets, Excel, дашборды</span></div>
+          <div class="skill"><h3>Офисные пакеты</h3><p>Сводные таблицы, формулы, макросы, презентации и совместная работа.</p><span class="tools">Word, Excel, PowerPoint, Google Workspace</span></div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+          <div class="skill"><h3>Фотография</h3><p>Портреты и предметная съёмка: свет, композиция, цвет, ретушь для печати и веба.</p><span class="tools">Портрет, предметная съёмка, ретушь</span></div>
+          <div class="skill"><h3>Графический дизайн</h3><p>Ретушь и коллажи, векторная графика и логотипы, многостраничные макеты.</p><span class="tools">Photoshop, Illustrator, InDesign, Supa, Canva</span></div>
+          <div class="skill"><h3>Видеомонтаж</h3><p>Монтаж, цветокоррекция и звук, экспорт под разные площадки.</p><span class="tools">Premiere Pro, Reels, Shorts, YouTube</span></div>
+          <div class="skill"><h3>Веб и прототипы</h3><p>Прототипы и макеты сайтов, лендинги без кода, базовая вёрстка.</p><span class="tools">Figma, Tilda, HTML, CSS, JS</span></div>
+        </div>
+        <div class="tab-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+          <div class="skill"><h3>CRM</h3><p>Воронки, права доступа, кастомные поля, триггеры и автоответы.</p><span class="tools">AmoCRM, Битрикс24</span></div>
+          <div class="skill"><h3>Интеграции и API</h3><p>Связка сервисов, аудит REST API, JavaScript-маппинг, сценарии без кода.</p><span class="tools">n8n, REST API, JS-маппинг</span></div>
+          <div class="skill"><h3>Поддержка и телефония</h3><p>HelpDesk, SLA и распределение тикетов, телефония в связке с CRM, удалённый доступ.</p><span class="tools">Omnidesk, Яндекс Трекер, Naumen, Mango, AnyDesk, Getscreen</span></div>
+          <div class="skill"><h3>Команда и база знаний</h3><p>Онбординг, менторство, регламенты, спринты и канбан-доски.</p><span class="tools">Kaiten, Agile, Notion, Teamly</span></div>
+          <div class="skill"><h3>Оптимизация процессов</h3><p>Поиск узких мест, карты клиентского пути, повышение эффективности команд.</p><span class="tools">CJM, BPMN</span></div>
+        </div>
+      </div></div></div>
+    </section>
 
-  <!-- НАВЫКИ -->
-  <section class="section wrap" id="skills" aria-labelledby="skills-title">
-    <div class="section-head">
-      <h2 class="section-title" id="skills-title">Навыки</h2>
-      <p class="section-note">Четыре направления, в которых я работаю, и инструменты для каждого.</p>
-    </div>
-    <div class="skills">
-      <div class="skill-group">
-        <div class="skill-head"><h3>Стратегия и маркетинг</h3><p>Позиционирование, исследования, контент и PR</p></div>
-        <div class="skill-row"><h4>Позиционирование</h4><div class="tools"><span class="tool">Пирамида бренда</span><span class="tool">Tone of Voice</span><span class="tool">Сегментация ЦА</span><span class="tool">JTBD</span></div></div>
-        <div class="skill-row"><h4>Исследования</h4><div class="tools"><span class="tool">CJM</span><span class="tool">Глубинные интервью</span><span class="tool">Анализ конкурентов</span><span class="tool">Бенчмаркинг</span></div></div>
-        <div class="skill-row"><h4>Контент и SMM</h4><div class="tools"><span class="tool">Контент-матрица</span><span class="tool">Медиапланы</span><span class="tool">Рубрикаторы</span><span class="tool">Reels</span><span class="tool">KPI</span></div></div>
-        <div class="skill-row"><h4>PR и СМИ</h4><div class="tools"><span class="tool">Пресс-релизы</span><span class="tool">Инфостиль</span><span class="tool">Работа с редакциями</span><span class="tool">Mos.ru</span></div></div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-head"><h3>Визуал и креатив</h3><p>Съёмка, графика, видео и прототипы сайтов</p></div>
-        <div class="skill-row"><h4>Фотография</h4><div class="tools"><span class="tool">Портрет</span><span class="tool">Предметная съёмка</span><span class="tool">Работа со светом</span><span class="tool">Ретушь</span></div></div>
-        <div class="skill-row"><h4>Графический дизайн</h4><div class="tools"><span class="tool">Photoshop</span><span class="tool">Illustrator</span><span class="tool">InDesign</span><span class="tool">Canva</span><span class="tool">Supa</span></div></div>
-        <div class="skill-row"><h4>Видео</h4><div class="tools"><span class="tool">Premiere Pro</span><span class="tool">Reels и Shorts</span><span class="tool">YouTube</span></div></div>
-        <div class="skill-row"><h4>Веб и прототипы</h4><div class="tools"><span class="tool">Figma</span><span class="tool">Tilda</span><span class="tool">HTML / CSS / JS</span></div></div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-head"><h3>Реклама и аналитика</h3><p>Запуск кампаний и цифры, по которым видно результат</p></div>
-        <div class="skill-row"><h4>Контекстная реклама</h4><div class="tools"><span class="tool">Яндекс Директ</span><span class="tool">Ставки</span><span class="tool">Аудитории</span><span class="tool">Ретаргетинг</span></div></div>
-        <div class="skill-row"><h4>Веб-аналитика</h4><div class="tools"><span class="tool">Яндекс Метрика</span><span class="tool">Цели</span><span class="tool">Воронки</span><span class="tool">Тепловые карты</span></div></div>
-        <div class="skill-row"><h4>Отчёты и метрики</h4><div class="tools"><span class="tool">Дашборды</span><span class="tool">Сводные таблицы</span><span class="tool">ROI</span><span class="tool">LTV</span><span class="tool">SLA</span></div></div>
-        <div class="skill-row"><h4>Офисные пакеты</h4><div class="tools"><span class="tool">Excel</span><span class="tool">Word</span><span class="tool">PowerPoint</span><span class="tool">Google Workspace</span></div></div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-head"><h3>Процессы и автоматизация</h3><p>CRM, интеграции, поддержка и командная работа</p></div>
-        <div class="skill-row"><h4>CRM</h4><div class="tools"><span class="tool">AmoCRM</span><span class="tool">Битрикс24</span><span class="tool">Воронки</span><span class="tool">Триггеры</span></div></div>
-        <div class="skill-row"><h4>Интеграции</h4><div class="tools"><span class="tool">n8n</span><span class="tool">REST API</span><span class="tool">JS-маппинг</span></div></div>
-        <div class="skill-row"><h4>Поддержка и телефония</h4><div class="tools"><span class="tool">HelpDesk</span><span class="tool">Omnidesk</span><span class="tool">Яндекс Трекер</span><span class="tool">Naumen</span><span class="tool">Mango</span><span class="tool">AnyDesk</span></div></div>
-        <div class="skill-row"><h4>Команда и знания</h4><div class="tools"><span class="tool">Kaiten</span><span class="tool">Agile</span><span class="tool">Регламенты</span><span class="tool">Онбординг</span><span class="tool">Notion</span><span class="tool">Teamly</span></div></div>
-      </div>
-    </div>
-  </section>
+    <!-- ОПЫТ -->
+    <section class="acc" id="experience">
+      <button class="acc-head reveal" type="button" aria-expanded="false" aria-controls="exp-body">
+        <h2>Опыт</h2><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span>
+      </button>
+      <div class="collapse" id="exp-body"><div class="collapse-in"><div class="acc-body">
+        <ol>
+          <li class="job"><span class="job-date">Апрель 2025 — настоящее время</span><h3 class="job-title">Специалист технической поддержки</h3><span class="job-company">NDA</span><p>Ответы клиентам, помощь в решении технических проблем, настройка подключений. Написание багрепортов, ведение HelpDesk-системы и блога компании.</p></li>
+          <li class="job"><span class="job-date">Май 2024 — июль 2025</span><h3 class="job-title">Руководитель поддержки бизнес-инфраструктуры</h3><span class="job-company">Онлайн-школа Тетрика</span><p>Полная ответственность за работоспособность внутренних систем. Управление командой, организация поддержки CRM и ServiceDesk, внедрение автоматизаций, миграция сервисов.</p></li>
+          <li class="job"><span class="job-date">Ноябрь 2022 — май 2024</span><h3 class="job-title">Менеджер поддержки проектов</h3><span class="job-company">Онлайн-школа Тетрика</span><p>QA (написание багрепортов, тестирование релизов), поддержка сервиса, администрирование прав доступа.</p></li>
+          <li class="job"><span class="job-date">Ноябрь 2020 — ноябрь 2022</span><h3 class="job-title">Специалист технической поддержки</h3><span class="job-company">Онлайн-школа Тетрика</span><p>Менторство и обучение новых специалистов. Настройка сетевого оборудования и удалённых рабочих столов.</p></li>
+          <li class="job"><span class="job-date">Февраль 2021 — август 2021</span><h3 class="job-title">SMM-менеджер</h3><span class="job-company">Инжинириум МГТУ им. Баумана</span><p>Создание контент-стратегии с нуля. Взаимодействие с государственными порталами. Написание пресс-релизов и статей.</p></li>
+          <li class="job"><span class="job-date">Май 2018 — май 2019</span><h3 class="job-title">SMM-менеджер</h3><span class="job-company">24ttl (проект Radrussia)</span><p>Работа в агентстве. Создание вовлекающего контента, мониторинг эффективности кампаний.</p></li>
+        </ol>
+      </div></div></div>
+    </section>
 
-  <!-- ОПЫТ -->
-  <section class="section wrap" id="experience" aria-labelledby="exp-title">
-    <div class="section-head"><h2 class="section-title" id="exp-title">Опыт</h2></div>
-    <ol class="timeline" style="list-style:none;margin:0;padding:0">
-      <li class="job"><span class="job-date">Апрель 2025 — сейчас</span><h3 class="job-title">Специалист технической поддержки</h3><span class="job-company">NDA</span><p>Ответы клиентам, решение технических проблем, настройка подключений. Багрепорты, ведение HelpDesk и блога компании.</p></li>
-      <li class="job"><span class="job-date">Май 2024 — июль 2025</span><h3 class="job-title">Руководитель поддержки бизнес-инфраструктуры</h3><span class="job-company">Онлайн-школа «Тетрика»</span><p>Ответственность за работу внутренних систем. Управление командой, поддержка CRM и ServiceDesk, внедрение автоматизаций, миграция сервисов.</p></li>
-      <li class="job"><span class="job-date">Ноябрь 2022 — май 2024</span><h3 class="job-title">Менеджер поддержки проектов</h3><span class="job-company">Онлайн-школа «Тетрика»</span><p>QA: багрепорты и тестирование релизов. Поддержка сервиса, администрирование прав доступа.</p></li>
-      <li class="job"><span class="job-date">Ноябрь 2020 — ноябрь 2022</span><h3 class="job-title">Специалист технической поддержки</h3><span class="job-company">Онлайн-школа «Тетрика»</span><p>Менторство и обучение новых специалистов. Настройка сетевого оборудования и удалённых рабочих столов.</p></li>
-      <li class="job"><span class="job-date">Февраль — август 2021</span><h3 class="job-title">SMM-менеджер</h3><span class="job-company">Инжинириум МГТУ им. Баумана</span><p>Контент-стратегия с нуля, работа с государственными порталами, пресс-релизы и статьи.</p></li>
-      <li class="job"><span class="job-date">Май 2018 — май 2019</span><h3 class="job-title">SMM-менеджер</h3><span class="job-company">24ttl, проект Radrussia</span><p>Работа в агентстве: вовлекающий контент, мониторинг эффективности кампаний.</p></li>
-    </ol>
-  </section>
+    <!-- СЕРТИФИКАТЫ -->
+    <section class="acc" id="certs">
+      <button class="acc-head reveal" type="button" aria-expanded="false" aria-controls="certs-body">
+        <h2>Сертификаты</h2><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span>
+      </button>
+      <div class="collapse" id="certs-body"><div class="collapse-in"><div class="acc-body">
+        <div class="rail-block" id="certRail"></div>
+      </div></div></div>
+    </section>
 
-  <!-- СЕРТИФИКАТЫ -->
-  <section class="section wrap" id="certs" aria-labelledby="certs-title">
-    <div class="section-head">
-      <h2 class="section-title" id="certs-title">Сертификаты</h2>
-      <p class="section-note">Листайте вбок и нажмите, чтобы рассмотреть.</p>
-    </div>
-    <div class="certs" id="certList"></div>
-  </section>
-
-  <!-- УВЛЕЧЕНИЯ -->
-  <section class="section wrap" id="hobbies" aria-labelledby="hobbies-title">
-    <div class="section-head"><h2 class="section-title" id="hobbies-title">Вне работы</h2></div>
-    <ul class="hobbies">
-      <li class="hobby"><span class="ico"><svg class="icon"><use href="#i-camera"/></svg></span><div><h3>Фотография</h3><p>Портреты и предметная съёмка: свет, композиция, цвет, ретушь для печати и веба.</p></div></li>
-      <li class="hobby"><span class="ico"><svg class="icon"><use href="#i-mic"/></svg></span><div><h3>Радио</h3><p>Веду эфиры на учебном радио: сценарии, работа с голосом, импровизация.</p></div></li>
-      <li class="hobby"><span class="ico"><svg class="icon"><use href="#i-drama"/></svg></span><div><h3>Театр</h3><p>Сценическая речь и актёрское мастерство — отличная школа эмпатии и командной работы.</p></div></li>
-      <li class="hobby"><span class="ico"><svg class="icon"><use href="#i-game"/></svg></span><div><h3>Игры</h3><p>Песочницы и стратегии для креатива и планирования: The Sims, Cities: Skylines, Minecraft, Stardew Valley.</p></div></li>
-      <li class="hobby"><span class="ico"><svg class="icon"><use href="#i-vr"/></svg></span><div><h3>Консоль и VR</h3><p>Обожаю Beat Saber — ритм и движение в VR заряжают как тренировка.</p></div></li>
-      <li class="hobby"><span class="ico"><svg class="icon"><use href="#i-phone"/></svg></span><div><h3>Техника и гаджеты</h3><p>Слежу за новинками, разбираюсь в характеристиках и тестирую устройства.</p></div></li>
-      <li class="hobby"><span class="ico"><svg class="icon"><use href="#i-plane"/></svg></span><div><h3>Путешествия</h3><p>Ничто так не расширяет кругозор, как новые города и природа.</p></div></li>
-    </ul>
-  </section>
+    <!-- УВЛЕЧЕНИЯ -->
+    <section class="acc" id="hobbies">
+      <button class="acc-head reveal" type="button" aria-expanded="false" aria-controls="hobbies-body">
+        <h2>Увлечения</h2><span class="chev glass"><svg class="icon"><use href="#i-chev"/></svg></span>
+      </button>
+      <div class="collapse" id="hobbies-body"><div class="collapse-in"><div class="acc-body about-text">
+        <p>Я активно участвую в работе <strong>учебного радио</strong>: веду эфиры, пишу сценарии и работаю с голосом. Это помогает развивать навыки публичных выступлений и быстрой реакции.</p>
+        <p>Для души я занимаюсь <strong>театром</strong> — это отличная школа эмпатии. А когда нужно отдохнуть, играю в <strong>компьютерные игры</strong>, например в песочницы, где можно строить: это тренирует креативность.</p>
+        <p>Я очень люблю <strong>технику</strong> и слежу за новинками: смартфоны, процессоры, нестандартные устройства и гаджеты. Люблю разбираться в характеристиках и тестировать девайсы. Дома есть <strong>игровая консоль и VR-гарнитура</strong>: обожаю Beat Saber — ритм и движение в VR заряжают как тренировка.</p>
+        <p>И, конечно, <strong>путешествия</strong>. Ничто так не расширяет кругозор, как новые города и природа!</p>
+      </div></div></div>
+    </section>
+  </div>
 </main>
 
 <!-- КОНТАКТЫ -->
 <footer class="contact" id="contact">
   <div class="wrap">
-    <h2 class="contact-title">Есть задача, которую нужно решить?</h2>
-    <p class="contact-text">Открыта к предложениям о работе и интересным проектам. Напишите — обсудим, чем я могу быть полезна вашей команде.</p>
-    <a class="email" href="mailto:olga.chumaneva@ya.ru">olga.chumaneva@ya.ru</a>
-    <div class="socials">
-      <a class="icon-btn" href="https://t.me/helgalost" target="_blank" rel="noopener" aria-label="Telegram"><svg class="icon"><use href="#i-telegram"/></svg></a>
-      <a class="icon-btn" href="https://vk.ru/helgalost" target="_blank" rel="noopener" aria-label="ВКонтакте"><svg class="icon"><use href="#i-vk"/></svg></a>
-      <a class="icon-btn" href="https://www.pinterest.com/helgalost/" target="_blank" rel="noopener" aria-label="Pinterest"><svg class="icon"><use href="#i-pinterest"/></svg></a>
-      <a class="icon-btn" href="https://www.youtube.com/@losthelga" target="_blank" rel="noopener" aria-label="YouTube"><svg class="icon"><use href="#i-youtube"/></svg></a>
-      <a class="icon-btn" href="https://www.tiktok.com/@helgalost" target="_blank" rel="noopener" aria-label="TikTok"><svg class="icon"><use href="#i-tiktok"/></svg></a>
-      <a class="icon-btn" href="https://instagram.com/helgalost/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
+    <p class="socials-title reveal">Я в соцсетях</p>
+    <div class="socials reveal">
+      <a class="icon-btn glass magnetic" href="https://t.me/helgalost" target="_blank" rel="noopener" aria-label="Telegram"><svg class="icon"><use href="#i-telegram"/></svg></a>
+      <a class="icon-btn glass magnetic" href="https://vk.ru/helgalost" target="_blank" rel="noopener" aria-label="ВКонтакте"><svg class="icon"><use href="#i-vk"/></svg></a>
+      <a class="icon-btn glass magnetic" href="https://www.pinterest.com/helgalost/" target="_blank" rel="noopener" aria-label="Pinterest"><svg class="icon"><use href="#i-pinterest"/></svg></a>
+      <a class="icon-btn glass magnetic" href="https://www.youtube.com/@losthelga" target="_blank" rel="noopener" aria-label="YouTube"><svg class="icon"><use href="#i-youtube"/></svg></a>
+      <a class="icon-btn glass magnetic" href="https://www.tiktok.com/@helgalost" target="_blank" rel="noopener" aria-label="TikTok"><svg class="icon"><use href="#i-tiktok"/></svg></a>
+      <a class="icon-btn glass magnetic" href="https://instagram.com/helgalost/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
     </div>
-    <div class="footer-meta"><span>© <span id="year">2026</span> Ольга Чуманева</span><a href="#top">Наверх</a></div>
+    <h2 class="contact-title reveal">Есть задача, которую нужно решить?</h2>
+    <p class="contact-text reveal">Открыта к предложениям о работе и интересным проектам. Напишите мне — обсудим, чем я могу быть полезна вашей команде.</p>
+    <a class="email grad-text reveal" href="mailto:olga.chumaneva@ya.ru">olga.chumaneva@ya.ru</a>
+    <div class="btn-row reveal" style="margin-top:22px">
+      <a class="btn btn-primary glass magnetic" href="cv.pdf" download="Ольга_Чуманева_CV.pdf"><svg class="icon"><use href="#i-file"/></svg>Скачать CV</a>
+    </div>
+    <div class="footer-meta"><span>© <span id="year">2026</span> Ольга Чуманева</span></div>
   </div>
 </footer>
+
+<button class="to-top glass magnetic" type="button" id="toTop" aria-label="Наверх"><svg class="icon"><use href="#i-up"/></svg></button>
 
 <!-- ЛАЙТБОКС -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lbTitle" hidden>
   <div class="lb-top">
     <span class="lb-count" id="lbCount"></span>
-    <button class="icon-btn" type="button" id="lbClose" aria-label="Закрыть"><svg class="icon"><use href="#i-x"/></svg></button>
+    <button class="icon-btn glass" type="button" id="lbClose" aria-label="Закрыть"><svg class="icon"><use href="#i-x"/></svg></button>
   </div>
   <div class="lb-stage" id="lbStage">
     <img id="lbImg" alt="">
-    <button class="lb-nav lb-prev" type="button" id="lbPrev" aria-label="Предыдущая"><svg class="icon"><use href="#i-left"/></svg></button>
-    <button class="lb-nav lb-next" type="button" id="lbNext" aria-label="Следующая"><svg class="icon"><use href="#i-right"/></svg></button>
+    <button class="lb-nav lb-prev glass" type="button" id="lbPrev" aria-label="Предыдущая"><svg class="icon"><use href="#i-left"/></svg></button>
+    <button class="lb-nav lb-next glass" type="button" id="lbNext" aria-label="Следующая"><svg class="icon"><use href="#i-right"/></svg></button>
   </div>
   <div class="lb-panel" id="lbPanel">
     <span class="lb-cat" id="lbCat"></span>
