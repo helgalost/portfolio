@@ -314,6 +314,7 @@
         }
         @keyframes fadeIn { to { opacity: 1; } }
         .profile-img {
+            display: block;
             width: 100%;
             aspect-ratio: 4/5;
             object-fit: cover;
@@ -1386,7 +1387,7 @@
                 </div>
             </div>
             <div class="profile-img-wrap">
-                <img src="me.gif" alt="Ольга Чуманева" class="profile-img">
+                <video class="profile-img" autoplay muted loop playsinline poster="me-poster.jpg" aria-label="Ольга Чуманева"><source src="me.webm" type="video/webm"><source src="me.mp4" type="video/mp4"></video>
             </div>
         </section>
 
