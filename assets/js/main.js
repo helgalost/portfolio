@@ -232,8 +232,8 @@
     var block = document.createElement('div');
     block.className = 'rail-block';
     block.innerHTML = '<div class="rail-head">' + (title ? '<h3>' + title + '<small>' + items.length + '</small></h3>' : '<span></span>') +
-      '<div class="rail-nav"><button class="icon-btn glass magnetic" type="button" aria-label="Назад"><svg class="icon"><use href="#i-left"/></svg></button>' +
-      '<button class="icon-btn glass magnetic" type="button" aria-label="Вперёд"><svg class="icon"><use href="#i-right"/></svg></button></div></div>';
+      '<div class="rail-nav"><button class="icon-btn round magnetic" type="button" aria-label="Назад"><svg class="icon"><use href="#i-left"/></svg></button>' +
+      '<button class="icon-btn round magnetic" type="button" aria-label="Вперёд"><svg class="icon"><use href="#i-right"/></svg></button></div></div>';
     var rail = document.createElement('div');
     rail.className = 'rail' + (extraClass ? ' ' + extraClass : '');
     var COPIES = 3;
@@ -504,7 +504,7 @@
     el.addEventListener('mouseleave', function () { el.style.transform = ''; });
   });
   document.addEventListener('mousemove', function (e) {
-    var card = e.target.closest && e.target.closest('.tilt, .offer.glass');
+    var card = e.target.closest && e.target.closest('.tilt, .offer.card');
     $$('.is-tilting').forEach(function (c) { if (c !== card) { c.style.transform = ''; c.classList.remove('is-tilting'); } });
     if (!card) return;
     var r = card.getBoundingClientRect();
