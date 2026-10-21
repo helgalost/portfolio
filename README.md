@@ -2,6 +2,8 @@
 
 Статический сайт без сборки: `index.html` + `assets/` + `img/`. Публикуется через GitHub Pages.
 
+CV для скачивания — `cv.pdf`, резюме — `resume.pdf` и `resume.txt` (просто замените файлы).
+
 ## Структура
 
 ```
@@ -9,7 +11,7 @@ index.html            разметка всех разделов
 assets/css/style.css  стили (цвета обеих тем — в начале файла, блок «Токены»)
 assets/js/works.js    список работ: названия, категории, описания
 assets/js/main.js     поведение: тема, галерея, лайтбокс, раскрытие кейсов
-assets/fonts/         шрифты Dela Gothic One и Golos Text (лежат локально)
+assets/fonts/         шрифты Manrope и Space Grotesk (лежат локально)
 img/works/            работы в полном размере (до 2000 px)
 img/works/thumb/      превью работ для сетки (.webp, 720 px)
 img/certs/            сертификаты (+ thumb/)
