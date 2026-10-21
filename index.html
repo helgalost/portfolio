@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ольга Чуманева — Бренд-стратег</title>
+    <title>Ольга Чуманева — Специалист по рекламе</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +56,6 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -66,9 +65,16 @@
             overflow-x: hidden;
             transition: background-color 0.6s ease, color 0.6s ease;
             -webkit-font-smoothing: antialiased;
-            cursor: none;
             font-size: 16px;
         }
+        /* cursor:none только когда JS реально инициализировал кастомный курсор */
+        body.cursor-ready { cursor: none; }
+        body.cursor-ready a, body.cursor-ready button, body.cursor-ready label,
+        body.cursor-ready .clickable-image, body.cursor-ready .hobby-badge,
+        body.cursor-ready .tech-chip, body.cursor-ready .accordion-header,
+        body.cursor-ready .project-header-toggle, body.cursor-ready .slider,
+        body.cursor-ready .modal-close, body.cursor-ready .footer-social-link,
+        body.cursor-ready .download-btn, body.cursor-ready .details-btn { cursor: none; }
 
         h1, h2, h3, h4, .section-title, .project-title, .header-left, .tag-line, .stat-val, .tech-stack-title, .footer-email, .details-btn, .accordion-header {
             font-family: 'Space Grotesk', sans-serif;
@@ -101,9 +107,10 @@
             border-color: var(--accent-color);
             opacity: 1;
         }
-        @media (hover: none), (pointer: coarse) {
-            .cursor-dot, .cursor-ring { display: none; }
-            body { cursor: auto; }
+        /* Кастомный курсор только на больших экранах с мышью */
+        @media (hover: none), (pointer: coarse), (max-width: 1024px) {
+            .cursor-dot, .cursor-ring { display: none !important; }
+            body.cursor-ready { cursor: auto; }
         }
 
         /* ===== BACKGROUND ===== */
@@ -113,22 +120,29 @@
             background-color: var(--bg-color);
             overflow: hidden;
         }
+        /* Мягкое свечение через многоступенчатый градиент — без filter:blur (был 120px, лагал) */
         .bg-layer::before {
             content: '';
             position: absolute;
-            top: -20%; left: -10%;
-            width: 80vw; height: 80vw;
-            background: radial-gradient(circle, var(--glow-1) 0%, transparent 60%);
-            filter: blur(120px);
+            top: -15%; left: -10%;
+            width: 70vw; height: 70vw;
+            background: radial-gradient(circle,
+                var(--glow-1) 0%,
+                rgba(255, 90, 54, 0.55) 8%,
+                rgba(255, 90, 54, 0.18) 35%,
+                transparent 70%);
             opacity: var(--glow-opacity);
         }
         .bg-layer::after {
             content: '';
             position: absolute;
-            bottom: -30%; right: -20%;
-            width: 90vw; height: 90vw;
-            background: radial-gradient(circle, var(--accent-violet) 0%, transparent 60%);
-            filter: blur(120px);
+            bottom: -25%; right: -20%;
+            width: 75vw; height: 75vw;
+            background: radial-gradient(circle,
+                var(--accent-violet) 0%,
+                rgba(192, 132, 252, 0.45) 8%,
+                rgba(192, 132, 252, 0.15) 35%,
+                transparent 70%);
             opacity: calc(var(--glow-opacity) * 0.8);
         }
         .noise {
@@ -138,6 +152,11 @@
             pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             mix-blend-mode: overlay;
+        }
+        /* На мобильных — отключаем тяжёлый фон и шум полностью */
+        @media (max-width: 768px) {
+            .bg-layer::before, .bg-layer::after { display: none; }
+            .noise { display: none; }
         }
 
         /* ===== PROGRESS BAR ===== */
@@ -295,6 +314,7 @@
         }
         @keyframes fadeIn { to { opacity: 1; } }
         .profile-img {
+            display: block;
             width: 100%;
             aspect-ratio: 4/5;
             object-fit: cover;
@@ -553,42 +573,89 @@
         .project-block ul { padding-left: 18px; margin-bottom: 12px; }
         .project-block li { margin-bottom: 4px; }
         
+        .project-link-wrap { margin: 16px 0 4px; }
         .project-link {
-            color: var(--accent-violet);
-            text-decoration: underline;
-            text-underline-offset: 4px;
+            color: var(--text-muted);
+            text-decoration: none;
             font-weight: 600;
+            font-size: 0.86rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
         }
-        .project-link:hover { color: var(--accent-color); }
+        .project-link i { font-size: 0.75rem; transition: transform .3s; }
+        .project-link:hover {
+            color: var(--accent-violet);
+            border-bottom-color: var(--accent-violet);
+        }
+        .project-link:hover i { transform: translateX(2px); }
+        /* CTA-вариант ссылки внутри project-visual (правый блок) */
+        .project-visual .project-link-wrap {
+            margin: 14px 0 0;
+            display: flex;
+            justify-content: center;
+        }
+        .project-visual .project-link {
+            background: rgba(192, 132, 252, 0.08);
+            border: 1.5px solid var(--accent-violet);
+            color: var(--accent-violet);
+            padding: 11px 22px;
+            border-radius: var(--r-pill);
+            font-size: 0.86rem;
+            font-weight: 600;
+            border-bottom: 1.5px solid var(--accent-violet);
+            transition: all .3s cubic-bezier(.2,.8,.2,1);
+        }
+        .project-visual .project-link i { font-size: 0.78rem; }
+        .project-visual .project-link:hover {
+            background: var(--accent-violet);
+            color: #fff;
+            border-color: var(--accent-violet);
+            transform: translateY(-1px);
+        }
+        .project-visual .project-link:hover i { transform: translateX(2px); }
 
-        /* Result Block (Выше процесса) */
+        /* Result Block — чистая, выразительная плашка */
         .result-highlight {
-            background: rgba(255, 90, 54, 0.08);
-            border: 1px solid rgba(255, 90, 54, 0.3);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 3px solid var(--accent-color);
             border-radius: var(--r-md);
             padding: 18px 22px;
-            margin-bottom: 8px;
+            margin-bottom: 18px;
         }
         .result-highlight h4 {
             color: var(--accent-color);
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
+            letter-spacing: 0.14em;
+            margin-bottom: 10px;
             font-family: 'Manrope', sans-serif;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
-        .result-highlight h4 i {
-            font-size: 1rem;
-        }
+        .result-highlight h4 i { font-size: 0.82rem; color: var(--accent-color); }
         .result-highlight .stat-val {
-            font-size: 1.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.08rem;
             font-weight: 700;
             color: var(--text-color);
-            margin-bottom: 4px;
             display: block;
+            line-height: 1.35;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .result-highlight .stat-sub {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            display: block;
+            line-height: 1.55;
+            margin: 0;
         }
 
         /* Visual */
@@ -622,22 +689,24 @@
         /* ===== DETAILS BUTTON & PANEL ===== */
         .details-btn {
             display: inline-flex; align-items: center; gap: 10px;
-            padding: 12px 22px;
-            background: transparent;
-            border: 1.5px solid var(--text-color);
-            color: var(--text-color);
+            padding: 11px 22px;
+            background: rgba(192, 132, 252, 0.08);
+            border: 1.5px solid var(--accent-violet);
+            color: var(--accent-violet);
             border-radius: var(--r-pill);
             font-weight: 600;
             font-size: 0.88rem;
             cursor: none;
-            transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+            transition: all 0.3s cubic-bezier(.2,.8,.2,1);
             width: fit-content;
             align-self: flex-start;
-            margin-top: 10px;
+            margin-top: 18px;
         }
         .details-btn:hover {
-            background: var(--text-color);
-            color: var(--bg-color);
+            background: var(--accent-violet);
+            color: #fff;
+            border-color: var(--accent-violet);
+            transform: translateY(-1px);
         }
         .details-btn i { transition: transform .4s; font-size: 0.8rem; }
         .details-btn.active i { transform: rotate(180deg); }
@@ -645,12 +714,11 @@
         .technical-details {
             max-height: 0; overflow: hidden;
             opacity: 0;
-            transition: max-height .6s cubic-bezier(.2,.8,.2,1), opacity .4s, margin-top .4s, padding .4s;
+            transition: max-height .5s cubic-bezier(.2,.8,.2,1), opacity .4s, margin-top .4s, padding .4s;
             background: var(--card-bg);
             border: 1px solid transparent;
             border-radius: var(--r-md);
             margin-top: 0;
-            backdrop-filter: blur(20px);
             width: 100%;
         }
         .technical-details.open {
@@ -775,20 +843,53 @@
             border-radius: var(--r-xs);
         }
 
-        /* ===== WHAT I CAN BRING (List) ===== */
+        /* ===== WHAT I CAN BRING (Callout + List) ===== */
+        .bring-callout {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 3px solid var(--accent-violet);
+            padding: 20px 22px;
+            border-radius: var(--r-md);
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .bring-callout-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-violet);
+            font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+        }
+        .bring-callout-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.18rem;
+            color: var(--text-color);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+        }
+        .bring-callout-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-top: 4px;
+        }
         .bring-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: grid;
-            gap: 16px;
+            gap: 14px;
         }
         .bring-list li {
             position: relative;
-            padding-left: 36px;
+            padding-left: 38px;
             font-size: 1rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.55;
         }
         .bring-list li::before {
             content: '✓';
@@ -797,14 +898,18 @@
             top: 2px;
             width: 24px;
             height: 24px;
-            background: rgba(255, 90, 54, 0.15);
-            color: var(--accent-color);
+            background: rgba(192, 132, 252, 0.15);
+            color: var(--accent-violet);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.75rem;
             font-weight: 900;
+        }
+        .bring-list li strong {
+            color: var(--text-color);
+            font-weight: 600;
         }
 
         /* Timeline */
@@ -874,42 +979,65 @@
         }
         .gallery-item:hover img { transform: scale(1.05); }
 
-        /* ===== FOOTER ===== */
+        /* Сертификаты — портретная ориентация, объект полностью виден */
+        .cert-gallery .gallery-item {
+            aspect-ratio: 3 / 4;
+        }
+        .cert-gallery .gallery-item img {
+            object-fit: contain;
+            background: var(--card-bg);
+            padding: 6px;
+        }
+        .cert-gallery .gallery-item:hover img { transform: scale(1.02); }
+
+        /* ===== FOOTER — отцентрован ===== */
         .main-footer {
-            margin-top: 100px;
-            padding: 70px 0 50px;
+            margin-top: 60px;
+            padding: 56px 0 44px;
             border-top: 1px solid var(--card-border);
+            text-align: center;
+        }
+        .footer-socials-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-align: center;
         }
         .footer-socials {
             display: flex;
-            gap: 12px;
-            margin-bottom: 40px;
+            gap: 16px;
+            margin-bottom: 48px;
             flex-wrap: wrap;
+            justify-content: center;
         }
         .footer-social-link {
             display: grid; place-items: center;
-            width: 48px; height: 48px;
+            width: 64px; height: 64px;
             border-radius: 50%;
             background: var(--card-bg);
             color: var(--text-color);
-            font-size: 1rem;
+            font-size: 1.35rem;
             text-decoration: none;
             border: 1px solid var(--card-border);
-            transition: all .4s cubic-bezier(.2,.8,.2,1);
-            backdrop-filter: blur(20px);
+            transition: all .3s cubic-bezier(.2,.8,.2,1);
         }
         .footer-social-link:hover {
             background: var(--accent-violet);
             color: #fff;
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             border-color: var(--accent-violet);
-            box-shadow: 0 12px 30px -8px var(--accent-violet);
+            box-shadow: 0 14px 32px -10px var(--accent-violet);
         }
         
-        /* CTA Block */
+        /* CTA Block — отцентрован */
         .footer-cta {
-            margin-bottom: 40px;
-            max-width: 600px;
+            margin: 0 auto 40px;
+            max-width: 620px;
+            text-align: center;
         }
         .footer-cta h3 {
             font-size: clamp(1.5rem, 3vw, 2rem);
@@ -927,46 +1055,59 @@
             color: var(--text-color);
             text-decoration: none;
             transition: color .3s;
-            display: inline-block;
+            display: block;
+            text-align: center;
             position: relative;
+            margin: 0 auto;
         }
         .footer-email::after {
             content: '';
             position: absolute;
-            left: 0; bottom: 4px;
+            left: 50%; bottom: 4px;
             width: 100%; height: 2px;
             background: var(--accent-color);
-            transform: scaleX(0);
-            transform-origin: right;
+            transform: translateX(-50%) scaleX(0);
+            transform-origin: center;
             transition: transform .5s cubic-bezier(.2,.8,.2,1);
         }
         .footer-email:hover { color: var(--accent-color); }
         .footer-email:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+            transform: translateX(-50%) scaleX(0.5);
         }
         .footer-meta {
             margin-top: 40px;
             font-size: 0.78rem;
             color: var(--text-muted);
-            display: flex; justify-content: space-between;
-            flex-wrap: wrap; gap: 16px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            text-align: center;
         }
 
         /* ===== MODAL ===== */
         .image-modal {
-            display: none;
+            display: flex;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
             position: fixed; inset: 0;
             background: rgba(0,0,0,0.96);
             backdrop-filter: blur(10px);
             z-index: 20000;
             justify-content: center; align-items: center;
-            opacity: 0;
-            transition: opacity .4s ease;
+            transition: opacity .35s ease, visibility 0s linear .35s;
         }
-        .image-modal.active { display: flex; opacity: 1; }
+        .image-modal.active {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+            transition: opacity .35s ease, visibility 0s;
+        }
         .image-modal img {
-            max-width: 90%; max-height: 90%;
+            max-width: min(92vw, 1100px);
+            max-height: 88vh;
+            width: auto; height: auto;
             object-fit: contain;
             border-radius: var(--r-md);
             box-shadow: 0 30px 80px rgba(0,0,0,0.6);
@@ -975,22 +1116,27 @@
         }
         .image-modal.active img { transform: scale(1); }
         .modal-close {
-            position: absolute; top: 24px; right: 28px;
-            font-size: 2.2rem; color: #fff;
+            position: absolute; top: 20px; right: 24px;
+            width: 44px; height: 44px;
+            display: grid; place-items: center;
+            font-size: 2rem; color: #fff;
             cursor: none;
-            transition: transform .3s, color .3s;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            transition: transform .3s, color .3s, background .3s;
             line-height: 1;
         }
         .modal-close:hover { transform: rotate(90deg); color: var(--accent-color); }
 
-        /* ===== REVEAL ===== */
-        .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); }
+        /* ===== REVEAL — компактные трансформации для производительности ===== */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); }
+        .reveal-left { opacity: 0; transform: translateX(-20px); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
         .reveal-left.visible { opacity: 1; transform: translateX(0); }
-        .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1); }
+        .reveal-right { opacity: 0; transform: translateX(20px); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
         .reveal-right.visible { opacity: 1; transform: translateX(0); }
-        .reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+        .reveal-stagger > * { opacity: 0; transform: translateY(12px); transition: opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1); }
         .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
         .reveal-stagger.visible > *:nth-child(1) { transition-delay: .04s; }
         .reveal-stagger.visible > *:nth-child(2) { transition-delay: .1s; }
@@ -998,6 +1144,30 @@
         .reveal-stagger.visible > *:nth-child(4) { transition-delay: .22s; }
         .reveal-stagger.visible > *:nth-child(5) { transition-delay: .28s; }
         .reveal-stagger.visible > *:nth-child(6) { transition-delay: .34s; }
+        /* Когда аккордеон раскрыт — принудительно показываем reveal-элементы
+           внутри (на случай, если IntersectionObserver не успел сработать) */
+        .accordion-item.active .reveal-stagger > *,
+        .accordion-item.active .reveal,
+        .accordion-item.active .reveal-left,
+        .accordion-item.active .reveal-right {
+            opacity: 1 !important;
+            transform: translateY(0) translateX(0) !important;
+        }
+        /* Подсказка: 4 подпрыгивания chevron при попадании в зону видимости */
+        .accordion-item:not(.active).visible .accordion-header i {
+            animation: hintChevron 2.4s cubic-bezier(.2,.8,.2,1) 0.4s 4;
+        }
+        @keyframes hintChevron {
+            0%, 65%, 100% { transform: translateY(0); }
+            32% { transform: translateY(5px); }
+        }
+        /* Сильнее подсветить header свёрнутого аккордеона при ховере */
+        .accordion-item:not(.active) .accordion-header:hover {
+            color: var(--accent-violet);
+        }
+        .accordion-item:not(.active) .accordion-header:hover i {
+            color: var(--accent-violet);
+        }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
@@ -1006,27 +1176,81 @@
             .header-left { font-size: 0.95rem; }
             .hero {
                 grid-template-columns: 1fr;
-                padding-top: 110px;
-                gap: 32px;
+                padding-top: 88px;
+                padding-bottom: 32px;
+                gap: 24px;
             }
-            .hero .profile-img-wrap { order: -1; max-width: 300px; }
-            .project-grid {
-                grid-template-columns: 1fr;
-                gap: 28px;
-            }
-            .tech-inner {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .section-title, .accordion-header { margin-top: 40px; }
+            .hero .profile-img-wrap { order: -1; max-width: 280px; }
+            .project-grid { grid-template-columns: 1fr; gap: 20px; }
+            .tech-inner { grid-template-columns: 1fr; gap: 18px; }
+            .section-title, .accordion-header { margin-top: 28px; }
+            .project-item { margin-bottom: 12px; }
+            .accordion-body { padding: 0 0 20px 0; }
+            .tags-section { margin-top: 24px; gap: 16px; }
+            .ticker-wrap { margin: 36px 0; padding: 14px 0; }
+            /* Бегущая строка медленнее на мобильных, без визуальных рывков */
+            .ticker { animation-duration: 90s; }
+            .ticker span { padding: 0 16px; }
+            /* Меньше амплитуда у reveal-анимаций — стабильнее на мобильных */
+            .reveal { transform: translateY(20px); }
+            .reveal-left, .reveal-right { transform: translateY(20px); }
+            /* Плашка результата компактнее */
+            .result-highlight { padding: 14px 16px 14px 18px; margin-bottom: 14px; }
+            .result-highlight .stat-val { font-size: 1rem; }
+            /* Кнопка "Подробнее" компактнее */
+            .details-btn { padding: 10px 18px; font-size: 0.82rem; margin-top: 14px; }
+            /* Отключаем тяжелые hover-эффекты — на тач часто залипают */
+            .project-image-wrapper:hover img,
+            .profile-img-wrap:hover .profile-img,
+            .project-gallery img:hover { transform: none; }
+            /* Бейджи на мобильных чуть крупнее для тапа */
+            .hobby-badge { padding: 9px 14px; font-size: 0.82rem; }
+            /* CTA под проектом — компактнее */
+            .project-visual .project-link { padding: 10px 18px; font-size: 0.82rem; }
+            /* Bring-callout — компактнее */
+            .bring-callout { padding: 14px 16px; margin-bottom: 20px; }
+            .bring-callout-text { font-size: 1.05rem; }
         }
         @media (max-width: 560px) {
-            .container { padding-inline: 18px; }
+            .container { padding-inline: 16px; }
             .project-gallery { grid-template-columns: 1fr; }
-            .main-footer { padding: 50px 0 40px; }
-            .footer-social-link { width: 44px; height: 44px; font-size: 0.9rem; }
+            .main-footer { margin-top: 36px; padding: 40px 0 30px; }
+            .footer-social-link { width: 52px; height: 52px; font-size: 1.1rem; }
+            .footer-socials { gap: 10px; margin-bottom: 32px; }
+            .footer-socials-title { margin-bottom: 14px; }
+            .footer-cta { margin-bottom: 28px; }
             .gallery-grid { grid-template-columns: 1fr; }
             .skills-grid { grid-template-columns: 1fr; }
+            /* Бегущая строка — ещё медленнее на маленьких экранах */
+            .ticker { animation-duration: 110s; font-size: clamp(1.4rem, 7vw, 2.2rem); }
+            .ticker span { padding: 0 12px; }
+            .ticker-wrap { margin: 28px 0; padding: 10px 0; }
+            /* Плашка результата — компактнее */
+            .result-highlight { padding: 12px 14px; margin-bottom: 12px; }
+            .result-highlight .stat-val { font-size: 0.92rem; }
+            .result-highlight h4 { font-size: 0.66rem; margin-bottom: 6px; }
+            /* Бейджи компактнее */
+            .hobby-badge { padding: 7px 11px; font-size: 0.76rem; }
+            .hobby-badge i { font-size: 0.72rem; }
+            /* Списки */
+            .bring-list { gap: 12px; }
+            .bring-list li { font-size: 0.92rem; padding-left: 32px; }
+            .bring-callout { padding: 12px 14px; margin-bottom: 18px; }
+            .bring-callout-text { font-size: 1rem; }
+            /* Кнопка закрытия модалки — ещё заметнее на мобильных */
+            .modal-close { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 1.6rem; }
+        }
+        /* Тач-устройства: выключаем tilt, magnetic и тяжелые hover */
+        @media (hover: none), (pointer: coarse) {
+            .project-image-wrapper,
+            .details-btn,
+            .footer-social-link,
+            .download-btn,
+            .footer-email,
+            .tech-chip { transform: none !important; }
+            .profile-img-wrap:hover .profile-img,
+            .project-image-wrapper:hover img,
+            .project-gallery img:hover { transform: none; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1055,7 +1279,7 @@
 
     <header id="header">
         <div class="header-left">helgalost</div>
-        <div class="header-center">Бренд-стратег · 2026</div>
+        <div class="header-center">Реклама · Стратегия · 2026</div>
         <div class="header-right">
             <div class="theme-switch-wrapper">
                 <i class="fas fa-moon theme-icon" id="icon-moon"></i>
@@ -1082,8 +1306,8 @@
                 </h1>
                 <div class="tag-line">Аналитика + Креатив = Результат</div>
                 <div class="bio-block">
-                    <p>Стратег и аналитик с техническим бэкграундом. Соединяю компетенции: поддержку и оптимизацию инфраструктуры, управление командами и маркетинг.</p>
-                    <p>Работаю с процессами, автоматизацией и коммуникацией — от построения контент-стратегии до внедрения CRM, ServiceDesk и работы с клиентским сервисом.</p>
+                    <p>Специалист по рекламе и стратег в маркетинге с техническим бэкграундом. Соединяю креатив, аналитику и автоматизацию: от разработки контент-стратегии до запуска Яндекс Директа и работы с Метрикой.</p>
+                    <p>Работаю с процессами, инструментами и коммуникацией — от проектирования рекламных кампаний до внедрения CRM, ServiceDesk и работы с клиентским сервисом.</p>
                 </div>
                 
                 <div class="download-btns">
@@ -1099,6 +1323,24 @@
                     <div>
                         <div class="tags-group-title">Профессионально</div>
                         <div class="tags-container reveal-stagger">
+                            <span class="hobby-badge" data-tooltip="Adobe Photoshop: сложная ретушь, коллажи, цветокоррекция, подготовка макетов для веба и полиграфии. Adobe Illustrator: векторная графика, иконки, логотипы. Adobe InDesign: многостраничные макеты, буклеты, журналы. Supa: онлайн-графический редактор для быстрых макетов.">
+                                <i class="fas fa-paintbrush"></i> Графический дизайн
+                            </span>
+                            <span class="hobby-badge" data-tooltip="Adobe Premiere Pro: монтаж видео, цветокоррекция, звук, экспорт под разные платформы (Reels, Shorts, YouTube).">
+                                <i class="fas fa-film"></i> Видеомонтаж
+                            </span>
+                            <span class="hobby-badge" data-tooltip="Microsoft Office (Word, Excel, PowerPoint) и Google Workspace (Docs, Sheets, Slides) на продвинутом уровне: сводные таблицы, формулы, макросы, совместное редактирование, дашборды, корпоративные презентации и отчёты.">
+                                <i class="fas fa-table-cells"></i> Офисные пакеты
+                            </span>
+                            <span class="hobby-badge" data-tooltip="Tilda: сборка лендингов и многостраничных сайтов без кода. HTML/CSS/JS: базовая вёрстка и кастомизация. Canva: быстрая сборка шаблонов для соцсетей.">
+                                <i class="fas fa-laptop-code"></i> Веб и лендинги
+                            </span>
+                            <span class="hobby-badge" data-tooltip="Яндекс Директ: настройка и ведение контекстных кампаний, работа со ставками, аудиториями, ретаргетингом. Яндекс Метрика: счётчики, цели, аналитика воронок, тепловые карты и отчёты для клиентов.">
+                                <i class="fas fa-bullhorn"></i> Реклама и аналитика
+                            </span>
+                            <span class="hobby-badge" data-tooltip="Планирование задач в Канбан-системах: Kaiten, Битрикс24, Яндекс Трекер. Распределение задач, спринты, контроль сроков.">
+                                <i class="fas fa-tasks"></i> Таск-менеджмент
+                            </span>
                             <span class="hobby-badge" data-tooltip="Руководила бизнес-проектами с настройкой стратегических систем сервисов — CRM, телефония. Выстраивала CJM, оптимизировала воронки, снижала нагрузку на поддержку на 58%.">
                                 <i class="fas fa-chart-line"></i> Управление процессами
                             </span>
@@ -1134,12 +1376,18 @@
                             <span class="hobby-badge" data-tooltip="Песочницы и стратегии для прокачки креатива и планирования: The Sims, Cities: Skylines, Minecraft, Stardew Valley, Genshin Impact, It Takes Two.">
                                 <i class="fas fa-gamepad" style="color: var(--accent-violet);"></i> Игры
                             </span>
+                            <span class="hobby-badge" data-tooltip="Слежу за новинками техники: смартфоны, процессоры, гаджеты и устройства. Люблю разбираться в характеристиках и тестировать новинки — от флагманских телефонов до необычных девайсов.">
+                                <i class="fas fa-mobile-screen" style="color: var(--accent-violet);"></i> Техника и гаджеты
+                            </span>
+                            <span class="hobby-badge" data-tooltip="Консоль и VR-гарнитура. Обожаю Beat Saber — ритм и движение в VR заряжают как тренировка. Также играю в другие VR-проекты и консольные эксклюзивы.">
+                                <i class="fas fa-vr-cardboard" style="color: var(--accent-violet);"></i> Консоль и VR
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="profile-img-wrap">
-                <img src="me.gif" alt="Ольга Чуманева" class="profile-img">
+                <video class="profile-img" autoplay muted loop playsinline poster="me-poster.jpg" aria-label="Ольга Чуманева"><source src="me.webm" type="video/webm"><source src="me.mp4" type="video/mp4"></video>
             </div>
         </section>
 
@@ -1172,7 +1420,76 @@
         <!-- 1. КЕЙСЫ -->
         <h2 class="section-title reveal">Кейсы</h2>
 
-        <!-- Project 1 -->
+        <!-- Project 1 (Курс по рекламе — поднят на первое место как специализация) -->
+        <article class="project-item reveal">
+            <div class="project-header-toggle">
+                <div>
+                    <h3 class="project-title">Авторский курс по рекламе</h3>
+                    <div class="project-role">Преподавание / Методист</div>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            
+            <div class="project-body">
+                <div class="project-grid">
+                    <div class="project-info">
+                        <div class="result-highlight">
+                            <h4><i class="fas fa-trophy"></i> Результат</h4>
+                            <span class="stat-val">Авторский курс по рекламе с нуля</span>
+                            <span class="stat-sub">Полная методическая программа + интерактивный сайт курса для учеников начальных классов</span>
+                        </div>
+                        <div class="project-block">
+                            <h4>Контекст и задача</h4>
+                            <p>Отсутствовала база для обучения детей начальных классов основам рекламы. Нужно было создать программу с нуля и подготовить учеников к соревнованиям.</p>
+                        </div>
+                        <div class="project-block">
+                            <h4>Что сделала</h4>
+                            <ul>
+                                <li>Разработала полную структуру курса и методические материалы.</li>
+                                <li>Провела цикл занятий с детьми (теория + практика).</li>
+                                <li>Подготовила учеников к защите проектов на чемпионате.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="project-image-wrapper">
+                            <img src="proj5.jpg" alt="Курс по рекламе" class="clickable-image">
+                        </div>
+                        <div class="project-link-wrap">
+                            <a href="https://helgalost.github.io/study/" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Посмотреть сайт курса
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="details-btn">
+                    Подробнее <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="technical-details">
+                    <div class="tech-inner">
+                        <div>
+                            <div class="tech-stack-title">Методология</div>
+                            <div class="tech-description">
+                                <p>Курс построен на игровых механиках и реальных кейсах из мира рекламы. Дети изучают, что такое бренд, как придумывать слоганы, целевую аудиторию и как защищать свои идеи.</p>
+                                <p>Для наглядности был создан интерактивный веб-сайт курса, где собраны все материалы и задания.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tech-stack-title">Инструменты</div>
+                            <div class="tech-chips">
+                                <div class="tech-chip" data-tooltip="Создание программы, планов занятий и презентаций.">Методист</div>
+                                <div class="tech-chip" data-tooltip="Проведение офлайн/онлайн занятий, фасилитация.">Преподавание</div>
+                                <div class="tech-chip" data-tooltip="Разработка интерактивного сайта для учеников.">HTML / CSS / JS</div>
+                                <div class="tech-chip" data-tooltip="Подготовка к соревнованиям, работа с проектами.">Наставничество</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 2 (Медиа & SMM — было #1) -->
         <article class="project-item reveal">
             <div class="project-header-toggle">
                 <div>
@@ -1188,7 +1505,7 @@
                         <div class="result-highlight">
                             <h4><i class="fas fa-chart-line"></i> Результат</h4>
                             <span class="stat-val">+20% подписчиков, +30% охваты</span>
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">5+ публикаций в СМИ (включая Mos.ru)</span>
+                            <span class="stat-sub">5+ публикаций в СМИ (включая Mos.ru)</span>
                         </div>
                         <div class="project-block">
                             <h4>Контекст и задача</h4>
@@ -1241,7 +1558,7 @@
             </div>
         </article>
 
-        <!-- Project 2 -->
+        <!-- Project 3 (Контент-стратегия) -->
         <article class="project-item reveal">
             <div class="project-header-toggle">
                 <div>
@@ -1257,7 +1574,7 @@
                         <div class="result-highlight">
                             <h4><i class="fas fa-chart-line"></i> Результат</h4>
                             <span class="stat-val">Перевыполнение KPI в VK</span>
-                            <span style="font-size: 0.85rem; color: var(--text-muted);"> KPI выполнен на 134%, значительный рост охватов</span>
+                            <span class="stat-sub">KPI выполнен на 134%, значительный рост охватов</span>
                         </div>
                         <div class="project-block">
                             <h4>Контекст и задача</h4>
@@ -1306,7 +1623,7 @@
             </div>
         </article>
 
-        <!-- Project 3 -->
+        <!-- Project 4 (IT-инфраструктура) -->
         <article class="project-item reveal">
             <div class="project-header-toggle">
                 <div>
@@ -1322,7 +1639,7 @@
                         <div class="result-highlight">
                             <h4><i class="fas fa-chart-line"></i> Результат</h4>
                             <span class="stat-val">+70% скорость ответа</span>
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">-58% активных тикетов, +30% удовлетворенность клиентов</span>
+                            <span class="stat-sub">-58% активных тикетов, +30% удовлетворенность клиентов</span>
                         </div>
                         <div class="project-block">
                             <h4>Контекст и задача</h4>
@@ -1373,7 +1690,7 @@
             </div>
         </article>
 
-        <!-- Project 4 -->
+        <!-- Project 5 (Перенос инфраструктуры) -->
         <article class="project-item reveal">
             <div class="project-header-toggle">
                 <div>
@@ -1389,7 +1706,7 @@
                         <div class="result-highlight">
                             <h4><i class="fas fa-chart-line"></i> Результат</h4>
                             <span class="stat-val">Миграция без простоя</span>
-                            <span style="font-size: 0.85rem; color: var(--text-muted);">Перенесено 15+ интеграций и автоматизаций</span>
+                            <span class="stat-sub">Перенесено 15+ интеграций и автоматизаций</span>
                         </div>
                         <div class="project-block">
                             <h4>Контекст и задача</h4>
@@ -1440,71 +1757,6 @@
                 </div>
             </div>
         </article>
-
-        <!-- Project 5 -->
-        <article class="project-item reveal">
-            <div class="project-header-toggle">
-                <div>
-                    <h3 class="project-title">Авторский курс по рекламе</h3>
-                    <div class="project-role">Преподавание / Методист</div>
-                </div>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            
-            <div class="project-body">
-                <div class="project-grid">
-                    <div class="project-info">
-                        <div class="project-block">
-                            <h4>Контекст и задача</h4>
-                            <p>Отсутствовала база для обучения детей начальных классов основам рекламы. Нужно было создать программу с нуля и подготовить учеников к соревнованиям.</p>
-                        </div>
-                        <div class="project-block">
-                            <h4>Что сделала</h4>
-                            <ul>
-                                <li>Разработала полную структуру курса и методические материалы.</li>
-                                <li>Провела цикл занятий с детьми (теория + практика).</li>
-                                <li>Подготовила учеников к защите проектов на чемпионате.</li>
-                            </ul>
-                            <p style="margin-top: 12px;">
-                                <a href="https://helgalost.github.io/study/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i> Посмотреть сайт курса
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="project-visual">
-                        <div class="project-image-wrapper">
-                            <img src="proj5.jpg" alt="Курс по рекламе" class="clickable-image">
-                        </div>
-                    </div>
-                </div>
-
-                <button class="details-btn">
-                    Подробнее <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="technical-details">
-                    <div class="tech-inner">
-                        <div>
-                            <div class="tech-stack-title">Методология</div>
-                            <div class="tech-description">
-                                <p>Курс построен на игровых механиках и реальных кейсах из мира рекламы. Дети изучают, что такое бренд, как придумывать слоганы, целевую аудиторию и как защищать свои идеи.</p>
-                                <p>Для наглядности был создан интерактивный веб-сайт курса, где собраны все материалы и задания.</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="tech-stack-title">Инструменты</div>
-                            <div class="tech-chips">
-                                <div class="tech-chip" data-tooltip="Создание программы, планов занятий и презентаций.">Методист</div>
-                                <div class="tech-chip" data-tooltip="Проведение офлайн/онлайн занятий, фасилитация.">Преподавание</div>
-                                <div class="tech-chip" data-tooltip="Разработка интерактивного сайта для учеников.">HTML / CSS / JS</div>
-                                <div class="tech-chip" data-tooltip="Подготовка к соревнованиям, работа с проектами.">Наставничество</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
         <!-- 2. РАБОТЫ (Сделано развернутым по умолчанию) -->
         <div class="accordion-item active reveal">
             <button class="accordion-header">
@@ -1514,19 +1766,65 @@
             <div class="accordion-content">
                 <div class="accordion-body">
                     <div class="gallery-grid reveal-stagger">
-                        <div class="gallery-item"><img src="work-1.jpg" alt="Работа 1" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="work-2.jpg" alt="Работа 2" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="work-3.jpg" alt="Работа 3" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="work-4.jpg" alt="Работа 4" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="work-5.jpg" alt="Работа 5" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="work-6.jpg" alt="Работа 6" class="clickable-image"></div>
+                        <div class="gallery-item"><img src="work-1.jpg" alt="Работа 1" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-2.jpg" alt="Работа 2" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-3.jpg" alt="Работа 3" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-4.jpg" alt="Работа 4" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-5.jpg" alt="Работа 5" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-6.jpg" alt="Работа 6" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-7.jpg" alt="Работа 7" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-8.jpg" alt="Работа 8" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-9.jpg" alt="Работа 9" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-10.jpeg" alt="Работа 10" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-11.jpeg" alt="Работа 11" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-12.jpeg" alt="Работа 12" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-13.jpg" alt="Работа 13" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-14.jpg" alt="Работа 14" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-15.jpg" alt="Работа 15" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-16.jpg" alt="Работа 16" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-17.jpg" alt="Работа 17" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-18.jpg" alt="Работа 18" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-19.jpg" alt="Работа 19" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-20.jpg" alt="Работа 20" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-21.jpg" alt="Работа 21" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-22.jpg" alt="Работа 22" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-23.jpg" alt="Работа 23" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-24.jpg" alt="Работа 24" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-25.jpg" alt="Работа 25" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-26.jpg" alt="Работа 26" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-27.jpg" alt="Работа 27" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-28.jpg" alt="Работа 28" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-29.jpg" alt="Работа 29" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-30.jpg" alt="Работа 30" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-31.jpg" alt="Работа 31" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-32.jpg" alt="Работа 32" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-33.jpg" alt="Работа 33" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-34.jpg" alt="Работа 34" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-35.jpg" alt="Работа 35" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-36.jpg" alt="Работа 36" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-37.jpg" alt="Работа 37" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-38.jpg" alt="Работа 38" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-39.jpg" alt="Работа 39" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-40.jpg" alt="Работа 40" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-41.jpg" alt="Работа 41" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-42.jpg" alt="Работа 42" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-43.jpg" alt="Работа 43" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-44.jpg" alt="Работа 44" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-45.jpg" alt="Работа 45" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-46.jpg" alt="Работа 46" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-47.jpg" alt="Работа 47" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-48.jpg" alt="Работа 48" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-49.jpg" alt="Работа 49" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-50.jpg" alt="Работа 50" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-51.jpg" alt="Работа 51" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="work-52.jpg" alt="Работа 52" class="clickable-image" loading="lazy" decoding="async"></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- 3. ОПЫТ -->
-        <div class="accordion-item active reveal">
+        <div class="accordion-item reveal">
             <button class="accordion-header">
                 <span>Опыт</span>
                 <i class="fas fa-chevron-down"></i>
@@ -1581,20 +1879,21 @@
             </button>
             <div class="accordion-content">
                 <div class="accordion-body">
-                    <div class="gallery-grid reveal-stagger">
-                        <div class="gallery-item"><img src="cert-1.jpg" alt="Сертификат 1" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="cert-2.jpg" alt="Сертификат 2" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="cert-3.jpg" alt="Сертификат 3" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="cert-4.jpg" alt="Сертификат 4" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="cert-5.jpg" alt="Сертификат 5" class="clickable-image"></div>
-                        <div class="gallery-item"><img src="cert-6.jpg" alt="Сертификат 6" class="clickable-image"></div>
+                    <div class="gallery-grid cert-gallery reveal-stagger">
+                        <div class="gallery-item"><img src="cert-1.jpg" alt="Сертификат 1" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="cert-2.jpg" alt="Сертификат 2" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="cert-3.jpg" alt="Сертификат 3" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="cert-4.jpg" alt="Сертификат 4" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="cert-5.jpg" alt="Сертификат 5" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="cert-6.jpg" alt="Сертификат 6" class="clickable-image" loading="lazy" decoding="async"></div>
+                        <div class="gallery-item"><img src="cert-7.jpg" alt="Сертификат 7" class="clickable-image" loading="lazy" decoding="async"></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- 5. НАВЫКИ (Сгруппированные) -->
-        <div class="accordion-item active reveal">
+        <div class="accordion-item reveal">
             <button class="accordion-header">
                 <span>Навыки</span>
                 <i class="fas fa-chevron-down"></i>
@@ -1602,6 +1901,72 @@
             <div class="accordion-content">
                 <div class="accordion-body">
                     
+                    <div class="skills-group">
+                        <div class="skills-group-title">Инструменты и софт</div>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <h4>Графический дизайн и монтаж</h4>
+                                <div class="skill-desc">Полный цикл визуального производства: ретушь, векторная и многополосная вёрстка, монтаж видео.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Adobe Photoshop</span>
+                                    <span class="skill-tool">Adobe Illustrator</span>
+                                    <span class="skill-tool">Adobe InDesign</span>
+                                    <span class="skill-tool">Adobe Premiere Pro</span>
+                                    <span class="skill-tool">Supa</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Офисный пакет и Google Workspace</h4>
+                                <div class="skill-desc">Документы, таблицы, формулы, сводные таблицы, презентации и совместное редакрование.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Word</span>
+                                    <span class="skill-tool">Excel</span>
+                                    <span class="skill-tool">PowerPoint</span>
+                                    <span class="skill-tool">Google Docs</span>
+                                    <span class="skill-tool">Google Sheets</span>
+                                    <span class="skill-tool">Google Slides</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Веб-конструкторы и вёрстка</h4>
+                                <div class="skill-desc">Сборка лендингов и сайтов: Tilda для no-code, HTML/CSS/JS для кастомизации, Canva для шаблонов.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Tilda</span>
+                                    <span class="skill-tool">HTML</span>
+                                    <span class="skill-tool">CSS</span>
+                                    <span class="skill-tool">Canva</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Реклама и веб-аналитика</h4>
+                                <div class="skill-desc">Запуск и ведение контекстной рекламы, анализ воронок, цели, тепловые карты, отчёты.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Яндекс Директ</span>
+                                    <span class="skill-tool">Яндекс Метрика</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Планирование задач</h4>
+                                <div class="skill-desc">Канбан-доски, спринты, распределение задач, контроль сроков в российских и зарубежных системах.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Яндекс Трекер</span>
+                                    <span class="skill-tool">Канбан</span>
+                                    <span class="skill-tool">Kaiten</span>
+                                    <span class="skill-tool">Битрикс24</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>CRM и автоматизация</h4>
+                                <div class="skill-desc">Настройка воронок, триггеров, интеграций, маршрутизации заявок и автоответов.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">AmoCRM</span>
+                                    <span class="skill-tool">Bitrix24</span>
+                                    <span class="skill-tool">n8n</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="skills-group">
                         <div class="skills-group-title">Маркетинг и коммуникации</div>
                         <div class="skills-grid">
@@ -1637,6 +2002,24 @@
                                     <span class="skill-tool">Reels</span>
                                     <span class="skill-tool">Медиапланы</span>
                                     <span class="skill-tool">KPI</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Контент-маркетинг</h4>
+                                <div class="skill-desc">Контент-матрица, рубрикаторы, форматная стратегия под цели бренда и этапы воронки продаж.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Контент-матрица</span>
+                                    <span class="skill-tool">Медиаплан</span>
+                                    <span class="skill-tool">TOV</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>PR и работа со СМИ</h4>
+                                <div class="skill-desc">Пресс-релизы, инфополе, взаимодействие с редакциями СМИ и государственными порталами.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Пресс-релиз</span>
+                                    <span class="skill-tool">Медиа-коммуникации</span>
+                                    <span class="skill-tool">Mos.ru</span>
                                 </div>
                             </div>
                         </div>
@@ -1677,6 +2060,24 @@
                                 <div class="skill-tools">
                                     <span class="skill-tool">JTBD</span>
                                     <span class="skill-tool">Agile</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Управление проектами</h4>
+                                <div class="skill-desc">Планирование спринтов, контроль сроков и распределение задач в распределенной команде.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Спринты</span>
+                                    <span class="skill-tool">Дедлайны</span>
+                                    <span class="skill-tool">Resource-planning</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Регламенты и база знаний</h4>
+                                <div class="skill-desc">Разработка регламентов, инструкций и стандартов работы. Построение баз знаний для онбординга и обучения.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Регламенты</span>
+                                    <span class="skill-tool">SOP</span>
+                                    <span class="skill-tool">База знаний</span>
                                 </div>
                             </div>
                         </div>
@@ -1720,6 +2121,25 @@
                                     <span class="skill-tool">AnyDesk</span>
                                 </div>
                             </div>
+                            <div class="skill-card">
+                                <h4>Настройка телефонии</h4>
+                                <div class="skill-desc">Подключение и интеграция облачных телефоний с CRM, маршрутизация звонков, запись и аналитика диалогов.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Naumen</span>
+                                    <span class="skill-tool">Mango</span>
+                                    <span class="skill-tool">Интеграции</span>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Базы знаний и дистанционный доступ</h4>
+                                <div class="skill-desc">Организация обучения новичков через базы знаний, удалённая помощь пользователям и демонстрация экрана.</div>
+                                <div class="skill-tools">
+                                    <span class="skill-tool">Notion</span>
+                                    <span class="skill-tool">Teamly</span>
+                                    <span class="skill-tool">Getscreen</span>
+                                    <span class="skill-tool">AnyDesk</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -1728,7 +2148,7 @@
         </div>
 
         <!-- 6. УВЛЕЧЕНИЯ -->
-        <div class="accordion-item active reveal">
+        <div class="accordion-item reveal">
             <button class="accordion-header">
                 <span>Увлечения</span>
                 <i class="fas fa-chevron-down"></i>
@@ -1737,6 +2157,7 @@
                 <div class="accordion-body">
                     <p>Я активно участвую на <strong>учебном радио</strong>: веду эфиры, пишу сценарии и работаю с голосом. Это помогает развивать навыки публичных выступлений и быстрой реакции.</p>
                     <p>Для души я занимаюсь <strong>театром</strong> — это отличная школа эмпатии. А когда нужно отдохнуть, я играю в <strong>компьютерные игры</strong> (например песочницы, где можно строить), это тренирует креативность.</p>
+                    <p>Я очень люблю <strong>технику</strong> — слежу за новинками: новые смартфоны, процессоры, нестандартные устройства и гаджеты. Люблю разбираться в характеристиках и тестировать девайсы. Дома есть <strong>игровая консоль и VR-гарнитура</strong>: обожаю Beat Saber — ритм и движение в VR заряжают как тренировка, плюс другие VR-тайтлы и консольные эксклюзивы.</p>
                     <p>И, конечно, <strong>путешествия</strong>. Ничто так не расширяет кругозор, как новые города и природа!</p>
                 </div>
             </div>
@@ -1750,11 +2171,18 @@
             </button>
             <div class="accordion-content">
                 <div class="accordion-body">
+                    <div class="bring-callout">
+                        <div class="bring-callout-label">Специализация</div>
+                        <div class="bring-callout-text">Стратегия в рекламе и маркетинге</div>
+                        <div class="bring-callout-desc">Превращаю цели бизнеса в измеримые рекламные кампании, точки роста бренда и продуманный медиаплан — от креатива до отчёта с цифрами.</div>
+                    </div>
                     <ul class="bring-list">
-                        <li>Разобраться в запутанном процессе и найти узкие места.</li>
-                        <li>Организовать внедрение новой системы или перенос сервисов.</li>
-                        <li>Сократить ручные операции с помощью автоматизации.</li>
-                        <li>Наладить взаимодействие между технической командой, поддержкой и бизнесом.</li>
+                        <li><strong>Разработать стратегию рекламной кампании</strong> от идеи и позиционирования до запуска с измеримыми KPI.</li>
+                        <li><strong>Найти точки роста бренда</strong> и превратить их в медиаплан с цифрами и горизонтами масштабирования.</li>
+                        <li><strong>Соединить креатив и аналитику:</strong> концепция → запуск → отчёт с ROI и понятными выводами.</li>
+                        <li>Разобраться в запутанном процессе и найти узкие места в воронке.</li>
+                        <li>Сократить ручные операции с помощью автоматизации и CRM-интеграций.</li>
+                        <li>Наладить взаимодействие между креативной командой, аналитикой и бизнесом.</li>
                         <li>Превратить данные и наблюдения в конкретный план действий.</li>
                     </ul>
                 </div>
@@ -1765,6 +2193,7 @@
 
     <footer class="main-footer">
         <div class="container">
+            <div class="footer-socials-title reveal">Я в соцсетях</div>
             <div class="footer-socials reveal-stagger">
                 <a href="https://t.me/helgalost" class="footer-social-link" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
                 <a href="https://vk.ru/helgalost" class="footer-social-link" target="_blank" title="VK"><i class="fab fa-vk"></i></a>
@@ -1817,26 +2246,39 @@
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
         });
 
-        // ===== CURSOR =====
+        // ===== CURSOR — только на больших экранах с мышью =====
         const cursorDot = document.getElementById('cursorDot');
         const cursorRing = document.getElementById('cursorRing');
-        const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+        const isTouch = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 1024px)').matches;
 
         if (!isTouch) {
+            document.body.classList.add('cursor-ready');
             let mx = window.innerWidth / 2, my = window.innerHeight / 2;
             let rx = mx, ry = my;
+            let lastMoveTime = 0;
+            let loopRunning = false;
 
             document.addEventListener('mousemove', (e) => {
                 mx = e.clientX; my = e.clientY;
                 cursorDot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
+                lastMoveTime = Date.now();
+                if (!loopRunning) {
+                    loopRunning = true;
+                    requestAnimationFrame(loop);
+                }
             }, { passive: true });
 
-            (function loop() {
-                rx += (mx - rx) * 0.15;
-                ry += (my - ry) * 0.15;
+            function loop() {
+                rx += (mx - rx) * 0.18;
+                ry += (my - ry) * 0.18;
                 cursorRing.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
+                // Останавливаем loop когда мышь не двигается 200мс и кольцо догнало
+                if (Date.now() - lastMoveTime > 200 && Math.abs(mx - rx) < 0.5 && Math.abs(my - ry) < 0.5) {
+                    loopRunning = false;
+                    return;
+                }
                 requestAnimationFrame(loop);
-            })();
+            }
 
             const hoverSel = 'a, button, input, textarea, .clickable-image, .hobby-badge, .tech-chip, .details-btn, .accordion-header, .project-header-toggle, label, .skill-card';
             document.addEventListener('mouseover', (e) => {
@@ -1934,7 +2376,14 @@
         // ===== ACCORDIONS =====
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
-                header.parentElement.classList.toggle('active');
+                const item = header.parentElement;
+                item.classList.toggle('active');
+                // При раскрытии принудительно показываем reveal-элементы внутри,
+                // чтобы сертификаты/работы не застряли в opacity:0, если IO не сработал
+                if (item.classList.contains('active')) {
+                    item.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-stagger')
+                        .forEach(el => el.classList.add('visible'));
+                }
             });
         });
 
@@ -1974,26 +2423,53 @@
             if (e.key === 'Escape' && imageModal.classList.contains('active')) closeModal();
         });
 
-        // ===== TILT =====
+        // ===== TILT + MAGNETIC — троттлится через один rAF на кадр =====
+        let tiltCard = null, tiltE = null;
+        let magBtn = null, magE = null;
+        let rafScheduled = false;
+
+        function runTiltMag() {
+            rafScheduled = false;
+            if (tiltCard && tiltE) {
+                const rect = tiltCard.getBoundingClientRect();
+                const x = (tiltE.clientX - rect.left) / rect.width - 0.5;
+                const y = (tiltE.clientY - rect.top) / rect.height - 0.5;
+                tiltCard.style.transform = `perspective(1000px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
+            }
+            if (magBtn && magE) {
+                const rect = magBtn.getBoundingClientRect();
+                const x = magE.clientX - rect.left - rect.width / 2;
+                const y = magE.clientY - rect.top - rect.height / 2;
+                magBtn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            }
+        }
+        function scheduleTiltMag() {
+            if (!rafScheduled) {
+                rafScheduled = true;
+                requestAnimationFrame(runTiltMag);
+            }
+        }
+
         document.querySelectorAll('.project-image-wrapper').forEach(card => {
             card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width - 0.5;
-                const y = (e.clientY - rect.top) / rect.height - 0.5;
-                card.style.transform = `perspective(1000px) rotateY(${x * 4}deg) rotateX(${-y * 4}deg)`;
+                tiltCard = card; tiltE = e;
+                scheduleTiltMag();
+            }, { passive: true });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                tiltCard = null;
             });
-            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
         });
 
-        // ===== MAGNETIC =====
         document.querySelectorAll('.details-btn, .footer-social-link, .download-btn').forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                magBtn = btn; magE = e;
+                scheduleTiltMag();
+            }, { passive: true });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+                magBtn = null;
             });
-            btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
         });
     </script>
 </body>
