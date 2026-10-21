@@ -417,24 +417,17 @@
      ========================================================================== */
   if (!desktopFx) return;
 
-  /* ---------- Режим анимации курсора: тихий (по умолчанию) или яркий ---------- */
+  /* ---------- Шлейф красок за курсором: выключен, включается кнопкой в шапке ---------- */
   var fxBtn = $('#fxBtn');
   var fxBright = false;
-  try { fxBright = localStorage.getItem('cursorFx') === 'bright'; } catch (e) {}
+  try { fxBright = localStorage.getItem('cursorFx') === 'on'; } catch (e) {}
   function setFx(on) {
     fxBright = on;
     fxBtn.setAttribute('aria-pressed', String(on));
-    fxBtn.setAttribute('aria-label', on ? 'Яркая анимация курсора включена' : 'Включить яркую анимацию курсора');
-    fxBtn.setAttribute('data-tip', on ? 'Яркая анимация курсора включена. Нажмите, чтобы сделать её еле заметной.' : 'Включить яркую анимацию курсора');
-    root.classList.toggle('fx-bright', on);
+    fxBtn.setAttribute('aria-label', on ? 'Выключить анимацию за курсором' : 'Включить анимацию за курсором');
+    fxBtn.setAttribute('data-tip', on ? 'Выключить анимацию за курсором' : 'Включить анимацию за курсором');
+    if (!on && ctx) { ctx.clearRect(0, 0, canvas.width, canvas.height); }
   }
-  fxBtn.hidden = false;
-  setFx(fxBright);
-  fxBtn.addEventListener('click', function () {
-    setFx(!fxBright);
-    try { localStorage.setItem('cursorFx', fxBright ? 'bright' : 'calm'); } catch (e) {}
-    if (tipFor === fxBtn) showTip(fxBtn);
-  });
 
   /* ---------- Круглый курсор ---------- */
   var dot = $('#cursorDot'), ring = $('#cursorRing');
@@ -476,7 +469,7 @@
     for (var bi = 0; bi < colors.length; bi++) blobs.push({ x: -500, y: -500, k: 0.2 - bi * 0.03, c: colors[bi], r: 90 - bi * 8, a: bi * 1.3, ox: 0, oy: 0 });
   }
   function paintKick(x, y) {
-    if (!paintOn) return;
+    if (!paintOn || !fxBright) return;
     lastMove = performance.now();
     blobs.tx = x * SCALE; blobs.ty = y * SCALE;
     if (blobs[0].x < -400) blobs.forEach(function (b) { b.x = blobs.tx; b.y = blobs.ty; });
@@ -485,7 +478,7 @@
   function paintLoop(now) {
     var light = root.dataset.theme === 'light';
     ctx.globalCompositeOperation = 'destination-out';
-    ctx.fillStyle = fxBright ? 'rgba(0,0,0,0.055)' : 'rgba(0,0,0,0.09)';
+    ctx.fillStyle = 'rgba(0,0,0,0.055)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     var idle = now - lastMove > 1600;
     if (!idle) {
@@ -497,9 +490,9 @@
         b.a += 0.03 + i * 0.004;
         var orbit = (18 + speed * 0.6) * SCALE;
         var x = b.x + Math.cos(b.a) * orbit, y = b.y + Math.sin(b.a) * orbit;
-        var r = (b.r + speed * (fxBright ? 1.2 : 0.5)) * SCALE * (fxBright ? 1.5 : 1.05);
+        var r = (b.r + speed * 1.2) * SCALE * 1.5;
         var g = ctx.createRadialGradient(x, y, 0, x, y, r);
-        var alpha = fxBright ? (light ? 0.11 : 0.1) : (light ? 0.028 : 0.03);
+        var alpha = light ? 0.11 : 0.1;
         g.addColorStop(0, 'rgba(' + b.c + ',' + alpha + ')');
         g.addColorStop(0.55, 'rgba(' + b.c + ',' + (alpha * 0.45) + ')');
         g.addColorStop(1, 'rgba(' + b.c + ',0)');
@@ -512,6 +505,14 @@
     paintRaf = requestAnimationFrame(paintLoop);
   }
   document.addEventListener('visibilitychange', function () { if (document.hidden && paintRaf) { cancelAnimationFrame(paintRaf); paintRaf = 0; } });
+
+  fxBtn.hidden = false;
+  setFx(fxBright);
+  fxBtn.addEventListener('click', function () {
+    setFx(!fxBright);
+    try { localStorage.setItem('cursorFx', fxBright ? 'on' : 'off'); } catch (e) {}
+    if (tipFor === fxBtn) showTip(fxBtn);
+  });
 
   /* ---------- Магнитные кнопки и наклон карточек ---------- */
   $$('.magnetic').forEach(function (el) {
