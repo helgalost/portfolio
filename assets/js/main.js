@@ -426,7 +426,9 @@
     fxBtn.setAttribute('aria-pressed', String(on));
     fxBtn.setAttribute('aria-label', on ? 'Выключить анимацию за курсором' : 'Включить анимацию за курсором');
     fxBtn.setAttribute('data-tip', on ? 'Выключить анимацию за курсором' : 'Включить анимацию за курсором');
-    if (!on && ctx) { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+    // холст показывается только во включённом режиме
+    canvas.style.display = on && paintOn ? 'block' : 'none';
+    if (!on && ctx) { ctx.clearRect(0, 0, canvas.width, canvas.height); if (paintRaf) { cancelAnimationFrame(paintRaf); paintRaf = 0; } }
   }
 
   /* ---------- Круглый курсор ---------- */
@@ -456,10 +458,9 @@
      Холст рисуется в уменьшенном разрешении и растягивается — получается
      мягкое «акварельное» размытие без CSS-фильтров. Цикл засыпает, когда
      мышь не двигается, поэтому в покое не тратит ресурсы. */
-  var canvas = $('#paint'), ctx = null, blobs = [], paintRaf = 0, lastMove = 0, SCALE = 0.35;
+  var canvas = $('#paint'), ctx = null, blobs = [], paintRaf = 0, lastMove = 0, SCALE = 0.5;
   var paintOn = !reduceMotion && !!canvas.getContext;
   if (paintOn) {
-    canvas.style.display = 'block';
     ctx = canvas.getContext('2d');
     var resize = function () { canvas.width = Math.round(innerWidth * SCALE); canvas.height = Math.round(innerHeight * SCALE); };
     resize();
