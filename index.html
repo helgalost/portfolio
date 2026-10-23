@@ -20,7 +20,7 @@
       document.documentElement.dataset.theme = t;
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610220121">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610231420">
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -75,7 +75,14 @@
 <header class="site-header" id="top">
   <div class="wrap header-row">
     <a class="logo" href="#top">helgalost</a>
-    <div class="header-center">Реклама · Стратегия · 2026</div>
+    <nav class="nav" id="nav" aria-label="Разделы">
+      <a href="#works">Работы</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#experience">Опыт</a>
+      <a href="#certs">Сертификаты</a>
+      <a href="#skills">Навыки</a>
+      <a href="#contact">Контакты</a>
+    </nav>
     <div class="header-actions">
       <button class="fx-btn" type="button" id="fxBtn" aria-pressed="false" data-tip="Включить анимацию за курсором" hidden><svg class="icon"><use href="#i-wand"/></svg></button>
       <label class="theme-switch" title="Светлая / тёмная тема">
@@ -94,10 +101,9 @@
   <section class="wrap hero" aria-labelledby="name">
     <div class="hero-text">
       <h1 class="hero-name" id="name"><span class="word"><span>Ольга</span></span><span class="word"><span>Чуманева</span></span></h1>
-      <p class="tag-line grad-text fade">Аналитика + Креатив = Результат</p>
+      <p class="tag-line grad-text fade">Вижу путь клиента от рекламы до заявки</p>
       <div class="bio fade">
-        <p>Стратег в рекламе и маркетинге с техническим бэкграундом. Соединяю креатив, аналитику и автоматизацию — от контент-стратегии до запуска Яндекс Директа и Метрики.</p>
-        <p>Проектирую рекламные кампании, внедряю CRM и ServiceDesk, навожу порядок в процессах и коммуникации.</p>
+        <p>Начинала в SMM и контенте, потом почти пять лет занималась CRM, поддержкой и автоматизацией в онлайн-школе. Поэтому смотрю на рекламу шире: не только как привлечь клиента, но и что с ним происходит после клика — в CRM, поддержке и отчётах.</p>
       </div>
       <div class="btn-row fade">
         <a class="btn btn-dl magnetic" href="cv.pdf" download="Ольга_Чуманева_CV.pdf"><svg class="icon"><use href="#i-file"/></svg>Скачать CV</a>
@@ -267,65 +273,6 @@
       </div></div></div>
     </section>
 
-    <!-- ЧТО Я МОГУ ДАТЬ КОМАНДЕ -->
-    <section class="acc" id="value">
-      <button class="acc-head reveal" type="button" aria-expanded="true" aria-controls="value-body">
-        <h2>Что я могу дать команде</h2><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span>
-      </button>
-      <div class="collapse is-open" id="value-body"><div class="collapse-in"><div class="acc-body">
-        <div class="spec reveal">
-          <p class="spec-kicker">Специализация</p>
-          <h3 class="spec-title">Стратегия в рекламе и маркетинге</h3>
-          <p class="spec-desc">Превращаю цели бизнеса в измеримые рекламные кампании, точки роста бренда и продуманный медиаплан — от креатива до отчёта с цифрами.</p>
-        </div>
-        <ul class="offers offers-main">
-          <li class="offer card reveal"><h3>Стратегия рекламной кампании</h3><p>От идеи и позиционирования до запуска с измеримыми KPI. Нахожу узкие места в воронке и убираю их.</p></li>
-          <li class="offer card reveal" style="--d:80ms"><h3>Точки роста бренда</h3><p>Нахожу их и превращаю данные в понятный медиаплан с цифрами и планом роста.</p></li>
-          <li class="offer card reveal" style="--d:160ms"><h3>Креатив, аналитика и процессы</h3><p>Помогаю креативу, аналитике и бизнесу говорить на одном языке, а рутину отдаю автоматизациям и CRM.</p></li>
-        </ul>
-      </div></div></div>
-    </section>
-
-    <!-- НАВЫКИ -->
-    <section class="acc" id="skills">
-      <button class="acc-head reveal" type="button" aria-expanded="false" aria-controls="skills-body">
-        <h2>Навыки</h2><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span>
-      </button>
-      <div class="collapse" id="skills-body"><div class="collapse-in"><div class="acc-body">
-        <div class="tabs" role="tablist" aria-label="Направления">
-          <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">Стратегия и маркетинг</button>
-          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1">Реклама и аналитика</button>
-          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1">Визуал и креатив</button>
-          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1">Процессы и автоматизация</button>
-        </div>
-        <div class="tab-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
-          <div class="skill"><h3>Позиционирование и ЦА</h3><p>Формулирую ценности бренда, сегменты и портреты аудитории, tone of voice.</p><span class="tools">Пирамида бренда, Tone of Voice, сегментация, JTBD</span></div>
-          <div class="skill"><h3>Исследования и конкуренты</h3><p>Глубинные интервью, анализ рынка и конкурентов, поиск свободных ниш и точек роста.</p><span class="tools">CJM, глубинные интервью, бенчмаркинг</span></div>
-          <div class="skill"><h3>Контент и SMM</h3><p>Контент-стратегии, рубрикаторы и медиапланы под цели бренда и этапы воронки.</p><span class="tools">Контент-матрица, медиаплан, Reels, KPI</span></div>
-          <div class="skill"><h3>PR и работа со СМИ</h3><p>Пресс-релизы в инфостиле, работа с редакциями и государственными порталами.</p><span class="tools">Пресс-релизы, медиакоммуникации, Mos.ru</span></div>
-        </div>
-        <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
-          <div class="skill"><h3>Контекстная реклама</h3><p>Настройка и ведение кампаний: ставки, аудитории, ретаргетинг.</p><span class="tools">Яндекс Директ</span></div>
-          <div class="skill"><h3>Веб-аналитика</h3><p>Счётчики, цели, воронки, тепловые карты и отчёты для клиентов.</p><span class="tools">Яндекс Метрика</span></div>
-          <div class="skill"><h3>Отчёты и KPI</h3><p>Собираю данные, считаю ROI, LTV и SLA, делаю отчёты для руководства.</p><span class="tools">Google Sheets, Excel, дашборды</span></div>
-          <div class="skill"><h3>Офисные пакеты</h3><p>Сводные таблицы, формулы, макросы, презентации и совместная работа.</p><span class="tools">Word, Excel, PowerPoint, Google Workspace</span></div>
-        </div>
-        <div class="tab-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
-          <div class="skill"><h3>Фотография</h3><p>Портреты и предметная съёмка: свет, композиция, цвет, ретушь для печати и веба.</p><span class="tools">Портрет, предметная съёмка, ретушь</span></div>
-          <div class="skill"><h3>Графический дизайн</h3><p>Ретушь и коллажи, векторная графика и логотипы, многостраничные макеты.</p><span class="tools">Photoshop, Illustrator, InDesign, Supa, Canva</span></div>
-          <div class="skill"><h3>Видеомонтаж</h3><p>Монтаж, цветокоррекция и звук, экспорт под разные площадки.</p><span class="tools">Premiere Pro, Reels, Shorts, YouTube</span></div>
-          <div class="skill"><h3>Веб и прототипы</h3><p>Прототипы и макеты сайтов, лендинги без кода, базовая вёрстка.</p><span class="tools">Figma, Tilda, HTML, CSS, JS</span></div>
-        </div>
-        <div class="tab-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
-          <div class="skill"><h3>CRM</h3><p>Воронки, права доступа, кастомные поля, триггеры и автоответы.</p><span class="tools">AmoCRM, Битрикс24</span></div>
-          <div class="skill"><h3>Интеграции и API</h3><p>Связка сервисов, аудит REST API, JavaScript-маппинг, сценарии без кода.</p><span class="tools">n8n, REST API, JS-маппинг</span></div>
-          <div class="skill"><h3>Поддержка и телефония</h3><p>HelpDesk, SLA и распределение тикетов, телефония в связке с CRM, удалённый доступ.</p><span class="tools">Omnidesk, Яндекс Трекер, Naumen, Mango, AnyDesk, Getscreen</span></div>
-          <div class="skill"><h3>Команда и база знаний</h3><p>Онбординг, менторство, регламенты, спринты и канбан-доски.</p><span class="tools">Kaiten, Agile, Notion, Teamly</span></div>
-          <div class="skill"><h3>Оптимизация процессов</h3><p>Ищу узкие места, строю карты клиентского пути, ускоряю работу команд.</p><span class="tools">CJM, BPMN</span></div>
-        </div>
-      </div></div></div>
-    </section>
-
     <!-- ОПЫТ -->
     <section class="acc" id="experience">
       <button class="acc-head reveal" type="button" aria-expanded="false" aria-controls="exp-body">
@@ -364,6 +311,16 @@
         <p>Я очень люблю <strong>технику</strong> и слежу за новинками: смартфоны, процессоры, нестандартные устройства и гаджеты. Люблю разбираться в характеристиках и тестировать девайсы. Дома есть <strong>игровая консоль и VR-гарнитура</strong>: обожаю Beat Saber — ритм и движение в VR заряжают как тренировка.</p>
         <p>И, конечно, <strong>путешествия</strong>. Ничто так не расширяет кругозор, как новые города и природа!</p>
       </div></div></div>
+    </section>
+
+    <!-- НАВЫКИ: три группы, без вкладок -->
+    <section class="skills-block" id="skills" aria-labelledby="skills-title">
+      <h2 class="skills-title reveal" id="skills-title">Навыки</h2>
+      <div class="skill-groups">
+        <div class="skill-group reveal"><h3>Маркетинг и реклама</h3><p>Стратегия и позиционирование, контент и SMM, контекстная реклама, PR и отчёты по KPI.</p><ul class="tool-list"><li>Яндекс Директ</li><li>Метрика</li><li>Контент-матрица</li><li>Медиаплан</li><li>CJM</li><li>JTBD</li><li>Пресс-релизы</li></ul></div>
+        <div class="skill-group reveal" style="--d:80ms"><h3>Визуал</h3><p>Фото и предметная съёмка, графика для рекламы и соцсетей, прототипы сайтов и монтаж.</p><ul class="tool-list"><li>Photoshop</li><li>Illustrator</li><li>InDesign</li><li>Figma</li><li>Premiere Pro</li><li>Tilda</li><li>Canva</li></ul></div>
+        <div class="skill-group reveal" style="--d:160ms"><h3>Процессы и CRM</h3><p>Воронки и автоматизации, интеграции по API, поддержка клиентов и база знаний.</p><ul class="tool-list"><li>AmoCRM</li><li>Битрикс24</li><li>n8n</li><li>REST API</li><li>HelpDesk</li><li>Яндекс Трекер</li><li>Notion / Teamly</li></ul></div>
+      </div>
     </section>
   </div>
 </main>
@@ -412,7 +369,7 @@
   </div>
 </div>
 
-<script src="assets/js/works.js?v=202610220121"></script>
-<script src="assets/js/main.js?v=202610220121"></script>
+<script src="assets/js/works.js?v=202610231420"></script>
+<script src="assets/js/main.js?v=202610231420"></script>
 </body>
 </html>
