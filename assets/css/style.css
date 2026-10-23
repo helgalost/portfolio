@@ -98,7 +98,7 @@
 /* ---------- База ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
-@media (max-width: 999px) { html { scroll-padding-top: 116px; } }
+@media (max-width: 999px) { html { scroll-padding-top: 76px; } }
 body {
   margin: 0;
   overflow-x: clip;               /* не ломает sticky и не даёт странице ездить вбок */
@@ -196,15 +196,33 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1000px) {
   .nav { position: absolute; left: 50%; transform: translateX(-50%); }
 }
-/* На телефоне и планшете — вторая строка шапки, листается вбок */
+.nav-tg, .burger { display: none; }
+/* На телефоне и планшете — бургер-меню; переключатель темы остаётся в шапке */
 @media (max-width: 999px) {
-  .site-header .header-row { flex-wrap: wrap; height: auto; row-gap: 0; padding-top: 6px; }
-  .nav { order: 3; flex-basis: 100%; overflow-x: auto; scrollbar-width: none; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 8px; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
-  .nav::-webkit-scrollbar { display: none; }
-  .nav a { padding: 6px 10px; font-size: .85rem; }
-  .nav a:first-child { padding-left: 0; }
-  .nav a:first-child::after { left: 0; }
+  .header-actions { gap: 14px; }
+  .header-actions .social-link { display: none; }
+  .burger { display: inline-grid; place-content: center; gap: 5px; width: 44px; height: 44px; margin-right: -8px; border-radius: 12px; }
+  .burger span { display: block; width: 22px; height: 2px; border-radius: 2px; background: var(--text); transition: transform .35s var(--ease), opacity .25s; }
+  .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    padding: 8px var(--pad) 20px;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    box-shadow: 0 24px 40px -24px rgba(0, 0, 0, .45);
+    visibility: hidden; opacity: 0; transform: translateY(-8px);
+    transition: opacity .25s, transform .3s var(--ease), visibility 0s .3s;
+  }
+  .nav.is-open { visibility: visible; opacity: 1; transform: none; transition: opacity .25s, transform .3s var(--ease); }
+  .nav a { padding: 14px 0; border-radius: 0; font-size: 1.1rem; color: var(--text); border-bottom: 1px solid var(--line); }
+  .nav a::after { display: none; }
+  .nav a.is-active { color: var(--accent-text); }
+  .nav .nav-tg { display: inline-flex; align-items: center; gap: 10px; border-bottom: 0; margin-top: 8px; color: var(--violet); }
+  .nav .nav-tg .icon { width: 20px; height: 20px; }
 }
+
 .social-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 4px; font-family: var(--font-head); font-weight: 600; font-size: .88rem; text-decoration: none; transition: color .3s; }
 .social-link .icon { width: 15px; height: 15px; }
 @media (hover: hover) { .social-link:hover { color: var(--accent-text); } }
@@ -593,7 +611,6 @@ html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
 :root[data-theme="light"] .badge,
 :root[data-theme="light"] .result,
 :root[data-theme="light"] .tech,
-:root[data-theme="light"] .skill-group,
 :root[data-theme="light"] .round,
 :root[data-theme="light"] .btn-ghost { background: #fff; box-shadow: var(--card-shadow); }
 :root[data-theme="light"] .work .shot,
@@ -604,16 +621,3 @@ html.has-cursor input, html.has-cursor textarea { cursor: text !important; }
 :root[data-theme="light"] .acc-head .chev { color: var(--violet); }
 :root[data-theme="light"] .hero-media::before { background: radial-gradient(closest-side, rgba(255, 112, 40, .45), rgba(124, 58, 237, .28) 60%, transparent); }
 
-/* ---------- Навыки: три группы внизу страницы ---------- */
-.skills-block { margin-top: clamp(56px, 9vw, 96px); }
-.skills-title { font-family: var(--font-head); font-weight: 700; text-transform: uppercase; font-size: clamp(1.5rem, 4.4vw, 2.3rem); letter-spacing: -0.02em; padding-bottom: 16px; border-bottom: 1px solid var(--line); margin-bottom: 28px; }
-.skill-groups { display: grid; gap: 14px; }
-.skill-group { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--r); padding: 22px 22px 24px; }
-.skill-group h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-.skill-group p { color: var(--muted); font-size: .95rem; margin-bottom: 16px; }
-.tool-list { display: flex; flex-wrap: wrap; gap: 6px; }
-.tool-list li { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--card-border); font-size: .8rem; font-weight: 500; }
-.skill-group:nth-child(1) h3 { color: var(--accent-text); }
-.skill-group:nth-child(2) h3 { color: var(--pink); }
-.skill-group:nth-child(3) h3 { color: var(--violet); }
-@media (min-width: 900px) { .skill-groups { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

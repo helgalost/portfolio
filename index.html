@@ -20,7 +20,7 @@
       document.documentElement.dataset.theme = t;
     })();
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=202610231420">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610231433">
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -80,8 +80,8 @@
       <a href="#cases">Кейсы</a>
       <a href="#experience">Опыт</a>
       <a href="#certs">Сертификаты</a>
-      <a href="#skills">Навыки</a>
       <a href="#contact">Контакты</a>
+      <a class="nav-tg" href="https://t.me/helgalost" target="_blank" rel="noopener"><svg class="icon"><use href="#i-telegram"/></svg>Написать в Telegram</a>
     </nav>
     <div class="header-actions">
       <button class="fx-btn" type="button" id="fxBtn" aria-pressed="false" data-tip="Включить анимацию за курсором" hidden><svg class="icon"><use href="#i-wand"/></svg></button>
@@ -91,6 +91,7 @@
         <span class="track" aria-hidden="true"></span>
         <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       </label>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Открыть меню"><span></span><span></span><span></span></button>
       <a class="social-link" href="https://t.me/helgalost" target="_blank" rel="noopener" aria-label="Написать в Telegram">TG <svg class="icon"><use href="#i-telegram"/></svg></a>
     </div>
   </div>
@@ -101,9 +102,9 @@
   <section class="wrap hero" aria-labelledby="name">
     <div class="hero-text">
       <h1 class="hero-name" id="name"><span class="word"><span>Ольга</span></span><span class="word"><span>Чуманева</span></span></h1>
-      <p class="tag-line grad-text fade">Вижу путь клиента от рекламы до заявки</p>
+      <p class="tag-line grad-text fade">Аналитика + Креатив = Результат</p>
       <div class="bio fade">
-        <p>Начинала в SMM и контенте, потом почти пять лет занималась CRM, поддержкой и автоматизацией в онлайн-школе. Поэтому смотрю на рекламу шире: не только как привлечь клиента, но и что с ним происходит после клика — в CRM, поддержке и отчётах.</p>
+        <p>Специалист по рекламе и стратег в маркетинге с техническим бэкграундом. Соединяю креатив, аналитику и автоматизацию: от контент-стратегии до запуска Яндекс Директа и работы с Метрикой.</p>
       </div>
       <div class="btn-row fade">
         <a class="btn btn-dl magnetic" href="cv.pdf" download="Ольга_Чуманева_CV.pdf"><svg class="icon"><use href="#i-file"/></svg>Скачать CV</a>
@@ -195,8 +196,8 @@
         </article>
 
         <article class="case reveal">
-          <button class="case-head" type="button" aria-expanded="false" aria-controls="c2"><span><h3>Медиа &amp; SMM</h3><span class="role">Инжинириум МГТУ им. Баумана</span></span><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span></button>
-          <div class="collapse" id="c2"><div class="collapse-in"><div class="case-body">
+          <button class="case-head" type="button" aria-expanded="true" aria-controls="c2"><span><h3>Медиа &amp; SMM</h3><span class="role">Инжинириум МГТУ им. Баумана</span></span><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse is-open" id="c2"><div class="collapse-in"><div class="case-body">
             <div class="case-media two">
               <button type="button" class="js-zoom" data-group="c2" data-title="Медиаплан"><img src="img/cases/proj1_1.jpg" alt="Медиаплан" width="635" height="457" loading="lazy"></button>
               <button type="button" class="js-zoom" data-group="c2" data-title="Пример публикации"><img src="img/cases/proj1_2.jpg" alt="Пример публикации" width="640" height="734" loading="lazy"></button>
@@ -215,8 +216,8 @@
         </article>
 
         <article class="case reveal">
-          <button class="case-head" type="button" aria-expanded="false" aria-controls="c3"><span><h3>Контент-стратегия</h3><span class="role">Консалтинг</span></span><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span></button>
-          <div class="collapse" id="c3"><div class="collapse-in"><div class="case-body">
+          <button class="case-head" type="button" aria-expanded="true" aria-controls="c3"><span><h3>Контент-стратегия</h3><span class="role">Консалтинг</span></span><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse is-open" id="c3"><div class="collapse-in"><div class="case-body">
             <div class="case-media">
               <button type="button" class="js-zoom" data-group="c3" data-title="Статистика"><img src="img/cases/proj2.jpg" alt="Статистика" width="862" height="465" loading="lazy"></button>
             </div>
@@ -234,8 +235,8 @@
         </article>
 
         <article class="case reveal">
-          <button class="case-head" type="button" aria-expanded="false" aria-controls="c4"><span><h3>IT-инфраструктура</h3><span class="role">Оптимизация работы с обращениями</span></span><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span></button>
-          <div class="collapse" id="c4"><div class="collapse-in"><div class="case-body">
+          <button class="case-head" type="button" aria-expanded="true" aria-controls="c4"><span><h3>IT-инфраструктура</h3><span class="role">Оптимизация работы с обращениями</span></span><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse is-open" id="c4"><div class="collapse-in"><div class="case-body">
             <div class="case-media">
               <button type="button" class="js-zoom" data-group="c4" data-title="Оптимизация"><img src="img/cases/proj3.jpg" alt="Оптимизация" width="1280" height="540" loading="lazy"></button>
             </div>
@@ -253,8 +254,8 @@
         </article>
 
         <article class="case reveal">
-          <button class="case-head" type="button" aria-expanded="false" aria-controls="c5"><span><h3>Перенос инфраструктуры</h3><span class="role">Миграция ключевых сервисов</span></span><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span></button>
-          <div class="collapse" id="c5"><div class="collapse-in"><div class="case-body">
+          <button class="case-head" type="button" aria-expanded="true" aria-controls="c5"><span><h3>Перенос инфраструктуры</h3><span class="role">Миграция ключевых сервисов</span></span><span class="chev"><svg class="icon"><use href="#i-chev"/></svg></span></button>
+          <div class="collapse is-open" id="c5"><div class="collapse-in"><div class="case-body">
             <div class="case-media">
               <button type="button" class="js-zoom" data-group="c5" data-title="Миграция инфраструктуры"><img src="img/cases/proj4.jpg" alt="Миграция инфраструктуры" width="1536" height="1024" loading="lazy"></button>
             </div>
@@ -313,15 +314,6 @@
       </div></div></div>
     </section>
 
-    <!-- НАВЫКИ: три группы, без вкладок -->
-    <section class="skills-block" id="skills" aria-labelledby="skills-title">
-      <h2 class="skills-title reveal" id="skills-title">Навыки</h2>
-      <div class="skill-groups">
-        <div class="skill-group reveal"><h3>Маркетинг и реклама</h3><p>Стратегия и позиционирование, контент и SMM, контекстная реклама, PR и отчёты по KPI.</p><ul class="tool-list"><li>Яндекс Директ</li><li>Метрика</li><li>Контент-матрица</li><li>Медиаплан</li><li>CJM</li><li>JTBD</li><li>Пресс-релизы</li></ul></div>
-        <div class="skill-group reveal" style="--d:80ms"><h3>Визуал</h3><p>Фото и предметная съёмка, графика для рекламы и соцсетей, прототипы сайтов и монтаж.</p><ul class="tool-list"><li>Photoshop</li><li>Illustrator</li><li>InDesign</li><li>Figma</li><li>Premiere Pro</li><li>Tilda</li><li>Canva</li></ul></div>
-        <div class="skill-group reveal" style="--d:160ms"><h3>Процессы и CRM</h3><p>Воронки и автоматизации, интеграции по API, поддержка клиентов и база знаний.</p><ul class="tool-list"><li>AmoCRM</li><li>Битрикс24</li><li>n8n</li><li>REST API</li><li>HelpDesk</li><li>Яндекс Трекер</li><li>Notion / Teamly</li></ul></div>
-      </div>
-    </section>
   </div>
 </main>
 
@@ -369,7 +361,7 @@
   </div>
 </div>
 
-<script src="assets/js/works.js?v=202610231420"></script>
-<script src="assets/js/main.js?v=202610231420"></script>
+<script src="assets/js/works.js?v=202610231433"></script>
+<script src="assets/js/main.js?v=202610231433"></script>
 </body>
 </html>

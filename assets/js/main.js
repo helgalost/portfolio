@@ -75,8 +75,23 @@
 
   /* ---------- Ссылки в шапке: открывают свёрнутый раздел и подсвечивают текущий ---------- */
   var navLinks = $$('#nav a');
+  var navEl = $('#nav'), burger = $('#burger');
+  function setMenu(open) {
+    if (!burger) return;
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    navEl.classList.toggle('is-open', open);
+  }
+  if (burger) {
+    burger.addEventListener('click', function (e) { e.stopPropagation(); setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
+    document.addEventListener('click', function (e) { if (navEl.classList.contains('is-open') && !navEl.contains(e.target)) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && navEl.classList.contains('is-open')) { setMenu(false); burger.focus(); } });
+    matchMedia('(min-width: 1000px)').addEventListener('change', function () { setMenu(false); });
+  }
   navLinks.forEach(function (a) {
     a.addEventListener('click', function (e) {
+      setMenu(false);
+      if (a.getAttribute('href').charAt(0) !== '#') return;
       var target = document.querySelector(a.getAttribute('href'));
       if (!target) return;
       var head = $('.acc-head', target);
@@ -86,6 +101,7 @@
       history.replaceState(null, '', a.getAttribute('href'));
     });
   });
+  navLinks = navLinks.filter(function (a) { return a.getAttribute('href').charAt(0) === '#'; });
   if ('IntersectionObserver' in window && navLinks.length) {
     var seen = {};
     var navObs = new IntersectionObserver(function (entries) {
