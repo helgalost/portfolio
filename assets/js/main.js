@@ -73,6 +73,30 @@
     });
   });
 
+  /* ---------- Ссылки в шапке: открывают свёрнутый раздел и подсвечивают текущий ---------- */
+  var navLinks = $$('#nav a');
+  navLinks.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      var head = $('.acc-head', target);
+      if (head && head.getAttribute('aria-expanded') !== 'true') head.click();
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      history.replaceState(null, '', a.getAttribute('href'));
+    });
+  });
+  if ('IntersectionObserver' in window && navLinks.length) {
+    var seen = {};
+    var navObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { seen[en.target.id] = en.isIntersecting; });
+      var current = null;
+      navLinks.forEach(function (a) { var id = a.getAttribute('href').slice(1); if (seen[id] && !current) current = a; });
+      navLinks.forEach(function (a) { a.classList.toggle('is-active', a === current); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    navLinks.forEach(function (a) { var t = document.querySelector(a.getAttribute('href')); if (t) navObs.observe(t); });
+  }
+
   /* ---------- Появление при прокрутке ---------- */
   var revealObs = null;
   if (!reduceMotion && 'IntersectionObserver' in window) {
